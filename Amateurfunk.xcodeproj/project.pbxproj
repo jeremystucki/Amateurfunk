@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		3F0DA6F51E9A2762009C2F04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0DA6F41E9A2762009C2F04 /* AppDelegate.swift */; };
-		3F0DA6F71E9A2762009C2F04 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0DA6F61E9A2762009C2F04 /* ViewController.swift */; };
-		3F0DA6FA1E9A2762009C2F04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F0DA6F81E9A2762009C2F04 /* Main.storyboard */; };
 		3F0DA6FC1E9A2762009C2F04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F0DA6FB1E9A2762009C2F04 /* Assets.xcassets */; };
 		3F0DA6FF1E9A2762009C2F04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F0DA6FD1E9A2762009C2F04 /* LaunchScreen.storyboard */; };
+		3F0DA7121E9AAC4A009C2F04 /* TechnikMenuInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0DA70F1E9AAC4A009C2F04 /* TechnikMenuInteractor.swift */; };
+		3F0DA7131E9AAC4A009C2F04 /* TechnikMenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0DA7101E9AAC4A009C2F04 /* TechnikMenuRouter.swift */; };
+		3F0DA7141E9AAC4A009C2F04 /* TechnikMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0DA7111E9AAC4A009C2F04 /* TechnikMenuViewController.swift */; };
+		3F24EFD71E9AB2310097ECDA /* TechnikMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F24EFD61E9AB2310097ECDA /* TechnikMenuPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3F0DA6F11E9A2762009C2F04 /* Amateurfunk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Amateurfunk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F0DA6F41E9A2762009C2F04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3F0DA6F61E9A2762009C2F04 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		3F0DA6F91E9A2762009C2F04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3F0DA6FB1E9A2762009C2F04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F0DA6FE1E9A2762009C2F04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F0DA7001E9A2762009C2F04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F0DA70F1E9AAC4A009C2F04 /* TechnikMenuInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TechnikMenuInteractor.swift; path = Technik/Scenes/Menu/TechnikMenuInteractor.swift; sourceTree = "<group>"; };
+		3F0DA7101E9AAC4A009C2F04 /* TechnikMenuRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TechnikMenuRouter.swift; path = Technik/Scenes/Menu/TechnikMenuRouter.swift; sourceTree = "<group>"; };
+		3F0DA7111E9AAC4A009C2F04 /* TechnikMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TechnikMenuViewController.swift; path = Technik/Scenes/Menu/TechnikMenuViewController.swift; sourceTree = "<group>"; };
+		3F24EFD61E9AB2310097ECDA /* TechnikMenuPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TechnikMenuPresenter.swift; path = Technik/Scenes/Menu/TechnikMenuPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +58,40 @@
 		3F0DA6F31E9A2762009C2F04 /* Amateurfunk */ = {
 			isa = PBXGroup;
 			children = (
+				3F0DA7061E9AA401009C2F04 /* Technik */,
 				3F0DA6F41E9A2762009C2F04 /* AppDelegate.swift */,
-				3F0DA6F61E9A2762009C2F04 /* ViewController.swift */,
-				3F0DA6F81E9A2762009C2F04 /* Main.storyboard */,
 				3F0DA6FB1E9A2762009C2F04 /* Assets.xcassets */,
 				3F0DA6FD1E9A2762009C2F04 /* LaunchScreen.storyboard */,
 				3F0DA7001E9A2762009C2F04 /* Info.plist */,
 			);
 			path = Amateurfunk;
+			sourceTree = "<group>";
+		};
+		3F0DA7061E9AA401009C2F04 /* Technik */ = {
+			isa = PBXGroup;
+			children = (
+				3F0DA7071E9AA4F0009C2F04 /* Scenes */,
+			);
+			name = Technik;
+			sourceTree = "<group>";
+		};
+		3F0DA7071E9AA4F0009C2F04 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				3F0DA7081E9AA769009C2F04 /* Menu */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		3F0DA7081E9AA769009C2F04 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				3F0DA70F1E9AAC4A009C2F04 /* TechnikMenuInteractor.swift */,
+				3F0DA7101E9AAC4A009C2F04 /* TechnikMenuRouter.swift */,
+				3F0DA7111E9AAC4A009C2F04 /* TechnikMenuViewController.swift */,
+				3F24EFD61E9AB2310097ECDA /* TechnikMenuPresenter.swift */,
+			);
+			name = Menu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +126,7 @@
 				TargetAttributes = {
 					3F0DA6F01E9A2762009C2F04 = {
 						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = HAH73UHZG3;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -125,7 +156,6 @@
 			files = (
 				3F0DA6FF1E9A2762009C2F04 /* LaunchScreen.storyboard in Resources */,
 				3F0DA6FC1E9A2762009C2F04 /* Assets.xcassets in Resources */,
-				3F0DA6FA1E9A2762009C2F04 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +166,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F0DA6F71E9A2762009C2F04 /* ViewController.swift in Sources */,
+				3F0DA7141E9AAC4A009C2F04 /* TechnikMenuViewController.swift in Sources */,
+				3F0DA7121E9AAC4A009C2F04 /* TechnikMenuInteractor.swift in Sources */,
+				3F0DA7131E9AAC4A009C2F04 /* TechnikMenuRouter.swift in Sources */,
+				3F24EFD71E9AB2310097ECDA /* TechnikMenuPresenter.swift in Sources */,
 				3F0DA6F51E9A2762009C2F04 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,14 +177,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		3F0DA6F81E9A2762009C2F04 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3F0DA6F91E9A2762009C2F04 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3F0DA6FD1E9A2762009C2F04 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -262,6 +287,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = HAH73UHZG3;
 				INFOPLIST_FILE = Amateurfunk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jeremystucki.ios.Amateurfunk;
@@ -274,6 +300,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = HAH73UHZG3;
 				INFOPLIST_FILE = Amateurfunk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jeremystucki.ios.Amateurfunk;
@@ -301,6 +328,7 @@
 				3F0DA7051E9A2762009C2F04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
