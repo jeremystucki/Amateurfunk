@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,14 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func applicationDidFinishLaunching(_ application: UIApplication) {
-        let tabController = UITabBarController()
-        tabController.setViewControllers([TechnikMenuViewController()], animated: false)
-
         window = UIWindow(frame: UIScreen.main.bounds)
 
-        window!.rootViewController = tabController
-        window!.rootViewController?.view.backgroundColor = .red
-
+        window!.rootViewController = UIViewController()
         window!.makeKeyAndVisible()
     }
 

@@ -10,10 +10,10 @@
 		3F0DA6F51E9A2762009C2F04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0DA6F41E9A2762009C2F04 /* AppDelegate.swift */; };
 		3F0DA6FC1E9A2762009C2F04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F0DA6FB1E9A2762009C2F04 /* Assets.xcassets */; };
 		3F0DA6FF1E9A2762009C2F04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F0DA6FD1E9A2762009C2F04 /* LaunchScreen.storyboard */; };
-		3F0DA7121E9AAC4A009C2F04 /* TechnikMenuInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0DA70F1E9AAC4A009C2F04 /* TechnikMenuInteractor.swift */; };
-		3F0DA7131E9AAC4A009C2F04 /* TechnikMenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0DA7101E9AAC4A009C2F04 /* TechnikMenuRouter.swift */; };
-		3F0DA7141E9AAC4A009C2F04 /* TechnikMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0DA7111E9AAC4A009C2F04 /* TechnikMenuViewController.swift */; };
-		3F24EFD71E9AB2310097ECDA /* TechnikMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F24EFD61E9AB2310097ECDA /* TechnikMenuPresenter.swift */; };
+		3F5080561E9FF62D00AA3A2D /* ManagedObjectFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5080551E9FF62D00AA3A2D /* ManagedObjectFactory.swift */; };
+		3F68757C1E9EB87300B86178 /* ChapterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68757B1E9EB87300B86178 /* ChapterInteractor.swift */; };
+		3F99CACE1E9D3DC400D3B677 /* QuestionsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F99CACC1E9D3DC400D3B677 /* QuestionsModel.xcdatamodeld */; };
+		BAA652322D911ECE03A7162E /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA65CE59233B25280862658 /* Answer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,10 +22,10 @@
 		3F0DA6FB1E9A2762009C2F04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F0DA6FE1E9A2762009C2F04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F0DA7001E9A2762009C2F04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3F0DA70F1E9AAC4A009C2F04 /* TechnikMenuInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TechnikMenuInteractor.swift; path = Technik/Scenes/Menu/TechnikMenuInteractor.swift; sourceTree = "<group>"; };
-		3F0DA7101E9AAC4A009C2F04 /* TechnikMenuRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TechnikMenuRouter.swift; path = Technik/Scenes/Menu/TechnikMenuRouter.swift; sourceTree = "<group>"; };
-		3F0DA7111E9AAC4A009C2F04 /* TechnikMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TechnikMenuViewController.swift; path = Technik/Scenes/Menu/TechnikMenuViewController.swift; sourceTree = "<group>"; };
-		3F24EFD61E9AB2310097ECDA /* TechnikMenuPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TechnikMenuPresenter.swift; path = Technik/Scenes/Menu/TechnikMenuPresenter.swift; sourceTree = "<group>"; };
+		3F5080551E9FF62D00AA3A2D /* ManagedObjectFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectFactory.swift; sourceTree = "<group>"; };
+		3F68757B1E9EB87300B86178 /* ChapterInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterInteractor.swift; sourceTree = "<group>"; };
+		3F99CACD1E9D3DC400D3B677 /* QuestionsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QuestionsModel.xcdatamodel; sourceTree = "<group>"; };
+		BAA65CE59233B25280862658 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,40 +58,24 @@
 		3F0DA6F31E9A2762009C2F04 /* Amateurfunk */ = {
 			isa = PBXGroup;
 			children = (
-				3F0DA7061E9AA401009C2F04 /* Technik */,
 				3F0DA6F41E9A2762009C2F04 /* AppDelegate.swift */,
 				3F0DA6FB1E9A2762009C2F04 /* Assets.xcassets */,
 				3F0DA6FD1E9A2762009C2F04 /* LaunchScreen.storyboard */,
 				3F0DA7001E9A2762009C2F04 /* Info.plist */,
+				BAA654D807CF95C31D453202 /* Entities */,
+				3F99CACC1E9D3DC400D3B677 /* QuestionsModel.xcdatamodeld */,
+				3F68757B1E9EB87300B86178 /* ChapterInteractor.swift */,
 			);
 			path = Amateurfunk;
 			sourceTree = "<group>";
 		};
-		3F0DA7061E9AA401009C2F04 /* Technik */ = {
+		BAA654D807CF95C31D453202 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				3F0DA7071E9AA4F0009C2F04 /* Scenes */,
+				3F5080551E9FF62D00AA3A2D /* ManagedObjectFactory.swift */,
+				BAA65CE59233B25280862658 /* Answer.swift */,
 			);
-			name = Technik;
-			sourceTree = "<group>";
-		};
-		3F0DA7071E9AA4F0009C2F04 /* Scenes */ = {
-			isa = PBXGroup;
-			children = (
-				3F0DA7081E9AA769009C2F04 /* Menu */,
-			);
-			name = Scenes;
-			sourceTree = "<group>";
-		};
-		3F0DA7081E9AA769009C2F04 /* Menu */ = {
-			isa = PBXGroup;
-			children = (
-				3F0DA70F1E9AAC4A009C2F04 /* TechnikMenuInteractor.swift */,
-				3F0DA7101E9AAC4A009C2F04 /* TechnikMenuRouter.swift */,
-				3F0DA7111E9AAC4A009C2F04 /* TechnikMenuViewController.swift */,
-				3F24EFD61E9AB2310097ECDA /* TechnikMenuPresenter.swift */,
-			);
-			name = Menu;
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,11 +150,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F0DA7141E9AAC4A009C2F04 /* TechnikMenuViewController.swift in Sources */,
-				3F0DA7121E9AAC4A009C2F04 /* TechnikMenuInteractor.swift in Sources */,
-				3F0DA7131E9AAC4A009C2F04 /* TechnikMenuRouter.swift in Sources */,
-				3F24EFD71E9AB2310097ECDA /* TechnikMenuPresenter.swift in Sources */,
+				3F99CACE1E9D3DC400D3B677 /* QuestionsModel.xcdatamodeld in Sources */,
+				3F68757C1E9EB87300B86178 /* ChapterInteractor.swift in Sources */,
+				3F5080561E9FF62D00AA3A2D /* ManagedObjectFactory.swift in Sources */,
 				3F0DA6F51E9A2762009C2F04 /* AppDelegate.swift in Sources */,
+				BAA652322D911ECE03A7162E /* Answer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +315,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3F99CACC1E9D3DC400D3B677 /* QuestionsModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3F99CACD1E9D3DC400D3B677 /* QuestionsModel.xcdatamodel */,
+			);
+			currentVersion = 3F99CACD1E9D3DC400D3B677 /* QuestionsModel.xcdatamodel */;
+			path = QuestionsModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3F0DA6E91E9A2761009C2F04 /* Project object */;
 }
