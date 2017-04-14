@@ -17,7 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidFinishLaunching(_ application: UIApplication) {
         window = UIWindow(frame: UIScreen.main.bounds)
 
-        window!.rootViewController = UIViewController()
+        let container = NSPersistentContainer(name: "QuestionsModel")
+        container.loadPersistentStores(completionHandler: { _, _ in })
+
+        let context = container.viewContext
+
+        let section = ManagedObjectFactory<Section>(context: context).create()
+        section.name = "Technik"
+
+        let interactor = ChapterInteractor(section: section, context: context)
+        let viewController = ChapterOverviewRouter.setupModule(withInteractor: interactor)
+
+        window!.rootViewController = viewController
         window!.makeKeyAndVisible()
     }
 

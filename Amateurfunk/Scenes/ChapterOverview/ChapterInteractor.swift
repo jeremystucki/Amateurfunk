@@ -24,7 +24,7 @@ protocol ChapterInteractorOutput {
 
 class ChapterInteractor {
 
-    var output: ChapterInteractorOutput!
+    var output: ChapterInteractorOutput?
 
     fileprivate let section: Section
     fileprivate let context: NSManagedObjectContext
@@ -46,10 +46,10 @@ extension ChapterInteractor: ChapterInteractorInput {
 
         do {
             let results = try context.fetch(query)
-            return output.fetchedChapters(results)
-        } catch { }
-
-        output.failedToFetchChapters()
+            output?.fetchedChapters(results)
+        } catch {
+            output?.failedToFetchChapters()
+        }
     }
 
     func addChapter(_ chapter: Chapter) {
@@ -58,10 +58,12 @@ extension ChapterInteractor: ChapterInteractorInput {
 
         do {
             try context.save()
-            return output.addedChapter(chapter)
-        } catch { }
 
-        output.failedToAddChapter(chapter)
+            output?.addedChapter(chapter)
+            return
+        } catch {
+            output?.failedToAddChapter(chapter)
+        }
     }
 
 }
