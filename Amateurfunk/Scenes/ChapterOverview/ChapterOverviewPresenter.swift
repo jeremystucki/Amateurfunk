@@ -11,27 +11,19 @@ import Foundation
 class ChapterOverviewPresenter {
 
     var view: ChapterOverviewViewControllerInput?
-    var router: ChapterOverviewRouter?
-    var interactor: ChapterInteractorInput?
+    var router: ChapterOverviewRouterInput?
+    var interactor: ChapterOverviewInteractorInput?
 
 }
 
-extension ChapterOverviewPresenter: ChapterInteractorOutput {
+extension ChapterOverviewPresenter: ChapterOverviewInteractorOutput {
 
     func fetchedChapters(_ chapters: [Chapter]) {
         view?.displayChapters(chapters)
     }
 
     func failedToFetchChapters() {
-
-    }
-
-    func addedChapter(_ chapter: Chapter) {
-
-    }
-
-    func failedToAddChapter(_ chapter: Chapter) {
-
+        // TODO: Display error
     }
 
 }
@@ -40,6 +32,10 @@ extension ChapterOverviewPresenter: ChapterOverviewViewControllerOutput {
 
     func viewInitialized() {
         interactor?.fetchChapters()
+    }
+
+    func didSelectChapters(_ chapters: [Chapter]) {
+        router?.displayQuestions(forChapters: chapters)
     }
 
 }

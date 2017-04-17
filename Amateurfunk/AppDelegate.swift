@@ -25,8 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let section = ManagedObjectFactory<Section>(context: context).create()
         section.name = "Technik"
 
-        let interactor = ChapterInteractor(section: section, context: context)
-        let viewController = ChapterOverviewRouter.setupModule(withInteractor: interactor)
+        let service = ChapterService(section: section, context: context)
+        let viewController = ChapterOverviewRouter.setupModule(withChapterService: service)
 
         window!.rootViewController = viewController
         window!.makeKeyAndVisible()

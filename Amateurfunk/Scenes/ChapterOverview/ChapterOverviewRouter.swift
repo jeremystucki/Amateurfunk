@@ -8,15 +8,21 @@
 
 import UIKit
 
+protocol ChapterOverviewRouterInput {
+    func displayQuestions(forChapters chapters: [Chapter])
+}
+
 class ChapterOverviewRouter {
 
     var view: UIViewController?
 
-    static func setupModule(withInteractor interactor: ChapterInteractor) -> ChapterOverviewViewController {
+    static func setupModule(withChapterService chapterService: ChapterService) -> ChapterOverviewViewController {
         let viewController = ChapterOverviewViewController()
         let presenter = ChapterOverviewPresenter()
         let router = ChapterOverviewRouter()
+        let interactor = ChapterOverviewInteractor(chapterService: chapterService)
 
+        interactor.output = presenter
         viewController.output = presenter
 
         presenter.view = viewController
@@ -25,9 +31,15 @@ class ChapterOverviewRouter {
 
         router.view = viewController
 
-        interactor.output = presenter
-
         return viewController
+    }
+
+}
+
+extension ChapterOverviewRouter: ChapterOverviewRouterInput {
+
+    func displayQuestions(forChapters chapters: [Chapter]) {
+
     }
 
 }
