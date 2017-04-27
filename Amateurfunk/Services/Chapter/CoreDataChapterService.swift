@@ -1,5 +1,5 @@
 //
-//  ChapterInteractor.swift
+//  CoreDataChapterService.swift
 //  Amateurfunk
 //
 //  Created by Jeremy Stucki on 12.04.17.
@@ -8,7 +8,7 @@
 
 import CoreData
 
-class ChapterService {
+class CoreDataChapterService: ChapterService {
 
     fileprivate let section: Section
     fileprivate let context: NSManagedObjectContext
@@ -25,13 +25,6 @@ class ChapterService {
         query.predicate = NSPredicate(format: "section.name == %@", argumentArray: [section.name!])
 
         return try context.fetch(query)
-    }
-
-    func addChapter(_ chapter: Chapter) throws {
-        chapter.section = section
-        context.insert(chapter)
-
-        try context.save()
     }
 
 }

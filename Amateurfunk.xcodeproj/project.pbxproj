@@ -10,14 +10,21 @@
 		3F0DA6F51E9A2762009C2F04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0DA6F41E9A2762009C2F04 /* AppDelegate.swift */; };
 		3F0DA6FC1E9A2762009C2F04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F0DA6FB1E9A2762009C2F04 /* Assets.xcassets */; };
 		3F0DA6FF1E9A2762009C2F04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F0DA6FD1E9A2762009C2F04 /* LaunchScreen.storyboard */; };
-		3F50143F1EA401ED0064964C /* ChapterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50143E1EA401ED0064964C /* ChapterService.swift */; };
 		3F5080561E9FF62D00AA3A2D /* ManagedObjectFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5080551E9FF62D00AA3A2D /* ManagedObjectFactory.swift */; };
+		3F6713CB1EA5533000086270 /* QuestionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6713CA1EA5533000086270 /* QuestionRouter.swift */; };
+		3F6713CD1EA553BF00086270 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6713CC1EA553BF00086270 /* QuestionViewController.swift */; };
+		3F94F3D11EAB65A10026A445 /* ChapterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F94F3CF1EAB65A10026A445 /* ChapterService.swift */; };
+		3F94F3D21EAB65A10026A445 /* CoreDataChapterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F94F3D01EAB65A10026A445 /* CoreDataChapterService.swift */; };
+		3F94F3D51EAB65AE0026A445 /* CoreDataQuestionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F94F3D31EAB65AE0026A445 /* CoreDataQuestionService.swift */; };
+		3F94F3D61EAB65AE0026A445 /* QuestionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F94F3D41EAB65AE0026A445 /* QuestionService.swift */; };
 		3F99CACE1E9D3DC400D3B677 /* QuestionsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F99CACC1E9D3DC400D3B677 /* QuestionsModel.xcdatamodeld */; };
 		3FF47C4C1EA4F8DF0016C0B8 /* ChapterOverviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF47C491EA4F8DF0016C0B8 /* ChapterOverviewPresenter.swift */; };
 		3FF47C4D1EA4F8DF0016C0B8 /* ChapterOverviewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF47C4A1EA4F8DF0016C0B8 /* ChapterOverviewRouter.swift */; };
 		3FF47C4E1EA4F8DF0016C0B8 /* ChapterOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF47C4B1EA4F8DF0016C0B8 /* ChapterOverviewViewController.swift */; };
 		3FF47C501EA4F9730016C0B8 /* ChapterOverviewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF47C4F1EA4F9730016C0B8 /* ChapterOverviewInteractor.swift */; };
 		BAA652322D911ECE03A7162E /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA65CE59233B25280862658 /* Answer.swift */; };
+		BAA6527EAD44FEC51D1F1926 /* QuestionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA650D3BCD1D83074597212 /* QuestionInteractor.swift */; };
+		BAA65D723AF3A805D1ECAAAD /* QuestionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA65B9121E058FAB9B04725 /* QuestionPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,13 +33,20 @@
 		3F0DA6FB1E9A2762009C2F04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F0DA6FE1E9A2762009C2F04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F0DA7001E9A2762009C2F04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3F50143E1EA401ED0064964C /* ChapterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterService.swift; sourceTree = "<group>"; };
 		3F5080551E9FF62D00AA3A2D /* ManagedObjectFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectFactory.swift; sourceTree = "<group>"; };
+		3F6713CA1EA5533000086270 /* QuestionRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionRouter.swift; sourceTree = "<group>"; };
+		3F6713CC1EA553BF00086270 /* QuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
+		3F94F3CF1EAB65A10026A445 /* ChapterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterService.swift; sourceTree = "<group>"; };
+		3F94F3D01EAB65A10026A445 /* CoreDataChapterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataChapterService.swift; sourceTree = "<group>"; };
+		3F94F3D31EAB65AE0026A445 /* CoreDataQuestionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataQuestionService.swift; sourceTree = "<group>"; };
+		3F94F3D41EAB65AE0026A445 /* QuestionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionService.swift; sourceTree = "<group>"; };
 		3F99CACD1E9D3DC400D3B677 /* QuestionsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QuestionsModel.xcdatamodel; sourceTree = "<group>"; };
 		3FF47C491EA4F8DF0016C0B8 /* ChapterOverviewPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterOverviewPresenter.swift; sourceTree = "<group>"; };
 		3FF47C4A1EA4F8DF0016C0B8 /* ChapterOverviewRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterOverviewRouter.swift; sourceTree = "<group>"; };
 		3FF47C4B1EA4F8DF0016C0B8 /* ChapterOverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterOverviewViewController.swift; sourceTree = "<group>"; };
 		3FF47C4F1EA4F9730016C0B8 /* ChapterOverviewInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterOverviewInteractor.swift; sourceTree = "<group>"; };
+		BAA650D3BCD1D83074597212 /* QuestionInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionInteractor.swift; sourceTree = "<group>"; };
+		BAA65B9121E058FAB9B04725 /* QuestionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionPresenter.swift; sourceTree = "<group>"; };
 		BAA65CE59233B25280862658 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,14 +95,27 @@
 		3F50143D1EA3F9850064964C /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				3F50143E1EA401ED0064964C /* ChapterService.swift */,
+				3F94F3CC1EAB65700026A445 /* Chapter */,
+				3F94F3CB1EAB65670026A445 /* Question */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		3F6713C71EA5528700086270 /* Question */ = {
+			isa = PBXGroup;
+			children = (
+				3F6713CA1EA5533000086270 /* QuestionRouter.swift */,
+				3F6713CC1EA553BF00086270 /* QuestionViewController.swift */,
+				BAA65B9121E058FAB9B04725 /* QuestionPresenter.swift */,
+				BAA650D3BCD1D83074597212 /* QuestionInteractor.swift */,
+			);
+			path = Question;
 			sourceTree = "<group>";
 		};
 		3F6E2EF91EA0D7FE002C741E /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				3F6713C71EA5528700086270 /* Question */,
 				3F6E2F041EA0DB12002C741E /* ChapterOverview */,
 			);
 			path = Scenes;
@@ -103,6 +130,24 @@
 				3FF47C4F1EA4F9730016C0B8 /* ChapterOverviewInteractor.swift */,
 			);
 			path = ChapterOverview;
+			sourceTree = "<group>";
+		};
+		3F94F3CB1EAB65670026A445 /* Question */ = {
+			isa = PBXGroup;
+			children = (
+				3F94F3D31EAB65AE0026A445 /* CoreDataQuestionService.swift */,
+				3F94F3D41EAB65AE0026A445 /* QuestionService.swift */,
+			);
+			path = Question;
+			sourceTree = "<group>";
+		};
+		3F94F3CC1EAB65700026A445 /* Chapter */ = {
+			isa = PBXGroup;
+			children = (
+				3F94F3CF1EAB65A10026A445 /* ChapterService.swift */,
+				3F94F3D01EAB65A10026A445 /* CoreDataChapterService.swift */,
+			);
+			path = Chapter;
 			sourceTree = "<group>";
 		};
 		BAA654D807CF95C31D453202 /* Entities */ = {
@@ -191,10 +236,17 @@
 				3F5080561E9FF62D00AA3A2D /* ManagedObjectFactory.swift in Sources */,
 				3FF47C4E1EA4F8DF0016C0B8 /* ChapterOverviewViewController.swift in Sources */,
 				3F0DA6F51E9A2762009C2F04 /* AppDelegate.swift in Sources */,
-				3F50143F1EA401ED0064964C /* ChapterService.swift in Sources */,
 				BAA652322D911ECE03A7162E /* Answer.swift in Sources */,
 				3FF47C4C1EA4F8DF0016C0B8 /* ChapterOverviewPresenter.swift in Sources */,
+				3F6713CB1EA5533000086270 /* QuestionRouter.swift in Sources */,
+				3F94F3D11EAB65A10026A445 /* ChapterService.swift in Sources */,
+				3F94F3D61EAB65AE0026A445 /* QuestionService.swift in Sources */,
 				3FF47C501EA4F9730016C0B8 /* ChapterOverviewInteractor.swift in Sources */,
+				3F6713CD1EA553BF00086270 /* QuestionViewController.swift in Sources */,
+				3F94F3D51EAB65AE0026A445 /* CoreDataQuestionService.swift in Sources */,
+				BAA65D723AF3A805D1ECAAAD /* QuestionPresenter.swift in Sources */,
+				3F94F3D21EAB65A10026A445 /* CoreDataChapterService.swift in Sources */,
+				BAA6527EAD44FEC51D1F1926 /* QuestionInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

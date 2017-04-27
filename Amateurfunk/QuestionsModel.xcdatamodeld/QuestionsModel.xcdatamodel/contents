@@ -5,8 +5,11 @@
         <relationship name="question" maxCount="1" deletionRule="Nullify" destinationEntity="Question" inverseName="answers" inverseEntity="Question" syncable="YES"/>
     </entity>
     <entity name="Chapter" representedClassName=".Chapter" syncable="YES" codeGenerationType="class">
+        <attribute name="current_iteration" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="question" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Question" inverseName="chapter" inverseEntity="Question" syncable="YES"/>
+        <attribute name="number_of_questions" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="progress_in_current_iteration" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="question" optional="YES" toMany="YES" minCount="1" deletionRule="Cascade" destinationEntity="Question" inverseName="chapter" inverseEntity="Question" syncable="YES"/>
         <relationship name="section" maxCount="1" deletionRule="Nullify" destinationEntity="Section" inverseName="chapters" inverseEntity="Section" syncable="YES"/>
     </entity>
     <entity name="ImageAnswer" representedClassName=".ImageAnswer" parentEntity="Answer" syncable="YES" codeGenerationType="class">
@@ -15,6 +18,8 @@
     <entity name="Question" representedClassName=".Question" syncable="YES" codeGenerationType="class">
         <attribute name="difficulty" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="question" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="times_answered_correctly" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="times_answered_incorrectly" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="answers" toMany="YES" minCount="1" deletionRule="Cascade" destinationEntity="Answer" inverseName="question" inverseEntity="Answer" syncable="YES"/>
         <relationship name="chapter" maxCount="1" deletionRule="Nullify" destinationEntity="Chapter" inverseName="question" inverseEntity="Chapter" syncable="YES"/>
     </entity>
@@ -27,9 +32,9 @@
     </entity>
     <elements>
         <element name="Answer" positionX="-90" positionY="69" width="128" height="75"/>
-        <element name="Chapter" positionX="-182" positionY="-90" width="128" height="90"/>
+        <element name="Chapter" positionX="-182" positionY="-90" width="128" height="135"/>
         <element name="ImageAnswer" positionX="-299" positionY="135" width="128" height="60"/>
-        <element name="Question" positionX="88" positionY="-96" width="128" height="105"/>
+        <element name="Question" positionX="88" positionY="-96" width="128" height="133"/>
         <element name="Section" positionX="-344" positionY="9" width="128" height="75"/>
         <element name="TextAnswer" positionX="-101" positionY="153" width="128" height="60"/>
     </elements>

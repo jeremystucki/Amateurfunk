@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let section = ManagedObjectFactory<Section>(context: context).create()
         section.name = "Technik"
 
-        let service = ChapterService(section: section, context: context)
+        let service = CoreDataChapterService(section: section, context: context)
         let viewController = ChapterOverviewRouter.setupModule(withChapterService: service)
 
         window!.rootViewController = viewController

@@ -16,7 +16,7 @@ class ChapterOverviewRouter {
 
     var view: UIViewController?
 
-    static func setupModule(withChapterService chapterService: ChapterService) -> ChapterOverviewViewController {
+    static func setupModule(withChapterService chapterService: ChapterService) -> UIViewController {
         let viewController = ChapterOverviewViewController()
         let presenter = ChapterOverviewPresenter()
         let router = ChapterOverviewRouter()

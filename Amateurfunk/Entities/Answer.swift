@@ -10,9 +10,17 @@ protocol DisplayableAnswer {
     func getCell() -> UITableViewCell
 }
 
-extension TextAnswer: DisplayableAnswer {
+extension Answer: DisplayableAnswer {
 
     func getCell() -> UITableViewCell {
+        return UITableViewCell(style: .default, reuseIdentifier: nil)
+    }
+
+}
+
+extension TextAnswer {
+
+    override func getCell() -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         cell.textLabel!.text = answer
 
@@ -21,9 +29,9 @@ extension TextAnswer: DisplayableAnswer {
 
 }
 
-extension ImageAnswer: DisplayableAnswer {
+extension ImageAnswer {
 
-    func getCell() -> UITableViewCell {
+    override func getCell() -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         cell.textLabel!.text = "Image placeholder"
 
