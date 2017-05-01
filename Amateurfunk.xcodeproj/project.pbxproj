@@ -18,6 +18,8 @@
 		3F94F3D51EAB65AE0026A445 /* CoreDataQuestionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F94F3D31EAB65AE0026A445 /* CoreDataQuestionService.swift */; };
 		3F94F3D61EAB65AE0026A445 /* QuestionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F94F3D41EAB65AE0026A445 /* QuestionService.swift */; };
 		3F99CACE1E9D3DC400D3B677 /* QuestionsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F99CACC1E9D3DC400D3B677 /* QuestionsModel.xcdatamodeld */; };
+		3FF217471EB70097007AE014 /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF217461EB70097007AE014 /* ServiceFactory.swift */; };
+		3FF2174B1EB70244007AE014 /* CoreDataServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF2174A1EB70244007AE014 /* CoreDataServiceFactory.swift */; };
 		3FF47C4C1EA4F8DF0016C0B8 /* ChapterOverviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF47C491EA4F8DF0016C0B8 /* ChapterOverviewPresenter.swift */; };
 		3FF47C4D1EA4F8DF0016C0B8 /* ChapterOverviewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF47C4A1EA4F8DF0016C0B8 /* ChapterOverviewRouter.swift */; };
 		3FF47C4E1EA4F8DF0016C0B8 /* ChapterOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF47C4B1EA4F8DF0016C0B8 /* ChapterOverviewViewController.swift */; };
@@ -41,6 +43,8 @@
 		3F94F3D31EAB65AE0026A445 /* CoreDataQuestionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataQuestionService.swift; sourceTree = "<group>"; };
 		3F94F3D41EAB65AE0026A445 /* QuestionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionService.swift; sourceTree = "<group>"; };
 		3F99CACD1E9D3DC400D3B677 /* QuestionsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QuestionsModel.xcdatamodel; sourceTree = "<group>"; };
+		3FF217461EB70097007AE014 /* ServiceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceFactory.swift; sourceTree = "<group>"; };
+		3FF2174A1EB70244007AE014 /* CoreDataServiceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataServiceFactory.swift; sourceTree = "<group>"; };
 		3FF47C491EA4F8DF0016C0B8 /* ChapterOverviewPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterOverviewPresenter.swift; sourceTree = "<group>"; };
 		3FF47C4A1EA4F8DF0016C0B8 /* ChapterOverviewRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterOverviewRouter.swift; sourceTree = "<group>"; };
 		3FF47C4B1EA4F8DF0016C0B8 /* ChapterOverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterOverviewViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +101,8 @@
 			children = (
 				3F94F3CC1EAB65700026A445 /* Chapter */,
 				3F94F3CB1EAB65670026A445 /* Question */,
+				3FF217461EB70097007AE014 /* ServiceFactory.swift */,
+				3FF2174A1EB70244007AE014 /* CoreDataServiceFactory.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -234,6 +240,7 @@
 				3F99CACE1E9D3DC400D3B677 /* QuestionsModel.xcdatamodeld in Sources */,
 				3FF47C4D1EA4F8DF0016C0B8 /* ChapterOverviewRouter.swift in Sources */,
 				3F5080561E9FF62D00AA3A2D /* ManagedObjectFactory.swift in Sources */,
+				3FF2174B1EB70244007AE014 /* CoreDataServiceFactory.swift in Sources */,
 				3FF47C4E1EA4F8DF0016C0B8 /* ChapterOverviewViewController.swift in Sources */,
 				3F0DA6F51E9A2762009C2F04 /* AppDelegate.swift in Sources */,
 				BAA652322D911ECE03A7162E /* Answer.swift in Sources */,
@@ -245,6 +252,7 @@
 				3F6713CD1EA553BF00086270 /* QuestionViewController.swift in Sources */,
 				3F94F3D51EAB65AE0026A445 /* CoreDataQuestionService.swift in Sources */,
 				BAA65D723AF3A805D1ECAAAD /* QuestionPresenter.swift in Sources */,
+				3FF217471EB70097007AE014 /* ServiceFactory.swift in Sources */,
 				3F94F3D21EAB65A10026A445 /* CoreDataChapterService.swift in Sources */,
 				BAA6527EAD44FEC51D1F1926 /* QuestionInteractor.swift in Sources */,
 			);
