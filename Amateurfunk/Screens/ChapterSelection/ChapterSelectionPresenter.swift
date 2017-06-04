@@ -1,0 +1,67 @@
+//
+//  ChapterSelectionPresenter.swift
+//  Amateurfunk
+//
+//  Created by Jeremy Stucki on 29.05.17.
+//  Copyright © 2017 Jeremy Stucki. All rights reserved.
+//
+
+import Foundation
+
+class ChapterSelectionPresenter {
+
+    var viewController: ChapterSelectionViewControllerInput?
+    var interactor: ChapterSelectionInteractorInput?
+    var router: ChapterSelectionRouterInput?
+
+}
+
+extension ChapterSelectionPresenter: ChapterSelectionViewControllerOutput {
+
+    func viewDidLoad() {
+        interactor?.fetchChapters()
+        interactor?.fetchSelectedChapters()
+    }
+
+    func didClickCancel() {
+        router?.dismissView()
+    }
+
+    func didClickDone(withSelectedChapters selectedChapters: [Chapter]) {
+        if selectedChapters.count == 0 {
+            viewController?.displayError(withMessage: "Mindestens ein Kapitel muss ausgewählt sein.")
+            return
+        }
+
+        interactor?.updateSelectedChapters(selectedChapters: selectedChapters)
+    }
+
+}
+
+extension ChapterSelectionPresenter: ChapterSelectionInteractorOutput {
+
+    func fetchedChapters(_ chapters: [Chapter]) {
+        viewController?.displayChapters(chapters)
+    }
+
+    func failedToFetchChapters() {
+        // TODO
+    }
+
+    func fetchedSelectedChapters(_ selectedChapters: [Chapter]) {
+        viewController?.displaySelectedChapters(selectedChapters)
+    }
+
+    func failedToFetchSelectedChapters() {
+        // TODO
+    }
+
+    func updatedSelectedChapters() {
+        router?.dismissView()
+    }
+
+    func failedToUpdateSelectedChapters() {
+        viewController?.displayError(withMessage: "Ein interner Fehler ist aufgetreten.")
+    }
+
+}

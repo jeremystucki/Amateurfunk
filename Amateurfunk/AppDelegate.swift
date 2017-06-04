@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Amateurfunk
 //
-//  Created by Jeremy Stucki on 09.04.17.
+//  Created by Jeremy Stucki on 27.05.17.
 //  Copyright © 2017 Jeremy Stucki. All rights reserved.
 //
 
@@ -14,22 +14,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func applicationDidFinishLaunching(_ application: UIApplication) {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        // Override point for customization after application launch.
+
         window = UIWindow(frame: UIScreen.main.bounds)
 
-        let container = NSPersistentContainer(name: "QuestionsModel")
-        container.loadPersistentStores(completionHandler: { _, _ in })
+        let questionService = TestQuestionService()
+        let chapterService = TestChapterService()
 
-        let context = container.viewContext
+        let viewController = MenuRouter.setupModule(title: "Technik", chapterService: chapterService, questionService: questionService)
 
-        let section = ManagedObjectFactory<Section>(context: context).create()
-        section.name = "Technik"
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [
+            UINavigationController(rootViewController: viewController)
+        ]
 
-        let service = CoreDataChapterService(section: section, context: context)
-        let viewController = ChapterOverviewRouter.setupModule(withChapterService: service)
+        window!.rootViewController = tabBarController
 
-        window!.rootViewController = viewController
         window!.makeKeyAndVisible()
+
+        return true
     }
 
 }
