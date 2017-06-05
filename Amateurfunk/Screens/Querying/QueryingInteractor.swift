@@ -25,6 +25,9 @@ extension QueryingInteractor: QueryingInteractorInput {
 
     func fetchNextQuestion() {
         // TODO
+
+        let question = Question(query: "Test?", answers: [TextAnswer(answer: "1"), TextAnswer(answer: "2"), TextAnswer(answer: "3")])
+        presenter?.fetchedNextQuestion(question)
     }
 
 }

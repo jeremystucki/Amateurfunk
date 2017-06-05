@@ -18,16 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         window = UIWindow(frame: UIScreen.main.bounds)
+        window!.backgroundColor = .groupTableViewBackground
 
         let questionService = TestQuestionService()
         let chapterService = TestChapterService()
 
         let viewController = MenuRouter.setupModule(title: "Technik", chapterService: chapterService, questionService: questionService)
 
+        let navigationController = UINavigationController(rootViewController: viewController)
+
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [
-            UINavigationController(rootViewController: viewController)
-        ]
+        tabBarController.viewControllers = [navigationController]
 
         window!.rootViewController = tabBarController
 

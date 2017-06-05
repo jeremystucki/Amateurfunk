@@ -6,7 +6,8 @@
 //  Copyright © 2017 Jeremy Stucki. All rights reserved.
 //
 
-protocol Answer {
+// TODO: DisplayableAnswer does not belong here
+protocol Answer: DisplayableAnswer {
 
 }
 
