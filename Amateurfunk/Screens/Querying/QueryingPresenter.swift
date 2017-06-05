@@ -17,11 +17,19 @@ class QueryingPresenter {
 extension QueryingPresenter: QueryingViewControllerOutput {
 
     func viewDidLoad() {
-        // TODO
+        interactor?.fetchNextQuestion()
     }
 
 }
 
 extension QueryingPresenter: QueryingInteractorOutput {
+
+    func fetchedNextQuestion(_ question: Question) {
+        viewController?.displayQuestion(question)
+    }
+
+    func failedToFetchNextQuestion() {
+        // Do nothing
+    }
 
 }

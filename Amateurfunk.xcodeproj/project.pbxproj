@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F03969C1EE5693000067A59 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F03969B1EE5693000067A59 /* Answer.swift */; };
 		3F0D64351ED9F3DD000A9177 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D64341ED9F3DD000A9177 /* AppDelegate.swift */; };
 		3F0D643D1ED9F3DD000A9177 /* Amateurfunk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D643B1ED9F3DD000A9177 /* Amateurfunk.xcdatamodeld */; };
 		3F0D643F1ED9F3DD000A9177 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F0D643E1ED9F3DD000A9177 /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F03969B1EE5693000067A59 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		3F0D64311ED9F3DD000A9177 /* Amateurfunk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Amateurfunk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F0D64341ED9F3DD000A9177 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F0D643C1ED9F3DD000A9177 /* Amateurfunk.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Amateurfunk.xcdatamodel; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			children = (
 				3FD60BD91EE34241005481D0 /* Chapter.swift */,
 				3FD60BE01EE3581A005481D0 /* Question.swift */,
+				3F03969B1EE5693000067A59 /* Answer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				3F21722A1EDCA68900A5B93C /* ChapterSelectionRouter.swift in Sources */,
 				3FD6D88E1EE48A8500407E18 /* QueryingInteractor.swift in Sources */,
 				3FD6D8901EE48A8B00407E18 /* QueryingPresenter.swift in Sources */,
+				3F03969C1EE5693000067A59 /* Answer.swift in Sources */,
 				3FC23E561EDB569A009586C4 /* ChapterSelectionViewController.swift in Sources */,
 				3F0D643D1ED9F3DD000A9177 /* Amateurfunk.xcdatamodeld in Sources */,
 				3FD60BDF1EE357E9005481D0 /* TestQuestionService.swift in Sources */,

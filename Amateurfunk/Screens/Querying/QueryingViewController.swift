@@ -9,7 +9,7 @@
 import UIKit
 
 protocol QueryingViewControllerInput {
-
+    func displayQuestion(_ question: Question)
 }
 
 protocol QueryingViewControllerOutput {
@@ -20,6 +20,14 @@ class QueryingViewController: UITableViewController {
 
     var presenter: QueryingViewControllerOutput?
 
+    init() {
+        super.init(style: .grouped)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,5 +37,9 @@ class QueryingViewController: UITableViewController {
 }
 
 extension QueryingViewController: QueryingViewControllerInput {
+
+    func displayQuestion(_ question: Question) {
+        // TODO
+    }
 
 }

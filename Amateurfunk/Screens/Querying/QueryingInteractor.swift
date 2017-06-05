@@ -7,11 +7,12 @@
 //
 
 protocol QueryingInteractorInput {
-
+    func fetchNextQuestion()
 }
 
 protocol QueryingInteractorOutput {
-
+    func fetchedNextQuestion(_ question: Question)
+    func failedToFetchNextQuestion()
 }
 
 class QueryingInteractor {
@@ -21,5 +22,9 @@ class QueryingInteractor {
 }
 
 extension QueryingInteractor: QueryingInteractorInput {
+
+    func fetchNextQuestion() {
+        // TODO
+    }
 
 }

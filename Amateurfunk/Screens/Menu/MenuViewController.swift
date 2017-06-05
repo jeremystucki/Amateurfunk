@@ -43,6 +43,10 @@ class MenuViewController: UITableViewController {
         )
     }
 
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
@@ -51,10 +55,6 @@ class MenuViewController: UITableViewController {
 
     func didSelectChapterSelection(_ gesture: UIGestureRecognizer) {
         presenter?.didSelectChapterSelection()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {

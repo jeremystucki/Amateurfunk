@@ -8,12 +8,17 @@
 
 struct Question {
 
+    let query: String
+
+    let answers: [Answer]
+
 }
 
 extension Question: Equatable {
 
     public static func==(lhs: Question, rhs: Question) -> Bool {
-        return true
+        // TODO: Maybe compare answers
+        return lhs.query == rhs.query
     }
 
 }
