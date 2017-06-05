@@ -16,7 +16,7 @@ class MenuPresenter {
 
 extension MenuPresenter: MenuViewControllerOutput {
 
-    func viewDidLoad() {
+    func viewWillAppear() {
         interactor?.fetchNumberOfMarkedQuestions()
     }
 

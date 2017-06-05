@@ -13,7 +13,7 @@ protocol MenuViewControllerInput {
 }
 
 protocol MenuViewControllerOutput {
-    func viewDidLoad()
+    func viewWillAppear()
 
     func didSelectChapterSelection()
 
@@ -43,10 +43,10 @@ class MenuViewController: UITableViewController {
         )
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
 
-        presenter?.viewDidLoad()
+        presenter?.viewWillAppear()
     }
 
     func didSelectChapterSelection(_ gesture: UIGestureRecognizer) {
@@ -99,7 +99,7 @@ class MenuViewController: UITableViewController {
         }
 
         if indexPath.section == 0 && indexPath.row == 1 {
-            presenter?.didSelectQuerying()
+            presenter?.didSelectFlashCards()
         }
 
         if indexPath.section == 1 && numberOfMarkedQuestions != nil {

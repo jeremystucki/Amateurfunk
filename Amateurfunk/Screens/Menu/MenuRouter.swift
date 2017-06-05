@@ -52,13 +52,13 @@ extension MenuRouter: MenuRouterInput {
     func showChapterSelection() {
         let view = ChapterSelectionRouter.setupModule(chapterService: chapterService, questionService: questionService)
 
-        viewController?.present(UINavigationController(rootViewController: view), animated: true, completion: {
-            self.viewController?.view.setNeedsDisplay()
-        })
+        viewController?.present(UINavigationController(rootViewController: view), animated: true, completion: nil)
     }
 
     func showQuerying() {
-        // TODO
+        let view = QueryingRouter.setupModule()
+
+        viewController?.navigationController?.pushViewController(view, animated: true)
     }
 
 }

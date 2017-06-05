@@ -10,8 +10,11 @@ class TestQuestionService: QuestionService {
 
     let chapters = [Chapter(title: "test")]
 
+    var count = 0
+
     func getNumberOfMarkedQuestions() throws -> Int {
-        return 1
+        count += 1
+        return count
     }
 
 }
