@@ -25,7 +25,9 @@ class MenuRouter {
         self.questionService = questionService
     }
 
-    static func setupModule(title: String, chapterService: ChapterService, questionService: QuestionService) -> UIViewController {
+    static func setupModule(title: String,
+                            chapterService: ChapterService,
+                            questionService: QuestionService) -> UIViewController {
         let viewController = MenuViewController(title: title)
         let interactor = MenuInteractor(questionService: questionService)
         let presenter = MenuPresenter()
