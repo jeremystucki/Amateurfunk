@@ -26,14 +26,14 @@ class QueryingInteractor {
 extension QueryingInteractor: QueryingInteractorInput {
 
     func fetchNextQuestion() {
-        // TODO
+        // TODO: Implement
 
         let question = Question(query: "Test?", answers: [TextAnswer(answer: "1", correct: false), TextAnswer(answer: "2", correct: true), TextAnswer(answer: "3", correct: false)])
         presenter?.fetchedNextQuestion(question)
     }
 
     func didSelectAnswer(_ answer: Answer) {
-        // TODO
+        // TODO: Implement
     }
 
 }

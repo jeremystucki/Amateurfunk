@@ -17,7 +17,7 @@ struct Question {
 extension Question: Equatable {
 
     public static func==(lhs: Question, rhs: Question) -> Bool {
-        // TODO: Maybe compare answers
+        // TODO: Fix
         return lhs.query == rhs.query
     }
 

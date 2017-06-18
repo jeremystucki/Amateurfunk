@@ -45,7 +45,7 @@ extension ChapterSelectionPresenter: ChapterSelectionInteractorOutput {
     }
 
     func failedToFetchChapters() {
-        // TODO
+        // TODO: Implement
     }
 
     func fetchedSelectedChapters(_ selectedChapters: [Chapter]) {
@@ -53,7 +53,7 @@ extension ChapterSelectionPresenter: ChapterSelectionInteractorOutput {
     }
 
     func failedToFetchSelectedChapters() {
-        // TODO
+        // TODO: Implement
     }
 
     func updatedSelectedChapters() {

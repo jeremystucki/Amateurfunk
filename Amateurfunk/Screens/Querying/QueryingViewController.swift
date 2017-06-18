@@ -19,6 +19,7 @@ protocol QueryingViewControllerOutput {
     func didSelectNextQuestion()
 }
 
+// TODO: Cleanup
 class QueryingViewController: UITableViewController {
 
     var presenter: QueryingViewControllerOutput?
@@ -123,7 +124,6 @@ class QueryingViewController: UITableViewController {
 extension QueryingViewController: QueryingViewControllerInput {
 
     func displayQuestion(_ question: Question) {
-        // TOOD: Use multiple views
         let firstLoad = self.question == nil
 
         self.question = question

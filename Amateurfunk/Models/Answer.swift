@@ -6,7 +6,7 @@
 //  Copyright © 2017 Jeremy Stucki. All rights reserved.
 //
 
-// TODO: DisplayableAnswer does not belong here
+// TODO: Refactor
 protocol Answer: DisplayableAnswer {
 
     var correct: Bool { get }
