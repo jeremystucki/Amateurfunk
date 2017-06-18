@@ -139,6 +139,7 @@ extension ChapterSelectionViewController: ChapterSelectionViewControllerInput {
     func displayError(withMessage message: String) {
         let alertView = UIAlertController(title: "Fehler", message: message, preferredStyle: .alert)
         alertView.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+
         present(alertView, animated: true, completion: nil)
     }
 

@@ -30,14 +30,17 @@ extension MenuPresenter: MenuViewControllerOutput {
 
     func didSelectFlashCards() {
         // TODO
+        viewController?.displayError(withMessage: "Not yet implemented")
     }
 
     func didSelectMarkedQuestions() {
         // TODO
+        viewController?.displayError(withMessage: "Not yet implemented")
     }
 
     func didSelectTestMode() {
         // TODO
+        viewController?.displayError(withMessage: "Not yet implemented")
     }
 
 }
