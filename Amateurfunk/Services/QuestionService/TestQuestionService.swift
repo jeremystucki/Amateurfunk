@@ -17,4 +17,14 @@ class TestQuestionService: QuestionService {
         return count
     }
 
+    func getQuestionForQuerying() -> Question {
+        return Question(
+            query: "Test?",
+            answers: [
+                TextAnswer(answer: "1", correct: false),
+                TextAnswer(answer: "2", correct: true),
+                TextAnswer(answer: "3", correct: false)
+            ])
+    }
+
 }

@@ -21,15 +21,23 @@ class QueryingInteractor {
 
     var presenter: QueryingInteractorOutput?
 
+    fileprivate let questionService: QuestionService
+
+    init(questionService: QuestionService) {
+        self.questionService = questionService
+    }
+
 }
 
 extension QueryingInteractor: QueryingInteractorInput {
 
     func fetchNextQuestion() {
-        // TODO: Implement
-
-        let question = Question(query: "Test?", answers: [TextAnswer(answer: "1", correct: false), TextAnswer(answer: "2", correct: true), TextAnswer(answer: "3", correct: false)])
-        presenter?.fetchedNextQuestion(question)
+        do {
+            let question = try questionService.getQuestionForQuerying()
+            presenter?.fetchedNextQuestion(question)
+        } catch {
+            presenter?.failedToFetchNextQuestion()
+        }
     }
 
     func didSelectAnswer(_ answer: Answer) {

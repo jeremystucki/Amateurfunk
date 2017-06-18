@@ -56,7 +56,7 @@ extension MenuRouter: MenuRouterInput {
     }
 
     func showQuerying() {
-        let view = QueryingRouter.setupModule()
+        let view = QueryingRouter.setupModule(questionService: questionService)
 
         viewController?.navigationController?.pushViewController(view, animated: true)
     }

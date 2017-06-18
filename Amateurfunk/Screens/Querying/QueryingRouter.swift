@@ -16,9 +16,9 @@ class QueryingRouter {
 
     var viewController: UIViewController?
 
-    static func setupModule() -> UIViewController {
+    static func setupModule(questionService: QuestionService) -> UIViewController {
         let viewController = QueryingViewController()
-        let interactor = QueryingInteractor()
+        let interactor = QueryingInteractor(questionService: questionService)
         let presenter = QueryingPresenter()
         let router = QueryingRouter()
 

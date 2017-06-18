@@ -12,4 +12,7 @@ protocol QuestionService {
 
     func getNumberOfMarkedQuestions() throws -> Int
 
+    // TODO: Rename
+    func getQuestionForQuerying() throws -> Question
+
 }
