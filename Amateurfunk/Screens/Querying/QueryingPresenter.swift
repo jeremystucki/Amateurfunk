@@ -20,6 +20,14 @@ extension QueryingPresenter: QueryingViewControllerOutput {
         interactor?.fetchNextQuestion()
     }
 
+    func didSelectAnswer(_ answer: Answer) {
+        interactor?.didSelectAnswer(answer)
+    }
+
+    func didSelectNextQuestion() {
+        interactor?.fetchNextQuestion()
+    }
+
 }
 
 extension QueryingPresenter: QueryingInteractorOutput {

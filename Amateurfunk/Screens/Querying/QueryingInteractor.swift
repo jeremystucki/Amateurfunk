@@ -8,6 +8,8 @@
 
 protocol QueryingInteractorInput {
     func fetchNextQuestion()
+
+    func didSelectAnswer(_ answer: Answer)
 }
 
 protocol QueryingInteractorOutput {
@@ -26,8 +28,12 @@ extension QueryingInteractor: QueryingInteractorInput {
     func fetchNextQuestion() {
         // TODO
 
-        let question = Question(query: "Test?", answers: [TextAnswer(answer: "1"), TextAnswer(answer: "2"), TextAnswer(answer: "3")])
+        let question = Question(query: "Test?", answers: [TextAnswer(answer: "1", correct: false), TextAnswer(answer: "2", correct: true), TextAnswer(answer: "3", correct: false)])
         presenter?.fetchedNextQuestion(question)
+    }
+
+    func didSelectAnswer(_ answer: Answer) {
+        // TODO
     }
 
 }

@@ -9,10 +9,13 @@
 // TODO: DisplayableAnswer does not belong here
 protocol Answer: DisplayableAnswer {
 
+    var correct: Bool { get }
+
 }
 
 struct TextAnswer: Answer {
 
     let answer: String
+    let correct: Bool
 
 }
