@@ -40,8 +40,11 @@ extension QueryingInteractor: QueryingInteractorInput {
         }
     }
 
+    // TODO: Review
     func didSelectAnswer(_ answer: Answer) {
-        // TODO: Implement
+        do {
+            try questionService.registerChosenAnswer(answer)
+        } catch { }
     }
 
 }

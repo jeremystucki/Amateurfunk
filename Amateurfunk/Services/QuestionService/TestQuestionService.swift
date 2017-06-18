@@ -27,4 +27,8 @@ class TestQuestionService: QuestionService {
             ])
     }
 
+    func registerChosenAnswer(_ answer: Answer) throws {
+        print("Chosen answer: \((answer as? TextAnswer)?.answer)")
+    }
+
 }

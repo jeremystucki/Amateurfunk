@@ -15,4 +15,6 @@ protocol QuestionService {
     // TODO: Rename
     func getQuestionForQuerying() throws -> Question
 
+    func registerChosenAnswer(_ answer: Answer) throws
+
 }
