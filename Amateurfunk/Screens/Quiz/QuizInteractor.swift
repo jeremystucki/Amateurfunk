@@ -1,25 +1,25 @@
 //
-//  QueryingInteractor.swift
+//  QuizInteractor.swift
 //  Amateurfunk
 //
 //  Created by Jeremy Stucki on 04.06.17.
 //  Copyright © 2017 Jeremy Stucki. All rights reserved.
 //
 
-protocol QueryingInteractorInput {
+protocol QuizInteractorInput {
     func fetchNextQuestion()
 
     func didSelectAnswer(_ answer: Answer)
 }
 
-protocol QueryingInteractorOutput {
+protocol QuizInteractorOutput {
     func fetchedNextQuestion(_ question: Question)
     func failedToFetchNextQuestion()
 }
 
-class QueryingInteractor {
+class QuizInteractor {
 
-    var presenter: QueryingInteractorOutput?
+    var presenter: QuizInteractorOutput?
 
     fileprivate let questionService: QuestionService
 
@@ -29,11 +29,11 @@ class QueryingInteractor {
 
 }
 
-extension QueryingInteractor: QueryingInteractorInput {
+extension QuizInteractor: QuizInteractorInput {
 
     func fetchNextQuestion() {
         do {
-            let question = try questionService.getQuestionForQuerying()
+            let question = try questionService.getQuestionForQuiz()
             presenter?.fetchedNextQuestion(question)
         } catch {
             presenter?.failedToFetchNextQuestion()

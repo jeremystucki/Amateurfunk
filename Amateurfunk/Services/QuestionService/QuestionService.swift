@@ -13,7 +13,7 @@ protocol QuestionService {
     func getNumberOfMarkedQuestions() throws -> Int
 
     // TODO: Rename
-    func getQuestionForQuerying() throws -> Question
+    func getQuestionForQuiz() throws -> Question
 
     func registerChosenAnswer(_ answer: Answer) throws
 

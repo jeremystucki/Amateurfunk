@@ -1,5 +1,5 @@
 //
-//  QueryingRouter.swift
+//  QuizRouter.swift
 //  Amateurfunk
 //
 //  Created by Jeremy Stucki on 04.06.17.
@@ -8,19 +8,19 @@
 
 import UIKit
 
-protocol QueryingRouterInput {
+protocol QuizRouterInput {
 
 }
 
-class QueryingRouter {
+class QuizRouter {
 
     var viewController: UIViewController?
 
     static func setupModule(questionService: QuestionService) -> UIViewController {
-        let viewController = QueryingViewController()
-        let interactor = QueryingInteractor(questionService: questionService)
-        let presenter = QueryingPresenter()
-        let router = QueryingRouter()
+        let viewController = QuizViewController()
+        let interactor = QuizInteractor(questionService: questionService)
+        let presenter = QuizPresenter()
+        let router = QuizRouter()
 
         router.viewController = viewController
 
@@ -36,6 +36,6 @@ class QueryingRouter {
 
 }
 
-extension QueryingRouter: QueryingRouterInput {
+extension QuizRouter: QuizRouterInput {
 
 }

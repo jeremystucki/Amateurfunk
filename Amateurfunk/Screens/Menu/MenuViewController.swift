@@ -19,7 +19,7 @@ protocol MenuViewControllerOutput {
 
     func didSelectChapterSelection()
 
-    func didSelectQuerying()
+    func didSelectQuiz()
     func didSelectFlashCards()
     func didSelectMarkedQuestions()
     func didSelectTestMode()
@@ -97,7 +97,7 @@ class MenuViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 && indexPath.row == 0 {
-            presenter?.didSelectQuerying()
+            presenter?.didSelectQuiz()
         }
 
         if indexPath.section == 0 && indexPath.row == 1 {

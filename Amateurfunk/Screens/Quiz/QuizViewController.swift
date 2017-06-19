@@ -1,5 +1,5 @@
 //
-//  QueryingViewController.swift
+//  QuizViewController.swift
 //  Amateurfunk
 //
 //  Created by Jeremy Stucki on 04.06.17.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-protocol QueryingViewControllerInput {
+protocol QuizViewControllerInput {
     func displayQuestion(_ question: Question)
 }
 
-protocol QueryingViewControllerOutput {
+protocol QuizViewControllerOutput {
     func viewDidLoad()
 
     func didSelectAnswer(_ answer: Answer)
@@ -20,9 +20,9 @@ protocol QueryingViewControllerOutput {
 }
 
 // TODO: Cleanup
-class QueryingViewController: UITableViewController {
+class QuizViewController: UITableViewController {
 
-    var presenter: QueryingViewControllerOutput?
+    var presenter: QuizViewControllerOutput?
 
     var question: Question?
     var didAnswerQuestion: Bool = false
@@ -121,7 +121,7 @@ class QueryingViewController: UITableViewController {
 
 }
 
-extension QueryingViewController: QueryingViewControllerInput {
+extension QuizViewController: QuizViewControllerInput {
 
     func displayQuestion(_ question: Question) {
         let firstLoad = self.question == nil

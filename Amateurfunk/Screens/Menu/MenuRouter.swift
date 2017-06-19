@@ -10,7 +10,7 @@ import UIKit
 
 protocol MenuRouterInput {
     func showChapterSelection()
-    func showQuerying()
+    func showQuiz()
 }
 
 class MenuRouter {
@@ -55,8 +55,8 @@ extension MenuRouter: MenuRouterInput {
         viewController?.present(UINavigationController(rootViewController: view), animated: true, completion: nil)
     }
 
-    func showQuerying() {
-        let view = QueryingRouter.setupModule(questionService: questionService)
+    func showQuiz() {
+        let view = QuizRouter.setupModule(questionService: questionService)
 
         viewController?.navigationController?.pushViewController(view, animated: true)
     }

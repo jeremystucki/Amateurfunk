@@ -24,8 +24,8 @@ extension MenuPresenter: MenuViewControllerOutput {
         router?.showChapterSelection()
     }
 
-    func didSelectQuerying() {
-        router?.showQuerying()
+    func didSelectQuiz() {
+        router?.showQuiz()
     }
 
     func didSelectFlashCards() {

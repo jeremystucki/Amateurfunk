@@ -1,20 +1,20 @@
 //
-//  QueryingPresenter.swift
+//  QuizPresenter.swift
 //  Amateurfunk
 //
 //  Created by Jeremy Stucki on 04.06.17.
 //  Copyright © 2017 Jeremy Stucki. All rights reserved.
 //
 
-class QueryingPresenter {
+class QuizPresenter {
 
-    var viewController: QueryingViewControllerInput?
-    var interactor: QueryingInteractorInput?
-    var router: QueryingRouterInput?
+    var viewController: QuizViewControllerInput?
+    var interactor: QuizInteractorInput?
+    var router: QuizRouterInput?
 
 }
 
-extension QueryingPresenter: QueryingViewControllerOutput {
+extension QuizPresenter: QuizViewControllerOutput {
 
     func viewDidLoad() {
         interactor?.fetchNextQuestion()
@@ -30,7 +30,7 @@ extension QueryingPresenter: QueryingViewControllerOutput {
 
 }
 
-extension QueryingPresenter: QueryingInteractorOutput {
+extension QuizPresenter: QuizInteractorOutput {
 
     func fetchedNextQuestion(_ question: Question) {
         viewController?.displayQuestion(question)
