@@ -8,11 +8,8 @@
 
 protocol QuestionService {
 
-    var chapters: [Chapter] { get }
-
     func getNumberOfMarkedQuestions() throws -> Int
 
-    // TODO: Rename
     func getQuestionForQuiz() throws -> Question
 
     func registerChosenAnswer(_ answer: Answer) throws

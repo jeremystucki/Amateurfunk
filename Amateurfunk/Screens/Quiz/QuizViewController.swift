@@ -54,8 +54,7 @@ class QuizViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 1 {
-            // TODO
-//            return question!.answers[indexPath.row].getTableViewCell()
+            return AnswerTableViewCellFactory.getTableViewCell(for: question!.answers[indexPath.row])
         }
 
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
