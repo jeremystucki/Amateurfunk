@@ -56,7 +56,7 @@ extension MenuRouter: MenuRouterInput {
     }
 
     func showQuiz() {
-        let view = QuizRouter.setupModule(questionService: questionService)
+        let view = QuizRouter.setupModule(questionService: questionService, chapterService: chapterService)
 
         viewController?.navigationController?.pushViewController(view, animated: true)
     }

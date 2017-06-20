@@ -15,21 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window!.backgroundColor = .groupTableViewBackground
-
-//        let questionService = TestQuestionService()
-//        let chapterService = TestChapterService()
-//
-//        let viewController = MenuRouter.setupModule(title: "Technik", chapterService: chapterService, questionService: questionService)
-//
-//        let navigationController = UINavigationController(rootViewController: viewController)
-//
-//        let tabBarController = UITabBarController()
-//        tabBarController.viewControllers = [navigationController]
-
         let container = NSPersistentContainer(name: "Amateurfunk")
         container.loadPersistentStores(completionHandler: { _, _ in })
 
@@ -65,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let textAnswerFactory = ManagedObjectFactory<TextAnswer>(context: context)
 
         for element in json! {
-            guard let query = element["query"] as? String else {
+            guard let query = element["question"] as? String else {
                 continue
             }
 
@@ -79,7 +64,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             let question = questionFactory.create()
             question.query = query
-            question.answers = [Answer]()
+
+            var answers2 = [TextAnswer]()
 
             for (index, answer) in answers.enumerated() {
                 let answerObject = textAnswerFactory.create()
@@ -87,9 +73,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 answerObject.answer = answer
                 answerObject.correct = (correctAnswer == index)
 
-                question.answers.append(answerObject)
+                answers2.append(answerObject)
             }
 
+            question.answers = answers2
             chapter.questions.append(question)
         }
 
@@ -97,9 +84,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             try context.save()
         } catch { }
 
-        window!.rootViewController = UIViewController()
+        let questionService = CoreDataQuestionService(context: context)
+        let chapterService = CoreDataChapterService(context: context, chapters: [chapter])
 
-//        window!.rootViewController = tabBarController
+        let viewController = MenuRouter.setupModule(title: "Technik", chapterService: chapterService, questionService: questionService)
+
+        let navigationController = UINavigationController(rootViewController: viewController)
+
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [navigationController]
+
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window!.backgroundColor = .groupTableViewBackground
+        window!.rootViewController = tabBarController
         window!.makeKeyAndVisible()
 
         return true

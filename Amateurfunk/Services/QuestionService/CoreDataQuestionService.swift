@@ -10,16 +10,26 @@ import CoreData
 
 class CoreDataQuestionService: QuestionService {
 
-    func getNumberOfMarkedQuestions() throws -> Int {
-        <#code#>
+    let context: NSManagedObjectContext
+
+    init(context: NSManagedObjectContext) {
+        self.context = context
     }
 
-    func getQuestionForQuiz() throws -> Question {
-        <#code#>
+    func getNumberOfMarkedQuestions() throws -> Int {
+        return 0
+    }
+
+    func getQuestionForQuiz(fromChapters chapters: [Chapter]) throws -> Question {
+        let query = Question.createFetchRequest()
+        query.predicate = NSPredicate(format: "chapter IN %@", chapters)
+
+        let questions = try context.fetch(query)
+        return questions.randomElement()
     }
 
     func registerChosenAnswer(_ answer: Answer) throws {
-        <#code#>
+        // TODOInt(arc4random_uniform(UInt32(array.count)))
     }
 
 }

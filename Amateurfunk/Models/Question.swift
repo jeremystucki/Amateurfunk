@@ -8,10 +8,15 @@
 
 import CoreData
 
+@objc(Question)
 class Question: NSManagedObject {
 
     @NSManaged var query: String
     @NSManaged var chapter: Chapter
     @NSManaged var answers: [Answer]
+
+    static func createFetchRequest() -> NSFetchRequest<Question> {
+        return NSFetchRequest<Question>(entityName: "Question")
+    }
 
 }

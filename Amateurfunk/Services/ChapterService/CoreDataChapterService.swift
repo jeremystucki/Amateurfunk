@@ -10,16 +10,23 @@ import CoreData
 
 class CoreDataChapterService: ChapterService {
 
+    let context: NSManagedObjectContext
+
+    init(context: NSManagedObjectContext, chapters: [Chapter]) {
+        self.context = context
+    }
+
     func getAllChapters() throws -> [Chapter] {
-        <#code#>
+        let query = Chapter.createFetchRequest()
+        return try context.fetch(query)
     }
 
     func getSeletedChapters() throws -> [Chapter] {
-        <#code#>
+        return try getAllChapters()
     }
 
     func setSelectedChapters(_ selectedChapters: [Chapter]) throws {
-        <#code#>
+        // TODO
     }
 
 }

@@ -9,16 +9,15 @@
 import CoreData
 
 @objc(Answer)
-protocol Answer {
+class Answer: NSManagedObject {
 
-     var correct: Bool { get set }
+    @NSManaged var correct: Bool
 
 }
 
 @objc(TextAnswer)
-class TextAnswer: NSManagedObject, Answer {
+class TextAnswer: Answer {
 
-    @NSManaged var correct: Bool
     @NSManaged var answer: String
 
 }

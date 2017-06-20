@@ -10,7 +10,7 @@ protocol QuestionService {
 
     func getNumberOfMarkedQuestions() throws -> Int
 
-    func getQuestionForQuiz() throws -> Question
+    func getQuestionForQuiz(fromChapters chapters: [Chapter]) throws -> Question
 
     func registerChosenAnswer(_ answer: Answer) throws
 

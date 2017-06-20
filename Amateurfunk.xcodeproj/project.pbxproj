@@ -34,11 +34,11 @@
 		3FD6D8901EE48A8B00407E18 /* QuizPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6D88F1EE48A8B00407E18 /* QuizPresenter.swift */; };
 		3FEE761F1EF926E7009504A7 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE761E1EF926E7009504A7 /* Section.swift */; };
 		3FEE76211EF92B2A009504A7 /* testdata.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FEE76201EF92B2A009504A7 /* testdata.json */; };
-		3FEE76231EF92C46009504A7 /* testdata.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3FEE76201EF92B2A009504A7 /* testdata.json */; };
 		3FEE76251EF94186009504A7 /* ManagedObjectFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE76241EF94186009504A7 /* ManagedObjectFactory.swift */; };
 		3FEE76271EF94E2E009504A7 /* CoreDataChapterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE76261EF94E2E009504A7 /* CoreDataChapterService.swift */; };
 		3FEE76291EF94F05009504A7 /* CoreDataQuestionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE76281EF94F05009504A7 /* CoreDataQuestionService.swift */; };
 		3FEE762B1EF94FF2009504A7 /* AnswerTableViewCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE762A1EF94FF2009504A7 /* AnswerTableViewCellFactory.swift */; };
+		3FEE762D1EF95EA2009504A7 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE762C1EF95EA2009504A7 /* Random.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +65,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				3FEE76231EF92C46009504A7 /* testdata.json in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +108,7 @@
 		3FEE76261EF94E2E009504A7 /* CoreDataChapterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataChapterService.swift; sourceTree = "<group>"; };
 		3FEE76281EF94F05009504A7 /* CoreDataQuestionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataQuestionService.swift; sourceTree = "<group>"; };
 		3FEE762A1EF94FF2009504A7 /* AnswerTableViewCellFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerTableViewCellFactory.swift; sourceTree = "<group>"; };
+		3FEE762C1EF95EA2009504A7 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				3FEE762A1EF94FF2009504A7 /* AnswerTableViewCellFactory.swift */,
+				3FEE762C1EF95EA2009504A7 /* Random.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -464,6 +465,7 @@
 				3FD6D88C1EE48A7D00407E18 /* QuizViewController.swift in Sources */,
 				3FD60BDA1EE34241005481D0 /* Chapter.swift in Sources */,
 				3FEE762B1EF94FF2009504A7 /* AnswerTableViewCellFactory.swift in Sources */,
+				3FEE762D1EF95EA2009504A7 /* Random.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
