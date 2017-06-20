@@ -22,10 +22,10 @@
         <attribute name="answer" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Section" positionX="-362" positionY="-138" width="128" height="73"/>
+        <element name="Answer" positionX="-263" positionY="456" width="128" height="73"/>
         <element name="Chapter" positionX="-315" positionY="18" width="128" height="88"/>
         <element name="Question" positionX="-344" positionY="225" width="128" height="88"/>
-        <element name="Answer" positionX="-263" positionY="456" width="128" height="73"/>
+        <element name="Section" positionX="-362" positionY="-138" width="128" height="73"/>
         <element name="TextAnswer" positionX="-216" positionY="615" width="128" height="58"/>
     </elements>
 </model>

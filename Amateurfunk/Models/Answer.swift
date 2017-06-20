@@ -6,16 +6,19 @@
 //  Copyright © 2017 Jeremy Stucki. All rights reserved.
 //
 
-// TODO: Refactor
-protocol Answer: DisplayableAnswer {
+import CoreData
 
-    var correct: Bool { get }
+@objc(Answer)
+protocol Answer {
+
+     var correct: Bool { get set }
 
 }
 
-struct TextAnswer: Answer {
+@objc(TextAnswer)
+class TextAnswer: NSManagedObject, Answer {
 
-    let answer: String
-    let correct: Bool
+    @NSManaged var correct: Bool
+    @NSManaged var answer: String
 
 }

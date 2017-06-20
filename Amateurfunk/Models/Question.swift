@@ -6,19 +6,12 @@
 //  Copyright © 2017 Jeremy Stucki. All rights reserved.
 //
 
-struct Question {
+import CoreData
 
-    let query: String
+class Question: NSManagedObject {
 
-    let answers: [Answer]
-
-}
-
-extension Question: Equatable {
-
-    public static func==(lhs: Question, rhs: Question) -> Bool {
-        // TODO: Fix
-        return lhs.query == rhs.query
-    }
+    @NSManaged var query: String
+    @NSManaged var chapter: Chapter
+    @NSManaged var answers: [Answer]
 
 }
