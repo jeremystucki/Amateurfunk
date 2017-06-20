@@ -6,19 +6,17 @@
 //  Copyright © 2017 Jeremy Stucki. All rights reserved.
 //
 
-struct Question {
+import CoreData
 
-    let query: String
+@objc(Question)
+class Question: NSManagedObject {
 
-    let answers: [Answer]
+    @NSManaged var query: String
+    @NSManaged var chapter: Chapter
+    @NSManaged var answers: Set<Answer>
 
-}
-
-extension Question: Equatable {
-
-    public static func==(lhs: Question, rhs: Question) -> Bool {
-        // TODO: Fix
-        return lhs.query == rhs.query
+    static func createFetchRequest() -> NSFetchRequest<Question> {
+        return NSFetchRequest<Question>(entityName: "Question")
     }
 
 }

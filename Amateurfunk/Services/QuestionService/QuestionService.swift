@@ -8,12 +8,9 @@
 
 protocol QuestionService {
 
-    var chapters: [Chapter] { get }
-
     func getNumberOfMarkedQuestions() throws -> Int
 
-    // TODO: Rename
-    func getQuestionForQuiz() throws -> Question
+    func getQuestionForQuiz(fromChapters chapters: [Chapter]) throws -> Question
 
     func registerChosenAnswer(_ answer: Answer) throws
 

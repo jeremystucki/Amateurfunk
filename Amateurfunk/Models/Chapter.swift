@@ -6,16 +6,17 @@
 //  Copyright © 2017 Jeremy Stucki. All rights reserved.
 //
 
-struct Chapter {
+import CoreData
 
-    let title: String
+@objc(Chapter)
+class Chapter: NSManagedObject {
 
-}
+    @NSManaged var title: String
+    @NSManaged var section: Section
+    @NSManaged var questions: Set<Question>
 
-extension Chapter: Equatable {
-
-    public static func==(lhs: Chapter, rhs: Chapter) -> Bool {
-        return lhs.title == rhs.title
+    static func createFetchRequest() -> NSFetchRequest<Chapter> {
+        return NSFetchRequest<Chapter>(entityName: "Chapter")
     }
 
 }
