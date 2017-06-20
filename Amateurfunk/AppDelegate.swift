@@ -31,7 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBarController.viewControllers = [navigationController]
 
         window!.rootViewController = tabBarController
-
         window!.makeKeyAndVisible()
 
         return true
