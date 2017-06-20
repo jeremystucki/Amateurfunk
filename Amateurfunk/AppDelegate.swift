@@ -65,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let question = questionFactory.create()
             question.query = query
 
-            var answers2 = [TextAnswer]()
+            question.answers = Set<Answer>()
 
             for (index, answer) in answers.enumerated() {
                 let answerObject = textAnswerFactory.create()
@@ -73,11 +73,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 answerObject.answer = answer
                 answerObject.correct = (correctAnswer == index)
 
-                answers2.append(answerObject)
+                question.answers.insert(answerObject)
             }
 
-            question.answers = answers2
-            chapter.questions.append(question)
+            chapter.questions.insert(question)
         }
 
         do {
@@ -87,7 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let questionService = CoreDataQuestionService(context: context)
         let chapterService = CoreDataChapterService(context: context, chapters: [chapter])
 
-        let viewController = MenuRouter.setupModule(title: "Technik", chapterService: chapterService, questionService: questionService)
+        let viewController = MenuRouter.setupModule(title: "Bakom", chapterService: chapterService, questionService: questionService)
 
         let navigationController = UINavigationController(rootViewController: viewController)
 

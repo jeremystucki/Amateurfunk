@@ -54,7 +54,7 @@ class QuizViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 1 {
-            return AnswerTableViewCellFactory.getTableViewCell(for: question!.answers[indexPath.row])
+            return AnswerTableViewCellFactory.getTableViewCell(for: Array(question!.answers)[indexPath.row])
         }
 
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
@@ -95,7 +95,7 @@ class QuizViewController: UITableViewController {
         }
 
         if indexPath.section == 1 {
-            let answer = question!.answers[indexPath.row]
+            let answer = Array(question!.answers)[indexPath.row]
 
             presenter?.didSelectAnswer(answer)
 
@@ -111,7 +111,7 @@ class QuizViewController: UITableViewController {
     }
 
     private func showCorrectAnswer() {
-        let index = question!.answers.index(where: { $0.correct })!
+        let index = Array(question!.answers).index(where: { $0.correct })!
         tableView.cellForRow(at: IndexPath(row: index, section: 1))?.backgroundColor = .green
 
         for row in 0..<tableView.numberOfRows(inSection: 1) {

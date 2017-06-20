@@ -12,6 +12,6 @@ import CoreData
 class Section: NSManagedObject {
 
     @NSManaged var name: String
-    @NSManaged var chapters: [Chapter]
+    @NSManaged var chapters: Set<Chapter>
 
 }
