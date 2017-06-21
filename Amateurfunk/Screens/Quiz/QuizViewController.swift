@@ -32,14 +32,17 @@ class QuizViewController: UITableViewController {
 
         title = "Abfragen"
         hidesBottomBarWhenPushed = true
+
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
 
         presenter?.viewDidLoad()
     }
@@ -62,8 +65,9 @@ class QuizViewController: UITableViewController {
 
         switch indexPath.section {
         case 0:
-            cell.textLabel?.text = question!.query
             cell.selectionStyle = .none
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.text = question!.query
         case 2:
             if didAnswerQuestion {
                 cell.textLabel?.text = "Nächste Frage"
