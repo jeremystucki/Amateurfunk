@@ -40,9 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         section.name = "Bakom"
 
         let chapterFactory = ManagedObjectFactory<Chapter>(context: context)
-        let chapter = chapterFactory.create()
-        chapter.title = "Alle Kapitel"
-        chapter.section = section
+
+        var chapters = [String: Chapter]()
 
         // ==== ==== ====
 
@@ -62,6 +61,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 continue
             }
 
+            guard let chapterName = element["chapter"] as? String else {
+                continue
+            }
+
+            if chapters[chapterName] == nil {
+                let chapter = chapterFactory.create()
+                chapter.title = chapterName
+                chapter.section = section
+
+                chapters[chapterName] = chapter
+            }
+
             let question = questionFactory.create()
             question.query = query
 
@@ -76,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 question.answers.insert(answerObject)
             }
 
-            chapter.questions.insert(question)
+            chapters[chapterName]!.questions.insert(question)
         }
 
         do {
@@ -84,7 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch { }
 
         let questionService = CoreDataQuestionService(context: context)
-        let chapterService = CoreDataChapterService(context: context, chapters: [chapter])
+        let chapterService = CoreDataChapterService(context: context, chapters: chapters.map({ $1 }))
 
         let viewController = MenuRouter.setupModule(title: "Bakom", chapterService: chapterService, questionService: questionService)
 
