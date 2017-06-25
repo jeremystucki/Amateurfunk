@@ -5,6 +5,7 @@
         <relationship name="question" maxCount="1" deletionRule="Nullify" destinationEntity="Question" inverseName="answers" inverseEntity="Question" syncable="YES"/>
     </entity>
     <entity name="Chapter" representedClassName="Chapter" syncable="YES">
+        <attribute name="selected" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="questions" toMany="YES" minCount="1" deletionRule="Cascade" destinationEntity="Question" inverseName="chapter" inverseEntity="Question" syncable="YES"/>
         <relationship name="section" maxCount="1" deletionRule="Nullify" destinationEntity="Section" inverseName="chapters" inverseEntity="Section" syncable="YES"/>
@@ -23,7 +24,7 @@
     </entity>
     <elements>
         <element name="Answer" positionX="-263" positionY="456" width="128" height="73"/>
-        <element name="Chapter" positionX="-315" positionY="18" width="128" height="88"/>
+        <element name="Chapter" positionX="-315" positionY="18" width="128" height="105"/>
         <element name="Question" positionX="-344" positionY="225" width="128" height="90"/>
         <element name="Section" positionX="-362" positionY="-138" width="128" height="73"/>
         <element name="TextAnswer" positionX="-216" positionY="615" width="128" height="58"/>

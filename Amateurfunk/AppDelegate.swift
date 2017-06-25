@@ -95,7 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch { }
 
         let questionService = CoreDataQuestionService(context: context)
-        let chapterService = CoreDataChapterService(context: context, chapters: chapters.map({ $1 }))
+        let chapterService = CoreDataChapterService(context: context)
 
         let viewController = MenuRouter.setupModule(title: "Bakom", chapterService: chapterService, questionService: questionService)
 

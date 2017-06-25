@@ -14,6 +14,7 @@ class Chapter: NSManagedObject {
     @NSManaged var title: String
     @NSManaged var section: Section
     @NSManaged var questions: Set<Question>
+    @NSManaged var selected: Bool
 
     static func createFetchRequest() -> NSFetchRequest<Chapter> {
         return NSFetchRequest<Chapter>(entityName: "Chapter")
