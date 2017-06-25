@@ -27,6 +27,8 @@ class QuizViewController: UITableViewController {
     var question: Question?
     var didAnswerQuestion: Bool = false
 
+    var viewInitialized = false
+
     init() {
         super.init(style: .grouped)
 
@@ -44,6 +46,11 @@ class QuizViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+        if viewInitialized {
+            return
+        }
+
+        viewInitialized = true
         presenter?.viewDidLoad()
     }
 
