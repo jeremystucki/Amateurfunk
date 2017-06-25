@@ -44,13 +44,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let questionService = CoreDataQuestionService(context: context)
         let chapterService = CoreDataChapterService(context: context)
 
-        let bakomViewController = MenuRouter.setupModule(section: technik, chapterService: chapterService, questionService: questionService)
-        let iltViewController = MenuRouter.setupModule(section: vorschriften, chapterService: chapterService, questionService: questionService)
+        let technikViewController = MenuRouter.setupModule(section: technik,
+                                                           chapterService: chapterService,
+                                                           questionService: questionService)
+
+        let vorschriftenViewController = MenuRouter.setupModule(section: vorschriften,
+                                                                chapterService: chapterService,
+                                                                questionService: questionService)
+
+        technikViewController.tabBarItem = UITabBarItem(title: "Technik",
+                                                        image: UIImage(named: "technik"),
+                                                        selectedImage: UIImage(named: "technik_selected"))
+
+        vorschriftenViewController.tabBarItem = UITabBarItem(title: "Vorschriften",
+                                                             image: UIImage(named: "vorschriften"),
+                                                             selectedImage: UIImage(named: "vorschriften_selected"))
 
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [
-            UINavigationController(rootViewController: bakomViewController),
-            UINavigationController(rootViewController: iltViewController)
+            UINavigationController(rootViewController: technikViewController),
+            UINavigationController(rootViewController: vorschriftenViewController)
         ]
 
         window = UIWindow(frame: UIScreen.main.bounds)
