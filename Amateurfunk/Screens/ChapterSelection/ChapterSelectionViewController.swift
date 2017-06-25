@@ -83,6 +83,7 @@ class ChapterSelectionViewController: UITableViewController {
             let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
             cell.textLabel?.textColor = view.tintColor
             cell.textLabel?.text = "Alle auswählen"
+
             return cell
         }
 
@@ -103,7 +104,12 @@ class ChapterSelectionViewController: UITableViewController {
 
         if indexPath.section == 1 {
             if chapters != nil {
-                selectedChapters = chapters!
+                if selectedChapters.count == chapters!.count {
+                    selectedChapters = [Chapter]()
+                } else {
+                    selectedChapters = chapters!
+                }
+
                 tableView.reloadData()
             }
 
