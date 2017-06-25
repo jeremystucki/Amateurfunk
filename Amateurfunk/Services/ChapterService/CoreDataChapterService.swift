@@ -16,21 +16,22 @@ class CoreDataChapterService: ChapterService {
         self.context = context
     }
 
-    func getAllChapters() throws -> [Chapter] {
+    func getAllChapters(fromSection section: Section) throws -> [Chapter] {
         let query = Chapter.createFetchRequest()
+        query.predicate = NSPredicate(format: "%K == %@", "section", section)
 
         return try context.fetch(query)
     }
 
-    func getSeletedChapters() throws -> [Chapter] {
+    func getSeletedChapters(fromSection section: Section) throws -> [Chapter] {
         let query = Chapter.createFetchRequest()
-        query.predicate = NSPredicate(format: "selected == YES")
+        query.predicate = NSPredicate(format: "selected == YES AND %K == %@", "section", section)
 
         return try context.fetch(query)
     }
 
-    func setSelectedChapters(_ selectedChapters: [Chapter]) throws {
-        for chapter in try getAllChapters() {
+    func setSelectedChapters(_ selectedChapters: [Chapter], forSection section: Section) throws {
+        for chapter in try getAllChapters(fromSection: section) {
             chapter.selected = false
         }
 

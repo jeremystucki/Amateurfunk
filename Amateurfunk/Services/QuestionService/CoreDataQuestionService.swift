@@ -16,7 +16,7 @@ class CoreDataQuestionService: QuestionService {
         self.context = context
     }
 
-    func getNumberOfMarkedQuestions() throws -> Int {
+    func getNumberOfMarkedQuestions(fromSection section: Section) throws -> Int {
         return 0
     }
 

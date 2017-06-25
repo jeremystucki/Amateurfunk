@@ -14,39 +14,78 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    var context: NSManagedObjectContext!
+
+    var sectionFactory: ManagedObjectFactory<Section>!
+    var chapterFactory: ManagedObjectFactory<Chapter>!
+    var questionFactory: ManagedObjectFactory<Question>!
+    var textAnswerFactory: ManagedObjectFactory<TextAnswer>!
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let container = NSPersistentContainer(name: "Amateurfunk")
         container.loadPersistentStores(completionHandler: { _, _ in })
 
-        let context = container.viewContext
+        context = container.viewContext
 
-        let request = Section.fetchRequest()
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
+        removeAllSections(context: context)
+
+        sectionFactory = ManagedObjectFactory<Section>(context: context)
+        chapterFactory = ManagedObjectFactory<Chapter>(context: context)
+        questionFactory = ManagedObjectFactory<Question>(context: context)
+        textAnswerFactory = ManagedObjectFactory<TextAnswer>(context: context)
+
+        let technik = getSectionFromFile(filename: "bakom_technik.json", sectionTitle: "Technik")
+        let vorschriften = getSectionFromFile(filename: "bakom_vorschriften.json", sectionTitle: "Vorschriften")
+
+        do {
+            try context.save()
+        } catch { }
+
+        let questionService = CoreDataQuestionService(context: context)
+        let chapterService = CoreDataChapterService(context: context)
+
+        let bakomViewController = MenuRouter.setupModule(section: technik, chapterService: chapterService, questionService: questionService)
+        let iltViewController = MenuRouter.setupModule(section: vorschriften, chapterService: chapterService, questionService: questionService)
+
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [
+            UINavigationController(rootViewController: bakomViewController),
+            UINavigationController(rootViewController: iltViewController)
+        ]
+
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window!.backgroundColor = .groupTableViewBackground
+        window!.rootViewController = tabBarController
+        window!.makeKeyAndVisible()
+
+        return true
+    }
+
+    func removeAllSections(context: NSManagedObjectContext) {
+        let query = Section.fetchRequest()
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: query)
 
         do {
             try context.execute(deleteRequest)
         } catch { }
+    }
 
-        // ==== ==== ====
+    func getSectionFromFile(filename: String, sectionTitle: String) -> Section {
+        let section = sectionFactory.create()
+        section.name = sectionTitle
+        section.chapters = getChaptersFromFile(filename: filename)
 
-        let data = NSData(contentsOf: (Bundle.main.resourceURL!.appendingPathComponent("testdata.json")))!
+        return section
+    }
+
+    func getChaptersFromFile(filename: String) -> Set<Chapter> {
+        let data = NSData(contentsOf: (Bundle.main.resourceURL!.appendingPathComponent(filename)))!
 
         guard let json = try? JSONSerialization.jsonObject(with: data as Data) as? [[String: Any]] else {
-            return false
+            return Set<Chapter>()
         }
 
-        let sectionFactory = ManagedObjectFactory<Section>(context: context)
-        let section = sectionFactory.create()
-        section.name = "Bakom"
-
-        let chapterFactory = ManagedObjectFactory<Chapter>(context: context)
-
         var chapters = [String: Chapter]()
-
-        // ==== ==== ====
-
-        let questionFactory = ManagedObjectFactory<Question>(context: context)
-        let textAnswerFactory = ManagedObjectFactory<TextAnswer>(context: context)
 
         for element in json! {
             guard let query = element["question"] as? String else {
@@ -68,14 +107,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if chapters[chapterName] == nil {
                 let chapter = chapterFactory.create()
                 chapter.title = chapterName
-                chapter.section = section
 
                 chapters[chapterName] = chapter
             }
 
             let question = questionFactory.create()
             question.query = query
-
             question.answers = Set<Answer>()
 
             for (index, answer) in answers.enumerated() {
@@ -90,26 +127,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             chapters[chapterName]!.questions.insert(question)
         }
 
-        do {
-            try context.save()
-        } catch { }
-
-        let questionService = CoreDataQuestionService(context: context)
-        let chapterService = CoreDataChapterService(context: context)
-
-        let viewController = MenuRouter.setupModule(title: "Bakom", chapterService: chapterService, questionService: questionService)
-
-        let navigationController = UINavigationController(rootViewController: viewController)
-
-        let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [navigationController]
-
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window!.backgroundColor = .groupTableViewBackground
-        window!.rootViewController = tabBarController
-        window!.makeKeyAndVisible()
-
-        return true
+        return Set(chapters.map({ $0.value }))
     }
 
 }

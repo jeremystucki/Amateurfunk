@@ -19,9 +19,11 @@ class MenuInteractor {
 
     var presenter: MenuInteractorOutput?
 
+    fileprivate let section: Section
     fileprivate let questionService: QuestionService
 
-    init(questionService: QuestionService) {
+    init(section: Section, questionService: QuestionService) {
+        self.section = section
         self.questionService = questionService
     }
 
@@ -31,7 +33,7 @@ extension MenuInteractor: MenuInteractorInput {
 
     func fetchNumberOfMarkedQuestions() {
         do {
-            let numberOfMarkedQuestions = try questionService.getNumberOfMarkedQuestions()
+            let numberOfMarkedQuestions = try questionService.getNumberOfMarkedQuestions(fromSection: section)
             presenter?.fetchedNumberOfMarkedQuestions(numberOfMarkedQuestions: numberOfMarkedQuestions)
         } catch {
             presenter?.failedToFetchNumberOfMarkedQuestions()

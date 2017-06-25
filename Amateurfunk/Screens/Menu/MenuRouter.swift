@@ -17,21 +17,23 @@ class MenuRouter {
 
     var viewController: UIViewController?
 
+    fileprivate let section: Section
     fileprivate let chapterService: ChapterService
     fileprivate let questionService: QuestionService
 
-    init(chapterService: ChapterService, questionService: QuestionService) {
+    init(section: Section, chapterService: ChapterService, questionService: QuestionService) {
+        self.section = section
         self.chapterService = chapterService
         self.questionService = questionService
     }
 
-    static func setupModule(title: String,
+    static func setupModule(section: Section,
                             chapterService: ChapterService,
                             questionService: QuestionService) -> UIViewController {
-        let viewController = MenuViewController(title: title)
-        let interactor = MenuInteractor(questionService: questionService)
+        let viewController = MenuViewController(title: section.name)
+        let interactor = MenuInteractor(section: section, questionService: questionService)
         let presenter = MenuPresenter()
-        let router = MenuRouter(chapterService: chapterService, questionService: questionService)
+        let router = MenuRouter(section: section, chapterService: chapterService, questionService: questionService)
 
         router.viewController = viewController
 
@@ -50,13 +52,13 @@ class MenuRouter {
 extension MenuRouter: MenuRouterInput {
 
     func showChapterSelection() {
-        let view = ChapterSelectionRouter.setupModule(chapterService: chapterService, questionService: questionService)
+        let view = ChapterSelectionRouter.setupModule(section: section, chapterService: chapterService, questionService: questionService)
 
         viewController?.present(UINavigationController(rootViewController: view), animated: true, completion: nil)
     }
 
     func showQuiz() {
-        let view = QuizRouter.setupModule(questionService: questionService, chapterService: chapterService)
+        let view = QuizRouter.setupModule(section: section, questionService: questionService, chapterService: chapterService)
 
         viewController?.navigationController?.pushViewController(view, animated: true)
     }
