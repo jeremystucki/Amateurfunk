@@ -16,8 +16,4 @@ class Chapter: NSManagedObject {
     @NSManaged var questions: Set<Question>
     @NSManaged var selected: Bool
 
-    static func createFetchRequest() -> NSFetchRequest<Chapter> {
-        return NSFetchRequest<Chapter>(entityName: "Chapter")
-    }
-
 }

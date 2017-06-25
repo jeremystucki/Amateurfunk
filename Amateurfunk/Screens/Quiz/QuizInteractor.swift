@@ -44,7 +44,6 @@ extension QuizInteractor: QuizInteractorInput {
         }
     }
 
-    // TODO: Review
     func didSelectAnswer(_ answer: Answer) {
         do {
             try questionService.registerChosenAnswer(answer)

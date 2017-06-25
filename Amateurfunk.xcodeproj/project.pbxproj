@@ -17,6 +17,7 @@
 		3F2172261EDCA60200A5B93C /* ChapterSelectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2172251EDCA60200A5B93C /* ChapterSelectionPresenter.swift */; };
 		3F21722A1EDCA68900A5B93C /* ChapterSelectionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2172291EDCA68900A5B93C /* ChapterSelectionRouter.swift */; };
 		3F46B7B41EFFF08800D8EB6B /* bakom_vorschriften.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F46B7B31EFFF08800D8EB6B /* bakom_vorschriften.json */; };
+		3F88792F1F0034C100AF1658 /* FetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88792E1F0034C100AF1658 /* FetchRequest.swift */; };
 		3FC23E511EDB38C0009586C4 /* MenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC23E4E1EDB38C0009586C4 /* MenuPresenter.swift */; };
 		3FC23E521EDB38C0009586C4 /* MenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC23E4F1EDB38C0009586C4 /* MenuRouter.swift */; };
 		3FC23E531EDB38C0009586C4 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC23E501EDB38C0009586C4 /* MenuViewController.swift */; };
@@ -25,10 +26,8 @@
 		3FD60BD61EE32C2E005481D0 /* MenuInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD60BD51EE32C2E005481D0 /* MenuInteractor.swift */; };
 		3FD60BDA1EE34241005481D0 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD60BD91EE34241005481D0 /* Chapter.swift */; };
 		3FD60BDD1EE342D3005481D0 /* QuestionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD60BDC1EE342D3005481D0 /* QuestionService.swift */; };
-		3FD60BDF1EE357E9005481D0 /* TestQuestionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD60BDE1EE357E9005481D0 /* TestQuestionService.swift */; };
 		3FD60BE11EE3581A005481D0 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD60BE01EE3581A005481D0 /* Question.swift */; };
 		3FD6D8851EE468E700407E18 /* ChapterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6D8841EE468E700407E18 /* ChapterService.swift */; };
-		3FD6D8871EE4693400407E18 /* TestChapterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6D8861EE4693400407E18 /* TestChapterService.swift */; };
 		3FD6D88A1EE48A7300407E18 /* QuizRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6D8891EE48A7300407E18 /* QuizRouter.swift */; };
 		3FD6D88C1EE48A7D00407E18 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6D88B1EE48A7D00407E18 /* QuizViewController.swift */; };
 		3FD6D88E1EE48A8500407E18 /* QuizInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6D88D1EE48A8500407E18 /* QuizInteractor.swift */; };
@@ -88,6 +87,7 @@
 		3F2172251EDCA60200A5B93C /* ChapterSelectionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterSelectionPresenter.swift; sourceTree = "<group>"; };
 		3F2172291EDCA68900A5B93C /* ChapterSelectionRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterSelectionRouter.swift; sourceTree = "<group>"; };
 		3F46B7B31EFFF08800D8EB6B /* bakom_vorschriften.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bakom_vorschriften.json; sourceTree = "<group>"; };
+		3F88792E1F0034C100AF1658 /* FetchRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchRequest.swift; sourceTree = "<group>"; };
 		3FC23E4E1EDB38C0009586C4 /* MenuPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuPresenter.swift; sourceTree = "<group>"; };
 		3FC23E4F1EDB38C0009586C4 /* MenuRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuRouter.swift; sourceTree = "<group>"; };
 		3FC23E501EDB38C0009586C4 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -96,10 +96,8 @@
 		3FD60BD51EE32C2E005481D0 /* MenuInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuInteractor.swift; sourceTree = "<group>"; };
 		3FD60BD91EE34241005481D0 /* Chapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		3FD60BDC1EE342D3005481D0 /* QuestionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionService.swift; sourceTree = "<group>"; };
-		3FD60BDE1EE357E9005481D0 /* TestQuestionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestQuestionService.swift; sourceTree = "<group>"; };
 		3FD60BE01EE3581A005481D0 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		3FD6D8841EE468E700407E18 /* ChapterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterService.swift; sourceTree = "<group>"; };
-		3FD6D8861EE4693400407E18 /* TestChapterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestChapterService.swift; sourceTree = "<group>"; };
 		3FD6D8891EE48A7300407E18 /* QuizRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizRouter.swift; sourceTree = "<group>"; };
 		3FD6D88B1EE48A7D00407E18 /* QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		3FD6D88D1EE48A8500407E18 /* QuizInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizInteractor.swift; sourceTree = "<group>"; };
@@ -143,6 +141,7 @@
 			children = (
 				3FEE762A1EF94FF2009504A7 /* AnswerTableViewCellFactory.swift */,
 				3FEE762C1EF95EA2009504A7 /* Random.swift */,
+				3F88792E1F0034C100AF1658 /* FetchRequest.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -238,11 +237,11 @@
 		3FC23E581EDB58C5009586C4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3FEE76241EF94186009504A7 /* ManagedObjectFactory.swift */,
+				3FEE761E1EF926E7009504A7 /* Section.swift */,
 				3FD60BD91EE34241005481D0 /* Chapter.swift */,
 				3FD60BE01EE3581A005481D0 /* Question.swift */,
 				3F03969B1EE5693000067A59 /* Answer.swift */,
-				3FEE761E1EF926E7009504A7 /* Section.swift */,
-				3FEE76241EF94186009504A7 /* ManagedObjectFactory.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -260,7 +259,6 @@
 			isa = PBXGroup;
 			children = (
 				3FD60BDC1EE342D3005481D0 /* QuestionService.swift */,
-				3FD60BDE1EE357E9005481D0 /* TestQuestionService.swift */,
 				3FEE76281EF94F05009504A7 /* CoreDataQuestionService.swift */,
 			);
 			path = QuestionService;
@@ -270,7 +268,6 @@
 			isa = PBXGroup;
 			children = (
 				3FD6D8841EE468E700407E18 /* ChapterService.swift */,
-				3FD6D8861EE4693400407E18 /* TestChapterService.swift */,
 				3FEE76261EF94E2E009504A7 /* CoreDataChapterService.swift */,
 			);
 			path = ChapterService;
@@ -449,8 +446,8 @@
 				3FD6D8901EE48A8B00407E18 /* QuizPresenter.swift in Sources */,
 				3F03969C1EE5693000067A59 /* Answer.swift in Sources */,
 				3FC23E561EDB569A009586C4 /* ChapterSelectionViewController.swift in Sources */,
+				3F88792F1F0034C100AF1658 /* FetchRequest.swift in Sources */,
 				3F0D643D1ED9F3DD000A9177 /* Amateurfunk.xcdatamodeld in Sources */,
-				3FD60BDF1EE357E9005481D0 /* TestQuestionService.swift in Sources */,
 				3FD60BD61EE32C2E005481D0 /* MenuInteractor.swift in Sources */,
 				3FD6D88A1EE48A7300407E18 /* QuizRouter.swift in Sources */,
 				3FD6D8851EE468E700407E18 /* ChapterService.swift in Sources */,
@@ -461,7 +458,6 @@
 				3FEE76291EF94F05009504A7 /* CoreDataQuestionService.swift in Sources */,
 				3FEE761F1EF926E7009504A7 /* Section.swift in Sources */,
 				3FC23E521EDB38C0009586C4 /* MenuRouter.swift in Sources */,
-				3FD6D8871EE4693400407E18 /* TestChapterService.swift in Sources */,
 				3FC23E511EDB38C0009586C4 /* MenuPresenter.swift in Sources */,
 				3FD60BDD1EE342D3005481D0 /* QuestionService.swift in Sources */,
 				3FEE76251EF94186009504A7 /* ManagedObjectFactory.swift in Sources */,

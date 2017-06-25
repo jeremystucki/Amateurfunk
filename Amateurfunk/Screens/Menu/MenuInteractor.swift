@@ -33,7 +33,7 @@ extension MenuInteractor: MenuInteractorInput {
 
     func fetchNumberOfMarkedQuestions() {
         do {
-            let numberOfMarkedQuestions = try questionService.getNumberOfMarkedQuestions(fromSection: section)
+            let numberOfMarkedQuestions = try questionService.getNumberOfMarkedQuestions(forSection: section)
             presenter?.fetchedNumberOfMarkedQuestions(numberOfMarkedQuestions: numberOfMarkedQuestions)
         } catch {
             presenter?.failedToFetchNumberOfMarkedQuestions()

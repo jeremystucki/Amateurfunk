@@ -19,7 +19,6 @@ protocol QuizViewControllerOutput {
     func didSelectNextQuestion()
 }
 
-// TODO: Cleanup
 class QuizViewController: UITableViewController {
 
     var presenter: QuizViewControllerOutput?
@@ -46,12 +45,10 @@ class QuizViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if viewInitialized {
-            return
+        if !viewInitialized {
+            viewInitialized = true
+            presenter?.viewDidLoad()
         }
-
-        viewInitialized = true
-        presenter?.viewDidLoad()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -63,31 +60,30 @@ class QuizViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+            cell.selectionStyle = .none
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.text = question!.query
+            cell.textLabel?.textAlignment = .center
+
+            return cell
+        }
+
         if indexPath.section == 1 {
             return AnswerTableViewCellFactory.getTableViewCell(for: Array(question!.answers)[indexPath.row])
         }
 
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        cell.textLabel?.textAlignment = .center
-
-        switch indexPath.section {
-        case 0:
-            cell.selectionStyle = .none
-            cell.textLabel?.numberOfLines = 0
-            cell.textLabel?.text = question!.query
-        case 2:
-            if didAnswerQuestion {
-                cell.textLabel?.text = "Nächste Frage"
-            } else {
-                cell.textLabel?.text = "Antwort anzeigen"
-            }
-
+        if indexPath.section == 2 {
+            let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+            cell.textLabel?.text = didAnswerQuestion ? "Nächste Frage" : "Antwort anzeigen"
+            cell.textLabel?.textAlignment = .center
             cell.textLabel?.textColor = view.tintColor
-        default:
-            break
+
+            return cell
         }
 
-        return cell
+        return UITableViewCell()
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -101,29 +97,37 @@ class QuizViewController: UITableViewController {
             return
         }
 
-        if indexPath.section == 0 {
-            return
-        }
-
         if indexPath.section == 1 {
             let answer = Array(question!.answers)[indexPath.row]
 
+            didAnswerQuestion = true
             presenter?.didSelectAnswer(answer)
 
             if !answer.correct {
-                tableView.cellForRow(at: indexPath)?.backgroundColor = .orange
+                UIView.animate(withDuration: 0.1) {
+                    tableView.cellForRow(at: indexPath)?.backgroundColor = .orange
+                }
             }
+
+            showCorrectAnswer()
+
+            tableView.reloadSections([2], with: .automatic)
         }
 
-        didAnswerQuestion = true
-        showCorrectAnswer()
+        if indexPath.section == 2 {
+            didAnswerQuestion = true
+            showCorrectAnswer()
 
-        tableView.cellForRow(at: IndexPath(row: 0, section: 2))?.textLabel?.text = "Nächste Frage"
+            tableView.reloadSections([2], with: .automatic)
+        }
     }
 
     private func showCorrectAnswer() {
         let index = Array(question!.answers).index(where: { $0.correct })!
-        tableView.cellForRow(at: IndexPath(row: index, section: 1))?.backgroundColor = .green
+
+        UIView.animate(withDuration: 0.1) {
+            self.tableView.cellForRow(at: IndexPath(row: index, section: 1))?.backgroundColor = .green
+        }
 
         for row in 0..<tableView.numberOfRows(inSection: 1) {
             tableView.cellForRow(at: IndexPath(row: row, section: 1))?.selectionStyle = .none
@@ -135,15 +139,13 @@ class QuizViewController: UITableViewController {
 extension QuizViewController: QuizViewControllerInput {
 
     func displayQuestion(_ question: Question) {
-        let firstLoad = self.question == nil
-
         self.question = question
         didAnswerQuestion = false
 
-        if firstLoad {
+        if tableView.numberOfSections == 0 {
             tableView.reloadData()
         } else {
-            tableView.reloadSections([0, 1, 2], with: .left)
+            tableView.reloadSections(IndexSet(integersIn: 0..<tableView.numberOfSections), with: .left)
         }
     }
 

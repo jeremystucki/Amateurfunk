@@ -79,6 +79,19 @@ class ChapterSelectionViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            let chapter = chapters![indexPath.row]
+
+            let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+            cell.textLabel?.text = chapter.title
+
+            if selectedChapters.contains(chapter) {
+                cell.accessoryType = .checkmark
+            }
+
+            return cell
+        }
+
         if indexPath.section == 1 {
             let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
             cell.textLabel?.textColor = view.tintColor
@@ -87,44 +100,37 @@ class ChapterSelectionViewController: UITableViewController {
             return cell
         }
 
-        let chapter = chapters![indexPath.row]
-
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        cell.textLabel?.text = chapter.title
-
-        if selectedChapters.contains(chapter) {
-            cell.accessoryType = .checkmark
-        }
-
-        return cell
+        return UITableViewCell()
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        if indexPath.section == 1 {
-            if chapters != nil {
-                if selectedChapters.count == chapters!.count {
-                    selectedChapters = [Chapter]()
-                } else {
-                    selectedChapters = chapters!
-                }
-
-                tableView.reloadData()
-            }
-
+        if chapters == nil {
             return
         }
 
-        let chapter = chapters![indexPath.row]
-        let cell = tableView.cellForRow(at: indexPath)
+        if indexPath.section == 0 {
+            let chapter = chapters![indexPath.row]
+            let cell = tableView.cellForRow(at: indexPath)
 
-        if let index = selectedChapters.index(of: chapter) {
-            selectedChapters.remove(at: index)
-            cell!.accessoryType = .none
-        } else {
-            selectedChapters.append(chapter)
-            cell!.accessoryType = .checkmark
+            if let index = selectedChapters.index(of: chapter) {
+                selectedChapters.remove(at: index)
+                cell!.accessoryType = .none
+            } else {
+                selectedChapters.append(chapter)
+                cell!.accessoryType = .checkmark
+            }
+        }
+
+        if indexPath.section == 1 {
+            if selectedChapters.count == chapters!.count {
+                selectedChapters = [Chapter]()
+            } else {
+                selectedChapters = chapters!
+            }
+
+            tableView.reloadSections([0], with: .automatic)
         }
     }
 
@@ -134,12 +140,12 @@ extension ChapterSelectionViewController: ChapterSelectionViewControllerInput {
 
     func displayChapters(_ chapters: [Chapter]) {
         self.chapters = chapters
-        tableView.reloadData()
+        tableView.reloadSections([1], with: .automatic)
     }
 
     func displaySelectedChapters(_ selectedChapters: [Chapter]) {
         self.selectedChapters = selectedChapters
-        tableView.reloadData()
+        tableView.reloadSections([1], with: .automatic)
     }
 
     func displayError(withMessage message: String) {

@@ -15,8 +15,4 @@ class Question: NSManagedObject {
     @NSManaged var chapter: Chapter
     @NSManaged var answers: Set<Answer>
 
-    static func createFetchRequest() -> NSFetchRequest<Question> {
-        return NSFetchRequest<Question>(entityName: "Question")
-    }
-
 }
