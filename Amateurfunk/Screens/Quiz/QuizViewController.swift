@@ -145,7 +145,17 @@ extension QuizViewController: QuizViewControllerInput {
         if tableView.numberOfSections == 0 {
             tableView.reloadData()
         } else {
+            CATransaction.begin()
+            tableView.beginUpdates()
+
+            CATransaction.setCompletionBlock({
+                self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .none, animated: true)
+            })
+
             tableView.reloadSections(IndexSet(integersIn: 0..<tableView.numberOfSections), with: .left)
+
+            tableView.endUpdates()
+            CATransaction.commit()
         }
     }
 
