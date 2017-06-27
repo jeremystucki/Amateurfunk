@@ -72,16 +72,16 @@
 
 /* Begin PBXFileReference section */
 		3F03969B1EE5693000067A59 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
-		3F0D64311ED9F3DD000A9177 /* Amateurfunk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Amateurfunk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F0D64311ED9F3DD000A9177 /* HB3 Trainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HB3 Trainer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F0D64341ED9F3DD000A9177 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F0D643C1ED9F3DD000A9177 /* Amateurfunk.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Amateurfunk.xcdatamodel; sourceTree = "<group>"; };
 		3F0D643E1ED9F3DD000A9177 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F0D64411ED9F3DD000A9177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F0D64431ED9F3DD000A9177 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3F0D64481ED9F3DD000A9177 /* AmateurfunkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AmateurfunkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F0D64481ED9F3DD000A9177 /* HB3 TrainerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HB3 TrainerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F0D644C1ED9F3DD000A9177 /* AmateurfunkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmateurfunkTests.swift; sourceTree = "<group>"; };
 		3F0D644E1ED9F3DD000A9177 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3F0D64531ED9F3DD000A9177 /* AmateurfunkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AmateurfunkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F0D64531ED9F3DD000A9177 /* HB3 TrainerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HB3 TrainerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F0D64571ED9F3DD000A9177 /* AmateurfunkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmateurfunkUITests.swift; sourceTree = "<group>"; };
 		3F0D64591ED9F3DD000A9177 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F2172251EDCA60200A5B93C /* ChapterSelectionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterSelectionPresenter.swift; sourceTree = "<group>"; };
@@ -159,9 +159,9 @@
 		3F0D64321ED9F3DD000A9177 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3F0D64311ED9F3DD000A9177 /* Amateurfunk.app */,
-				3F0D64481ED9F3DD000A9177 /* AmateurfunkTests.xctest */,
-				3F0D64531ED9F3DD000A9177 /* AmateurfunkUITests.xctest */,
+				3F0D64311ED9F3DD000A9177 /* HB3 Trainer.app */,
+				3F0D64481ED9F3DD000A9177 /* HB3 TrainerTests.xctest */,
+				3F0D64531ED9F3DD000A9177 /* HB3 TrainerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -287,9 +287,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3F0D64301ED9F3DD000A9177 /* Amateurfunk */ = {
+		3F0D64301ED9F3DD000A9177 /* HB3 Trainer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3F0D645C1ED9F3DD000A9177 /* Build configuration list for PBXNativeTarget "Amateurfunk" */;
+			buildConfigurationList = 3F0D645C1ED9F3DD000A9177 /* Build configuration list for PBXNativeTarget "HB3 Trainer" */;
 			buildPhases = (
 				3F0D642D1ED9F3DD000A9177 /* Sources */,
 				3F0D642E1ED9F3DD000A9177 /* Frameworks */,
@@ -301,14 +301,14 @@
 			);
 			dependencies = (
 			);
-			name = Amateurfunk;
+			name = "HB3 Trainer";
 			productName = Amateurfunk;
-			productReference = 3F0D64311ED9F3DD000A9177 /* Amateurfunk.app */;
+			productReference = 3F0D64311ED9F3DD000A9177 /* HB3 Trainer.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3F0D64471ED9F3DD000A9177 /* AmateurfunkTests */ = {
+		3F0D64471ED9F3DD000A9177 /* HB3 TrainerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3F0D645F1ED9F3DD000A9177 /* Build configuration list for PBXNativeTarget "AmateurfunkTests" */;
+			buildConfigurationList = 3F0D645F1ED9F3DD000A9177 /* Build configuration list for PBXNativeTarget "HB3 TrainerTests" */;
 			buildPhases = (
 				3F0D64441ED9F3DD000A9177 /* Sources */,
 				3F0D64451ED9F3DD000A9177 /* Frameworks */,
@@ -319,14 +319,14 @@
 			dependencies = (
 				3F0D644A1ED9F3DD000A9177 /* PBXTargetDependency */,
 			);
-			name = AmateurfunkTests;
+			name = "HB3 TrainerTests";
 			productName = AmateurfunkTests;
-			productReference = 3F0D64481ED9F3DD000A9177 /* AmateurfunkTests.xctest */;
+			productReference = 3F0D64481ED9F3DD000A9177 /* HB3 TrainerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		3F0D64521ED9F3DD000A9177 /* AmateurfunkUITests */ = {
+		3F0D64521ED9F3DD000A9177 /* HB3 TrainerUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3F0D64621ED9F3DD000A9177 /* Build configuration list for PBXNativeTarget "AmateurfunkUITests" */;
+			buildConfigurationList = 3F0D64621ED9F3DD000A9177 /* Build configuration list for PBXNativeTarget "HB3 TrainerUITests" */;
 			buildPhases = (
 				3F0D644F1ED9F3DD000A9177 /* Sources */,
 				3F0D64501ED9F3DD000A9177 /* Frameworks */,
@@ -337,9 +337,9 @@
 			dependencies = (
 				3F0D64551ED9F3DD000A9177 /* PBXTargetDependency */,
 			);
-			name = AmateurfunkUITests;
+			name = "HB3 TrainerUITests";
 			productName = AmateurfunkUITests;
-			productReference = 3F0D64531ED9F3DD000A9177 /* AmateurfunkUITests.xctest */;
+			productReference = 3F0D64531ED9F3DD000A9177 /* HB3 TrainerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -371,7 +371,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3F0D642C1ED9F3DD000A9177 /* Build configuration list for PBXProject "Amateurfunk" */;
+			buildConfigurationList = 3F0D642C1ED9F3DD000A9177 /* Build configuration list for PBXProject "HB3 Trainer" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -384,9 +384,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3F0D64301ED9F3DD000A9177 /* Amateurfunk */,
-				3F0D64471ED9F3DD000A9177 /* AmateurfunkTests */,
-				3F0D64521ED9F3DD000A9177 /* AmateurfunkUITests */,
+				3F0D64301ED9F3DD000A9177 /* HB3 Trainer */,
+				3F0D64471ED9F3DD000A9177 /* HB3 TrainerTests */,
+				3F0D64521ED9F3DD000A9177 /* HB3 TrainerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -490,12 +490,12 @@
 /* Begin PBXTargetDependency section */
 		3F0D644A1ED9F3DD000A9177 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3F0D64301ED9F3DD000A9177 /* Amateurfunk */;
+			target = 3F0D64301ED9F3DD000A9177 /* HB3 Trainer */;
 			targetProxy = 3F0D64491ED9F3DD000A9177 /* PBXContainerItemProxy */;
 		};
 		3F0D64551ED9F3DD000A9177 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3F0D64301ED9F3DD000A9177 /* Amateurfunk */;
+			target = 3F0D64301ED9F3DD000A9177 /* HB3 Trainer */;
 			targetProxy = 3F0D64541ED9F3DD000A9177 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -617,6 +617,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jeremystucki.ios.Amateurfunk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -630,6 +631,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jeremystucki.ios.Amateurfunk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -644,7 +646,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jeremystucki.ios.AmateurfunkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Amateurfunk.app/Amateurfunk";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HB3 Trainer.app/HB3 Trainer";
 			};
 			name = Debug;
 		};
@@ -659,7 +661,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jeremystucki.ios.AmateurfunkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Amateurfunk.app/Amateurfunk";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HB3 Trainer.app/HB3 Trainer";
 			};
 			name = Release;
 		};
@@ -694,7 +696,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3F0D642C1ED9F3DD000A9177 /* Build configuration list for PBXProject "Amateurfunk" */ = {
+		3F0D642C1ED9F3DD000A9177 /* Build configuration list for PBXProject "HB3 Trainer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3F0D645A1ED9F3DD000A9177 /* Debug */,
@@ -703,7 +705,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3F0D645C1ED9F3DD000A9177 /* Build configuration list for PBXNativeTarget "Amateurfunk" */ = {
+		3F0D645C1ED9F3DD000A9177 /* Build configuration list for PBXNativeTarget "HB3 Trainer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3F0D645D1ED9F3DD000A9177 /* Debug */,
@@ -712,7 +714,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3F0D645F1ED9F3DD000A9177 /* Build configuration list for PBXNativeTarget "AmateurfunkTests" */ = {
+		3F0D645F1ED9F3DD000A9177 /* Build configuration list for PBXNativeTarget "HB3 TrainerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3F0D64601ED9F3DD000A9177 /* Debug */,
@@ -721,7 +723,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3F0D64621ED9F3DD000A9177 /* Build configuration list for PBXNativeTarget "AmateurfunkUITests" */ = {
+		3F0D64621ED9F3DD000A9177 /* Build configuration list for PBXNativeTarget "HB3 TrainerUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3F0D64631ED9F3DD000A9177 /* Debug */,
