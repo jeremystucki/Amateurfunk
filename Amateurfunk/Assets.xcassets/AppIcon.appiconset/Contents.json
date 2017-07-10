@@ -199,20 +199,6 @@
       "idiom" : "mac",
       "filename" : "iTunesArtwork@2x.png",
       "scale" : "2x"
-    },
-    {
-      "size" : "60x60",
-      "idiom" : "iphone",
-      "filename" : "Icon-Small-60@2x.png",
-      "unassigned" : true,
-      "scale" : "2x"
-    },
-    {
-      "size" : "60x60",
-      "idiom" : "iphone",
-      "filename" : "Icon-Small-60@3x.png",
-      "unassigned" : true,
-      "scale" : "3x"
     }
   ],
   "info" : {
