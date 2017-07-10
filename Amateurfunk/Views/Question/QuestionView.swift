@@ -8,27 +8,27 @@
 
 import UIKit
 
-protocol QuestionViewInput {
+protocol QuestionViewControllerInput {
     func removeFromParentViewController()
 
     func highlightAnswer(answer: Answer, withColor color: UIColor)
     func highlightCorrectAnswer(withColor color: UIColor)
 
-    var uiView: UIView { get } // TODO: Whatever
+    var view: UIView! { get } // TODO: Whatever
 }
 
-protocol QuestionViewOutput {
+protocol QuestionViewControllerOutput {
     func didSelectAnswer(_ answer: Answer)
 }
 
-class QuestionView: UITableViewController {
+class QuestionViewController: UITableViewController {
 
     var query: String
     var answers: [Answer]
 
-    var presenter: QuestionViewOutput
+    var presenter: QuestionViewControllerOutput
 
-    init(question: Question, presenter: QuestionViewOutput) {
+    init(question: Question, presenter: QuestionViewControllerOutput, frame: CGRect) {
         self.query = question.query
         self.answers = Array(question.answers)
 
@@ -36,10 +36,10 @@ class QuestionView: UITableViewController {
 
         super.init(style: .grouped)
 
+        self.view.frame = frame
+
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
-
-//        tableView.contentInset = UIEdgeInsets(top: topInset, left: 0, bottom: 0, right: 0)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -82,11 +82,7 @@ class QuestionView: UITableViewController {
 
 }
 
-extension QuestionView: QuestionViewInput {
-
-    var uiView: UIView {
-        return self.view
-    }
+extension QuestionViewController: QuestionViewControllerInput {
 
     func highlightCorrectAnswer(withColor color: UIColor) {
         highlightAnswer(answer: answers.first(where: { $0.correct })!, withColor: color)
