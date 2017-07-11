@@ -9,12 +9,9 @@
 import UIKit
 
 protocol QuestionViewControllerInput {
-    func removeFromParentViewController()
-
     func highlightAnswer(answer: Answer, withColor color: UIColor)
-    func highlightCorrectAnswer(withColor color: UIColor)
 
-    var view: UIView! { get } // TODO: Whatever
+    var view: UIView! { get }
 }
 
 protocol QuestionViewControllerOutput {
@@ -28,15 +25,13 @@ class QuestionViewController: UITableViewController {
 
     var presenter: QuestionViewControllerOutput
 
-    init(question: Question, presenter: QuestionViewControllerOutput, frame: CGRect) {
+    init(question: Question, presenter: QuestionViewControllerOutput) {
         self.query = question.query
         self.answers = Array(question.answers)
 
         self.presenter = presenter
 
         super.init(style: .grouped)
-
-        self.view.frame = frame
 
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -70,7 +65,7 @@ class QuestionViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
+        tableView.deselectRow(at: indexPath, animated: true)
 
         if indexPath.section == 0 {
             return
@@ -83,10 +78,6 @@ class QuestionViewController: UITableViewController {
 }
 
 extension QuestionViewController: QuestionViewControllerInput {
-
-    func highlightCorrectAnswer(withColor color: UIColor) {
-        highlightAnswer(answer: answers.first(where: { $0.correct })!, withColor: color)
-    }
 
     func highlightAnswer(answer: Answer, withColor color: UIColor) {
         let index = answers.index(of: answer)!.littleEndian
