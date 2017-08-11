@@ -37,6 +37,8 @@ class MenuViewController: UITableViewController {
         self.title = title
         tabBarItem = UITabBarItem(title: title, image: nil, tag: 0)
 
+        navigationItem.largeTitleDisplayMode = .always
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "Kapitel wählen",
             style: .plain,

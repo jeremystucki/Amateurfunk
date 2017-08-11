@@ -48,6 +48,8 @@ class QuizViewController: UIViewController {
         title = "Abfragen"
         hidesBottomBarWhenPushed = true
 
+        navigationItem.largeTitleDisplayMode = .never
+
         questionView.translatesAutoresizingMaskIntoConstraints = false
         buttonView.translatesAutoresizingMaskIntoConstraints = false
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -58,26 +60,26 @@ class QuizViewController: UIViewController {
         buttonView.addSubview(button)
 
         buttonView.addConstraints([
-            NSLayoutConstraint(item: button, attribute: .top, relatedBy: .equal, toItem: buttonView, attribute: .top, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: button, attribute: .bottom, relatedBy: .equal, toItem: buttonView, attribute: .bottom, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: button, attribute: .leading, relatedBy: .equal, toItem: buttonView, attribute: .leading, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: button, attribute: .trailing, relatedBy: .equal, toItem: buttonView, attribute: .trailing, multiplier: 1, constant: 0)
+            button.topAnchor.constraint(equalTo: buttonView.topAnchor),
+            button.bottomAnchor.constraint(equalTo: buttonView.bottomAnchor),
+            button.leadingAnchor.constraint(equalTo: buttonView.leadingAnchor),
+            button.trailingAnchor.constraint(equalTo: buttonView.trailingAnchor)
         ])
 
         view.addSubview(questionView)
         view.addSubview(buttonView)
 
         view.addConstraints([
-            NSLayoutConstraint(item: questionView, attribute: .bottom, relatedBy: .equal, toItem: buttonView, attribute: .top, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: buttonView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 44),
+            questionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            questionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            questionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
 
-            NSLayoutConstraint(item: questionView, attribute: .top, relatedBy: .equal, toItem: topLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: questionView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: questionView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0),
+            buttonView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            buttonView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            buttonView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            buttonView.heightAnchor.constraint(equalToConstant: 44),
 
-            NSLayoutConstraint(item: buttonView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: buttonView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: buttonView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0)
+            questionView.bottomAnchor.constraint(equalTo: buttonView.topAnchor)
         ])
     }
 

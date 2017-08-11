@@ -633,6 +633,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = HAH73UHZG3;
 				INFOPLIST_FILE = Amateurfunk/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jeremystucki.ios.Amateurfunk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -647,6 +648,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = HAH73UHZG3;
 				INFOPLIST_FILE = Amateurfunk/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jeremystucki.ios.Amateurfunk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
