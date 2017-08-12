@@ -36,6 +36,7 @@ class QuizViewController: UIViewController {
     enum ButtonState { case showAnswer; case nextQuestion }
     var currentButtonState: ButtonState?
 
+    // swiftlint:disable:next function_body_length
     init() {
         questionView = UIView()
         buttonView = UIView()
@@ -48,7 +49,9 @@ class QuizViewController: UIViewController {
         title = "Abfragen"
         hidesBottomBarWhenPushed = true
 
-        navigationItem.largeTitleDisplayMode = .never
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .never
+        }
 
         questionView.translatesAutoresizingMaskIntoConstraints = false
         buttonView.translatesAutoresizingMaskIntoConstraints = false
@@ -69,18 +72,35 @@ class QuizViewController: UIViewController {
         view.addSubview(questionView)
         view.addSubview(buttonView)
 
-        view.addConstraints([
-            questionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            questionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            questionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+        if #available(iOS 11.0, *) {
+            view.addConstraints([
+                questionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+                questionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+                questionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
 
-            buttonView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            buttonView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            buttonView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            buttonView.heightAnchor.constraint(equalToConstant: 44),
+                buttonView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+                buttonView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+                buttonView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+                buttonView.heightAnchor.constraint(equalToConstant: 44),
 
-            questionView.bottomAnchor.constraint(equalTo: buttonView.topAnchor)
-        ])
+                questionView.bottomAnchor.constraint(equalTo: buttonView.topAnchor)
+            ])
+        } else {
+            // swiftlint:disable line_length
+            view.addConstraints([
+                NSLayoutConstraint(item: questionView, attribute: .bottom, relatedBy: .equal, toItem: buttonView, attribute: .top, multiplier: 1, constant: 0),
+                NSLayoutConstraint(item: buttonView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 44),
+
+                NSLayoutConstraint(item: questionView, attribute: .top, relatedBy: .equal, toItem: topLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0),
+                NSLayoutConstraint(item: questionView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0),
+                NSLayoutConstraint(item: questionView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0),
+
+                NSLayoutConstraint(item: buttonView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0),
+                NSLayoutConstraint(item: buttonView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0),
+                NSLayoutConstraint(item: buttonView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0)
+            ])
+            // swiftlint:enable line_length
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {

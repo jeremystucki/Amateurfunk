@@ -64,8 +64,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nav1 = UINavigationController(rootViewController: technikViewController)
         let nav2 = UINavigationController(rootViewController: vorschriftenViewController)
 
-        nav1.navigationBar.prefersLargeTitles = true
-        nav2.navigationBar.prefersLargeTitles = true
+        if #available(iOS 11.0, *) {
+            nav1.navigationBar.prefersLargeTitles = true
+            nav2.navigationBar.prefersLargeTitles = true
+        }
 
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [nav1, nav2]

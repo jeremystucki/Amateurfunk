@@ -57,7 +57,9 @@ extension MenuRouter: MenuRouterInput {
                                                       questionService: questionService)
         let vc = UINavigationController(rootViewController: view)
 
-        vc.navigationBar.prefersLargeTitles = true
+        if #available(iOS 11.0, *) {
+            vc.navigationBar.prefersLargeTitles = true
+        }
 
         viewController?.present(vc, animated: true, completion: nil)
     }
