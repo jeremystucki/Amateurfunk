@@ -37,7 +37,8 @@ extension QuizInteractor: QuizInteractorInput {
 
     func fetchNextQuestion() {
         do {
-            let question = try questionService.getQuestionForQuiz(fromChapters: chapterService.getSeletedChapters(fromSection: section))
+            let chapters = try chapterService.getSeletedChapters(fromSection: section)
+            let question = try questionService.getQuestionForQuiz(fromChapters: chapters)
             presenter?.fetchedNextQuestion(question)
         } catch {
             presenter?.failedToFetchNextQuestion()

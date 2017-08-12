@@ -45,7 +45,7 @@ extension ChapterSelectionInteractor: ChapterSelectionInteractorInput {
     func fetchChapters() {
         do {
             let chapters = try chapterService.getAllChapters(fromSection: section)
-            presenter?.fetchedChapters(chapters.sorted(by: { return $0.title.localizedStandardCompare($1.title) == .orderedAscending }))
+            presenter?.fetchedChapters(chapters.sorted())
         } catch {
             presenter?.failedToFetchChapters()
         }

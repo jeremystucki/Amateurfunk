@@ -58,11 +58,11 @@ class ChapterSelectionViewController: UITableViewController {
         presenter?.viewDidLoad()
     }
 
-    func didClickCancel(_ gesture: UIGestureRecognizer) {
+    @objc func didClickCancel(_ gesture: UIGestureRecognizer) {
         presenter?.didClickCancel()
     }
 
-    func didClickDone(_ gesture: UIGestureRecognizer) {
+    @objc func didClickDone(_ gesture: UIGestureRecognizer) {
         presenter?.didClickDone(withSelectedChapters: selectedChapters)
     }
 
@@ -72,14 +72,22 @@ class ChapterSelectionViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return chapters?.count ?? 0
+            return 1
         }
 
-        return 1
+        return chapters?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
+            let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+            cell.textLabel?.textColor = view.tintColor
+            cell.textLabel?.text = "Alle auswählen"
+
+            return cell
+        }
+
+        if indexPath.section == 1 {
             let chapter = chapters![indexPath.row]
 
             let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
@@ -92,15 +100,7 @@ class ChapterSelectionViewController: UITableViewController {
             return cell
         }
 
-        if indexPath.section == 1 {
-            let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-            cell.textLabel?.textColor = view.tintColor
-            cell.textLabel?.text = "Alle auswählen"
-
-            return cell
-        }
-
-        return UITableViewCell()
+        fatalError("Chapter selection should only have 2 sections")
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -111,6 +111,16 @@ class ChapterSelectionViewController: UITableViewController {
         }
 
         if indexPath.section == 0 {
+            if selectedChapters.count == chapters!.count {
+                selectedChapters = [Chapter]()
+            } else {
+                selectedChapters = chapters!
+            }
+
+            tableView.reloadSections([1], with: .automatic)
+        }
+
+        if indexPath.section == 1 {
             let chapter = chapters![indexPath.row]
             let cell = tableView.cellForRow(at: indexPath)
 
@@ -121,16 +131,6 @@ class ChapterSelectionViewController: UITableViewController {
                 selectedChapters.append(chapter)
                 cell!.accessoryType = .checkmark
             }
-        }
-
-        if indexPath.section == 1 {
-            if selectedChapters.count == chapters!.count {
-                selectedChapters = [Chapter]()
-            } else {
-                selectedChapters = chapters!
-            }
-
-            tableView.reloadSections([0], with: .automatic)
         }
     }
 

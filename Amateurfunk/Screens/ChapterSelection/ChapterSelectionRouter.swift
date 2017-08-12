@@ -16,9 +16,13 @@ class ChapterSelectionRouter {
 
     var viewController: UIViewController?
 
-    static func setupModule(section: Section, chapterService: ChapterService, questionService: QuestionService) -> UIViewController {
+    static func setupModule(section: Section,
+                            chapterService: ChapterService,
+                            questionService: QuestionService) -> UIViewController {
         let viewController = ChapterSelectionViewController()
-        let interactor = ChapterSelectionInteractor(section: section, chapterService: chapterService, questionService: questionService)
+        let interactor = ChapterSelectionInteractor(section: section,
+                                                    chapterService: chapterService,
+                                                    questionService: questionService)
         let presenter = ChapterSelectionPresenter()
         let router = ChapterSelectionRouter()
 

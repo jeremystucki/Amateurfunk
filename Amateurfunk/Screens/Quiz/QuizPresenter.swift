@@ -12,6 +12,16 @@ class QuizPresenter {
     var interactor: QuizInteractorInput?
     var router: QuizRouterInput?
 
+    var currentQuestion: Question?
+    var questionViewController: QuestionViewControllerInput?
+
+    var didAnswerQuestion = false
+
+    fileprivate func highlightCorrectAnswer() {
+        let correctAnswer = currentQuestion!.answers.first { $0.correct }!
+        questionViewController?.highlightAnswer(answer: correctAnswer, withColor: .green)
+    }
+
 }
 
 extension QuizPresenter: QuizViewControllerOutput {
@@ -20,12 +30,35 @@ extension QuizPresenter: QuizViewControllerOutput {
         interactor?.fetchNextQuestion()
     }
 
-    func didSelectAnswer(_ answer: Answer) {
-        interactor?.didSelectAnswer(answer)
-    }
-
     func didSelectNextQuestion() {
         interactor?.fetchNextQuestion()
+    }
+
+    func didSelectShowAnswer() {
+        didAnswerQuestion = true
+        highlightCorrectAnswer()
+
+        viewController?.showButtonState(.nextQuestion)
+    }
+
+}
+
+extension QuizPresenter: QuestionViewControllerOutput {
+
+    func didSelectAnswer(_ answer: Answer) {
+        if didAnswerQuestion {
+            return
+        }
+
+        didAnswerQuestion = true
+        highlightCorrectAnswer()
+
+        if !answer.correct {
+            questionViewController?.highlightAnswer(answer: answer, withColor: .orange)
+        }
+
+        viewController?.showButtonState(.nextQuestion)
+        interactor?.didSelectAnswer(answer)
     }
 
 }
@@ -33,7 +66,13 @@ extension QuizPresenter: QuizViewControllerOutput {
 extension QuizPresenter: QuizInteractorOutput {
 
     func fetchedNextQuestion(_ question: Question) {
-        viewController?.displayQuestion(question)
+        currentQuestion = question
+
+        questionViewController = QuestionViewController(question: question, presenter: self)
+        viewController?.displayQuestion(questionViewController!.view)
+
+        didAnswerQuestion = false
+        viewController?.showButtonState(.showAnswer)
     }
 
     func failedToFetchNextQuestion() {

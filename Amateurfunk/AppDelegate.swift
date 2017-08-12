@@ -21,7 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var questionFactory: ManagedObjectFactory<Question>!
     var textAnswerFactory: ManagedObjectFactory<TextAnswer>!
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let container = NSPersistentContainer(name: "Amateurfunk")
         container.loadPersistentStores(completionHandler: { _, _ in })
 
@@ -60,11 +61,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                              image: UIImage(named: "vorschriften"),
                                                              selectedImage: UIImage(named: "vorschriften_selected"))
 
+        let nav1 = UINavigationController(rootViewController: technikViewController)
+        let nav2 = UINavigationController(rootViewController: vorschriftenViewController)
+
+        nav1.navigationBar.prefersLargeTitles = true
+        nav2.navigationBar.prefersLargeTitles = true
+
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [
-            UINavigationController(rootViewController: technikViewController),
-            UINavigationController(rootViewController: vorschriftenViewController)
-        ]
+        tabBarController.viewControllers = [nav1, nav2]
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window!.backgroundColor = .groupTableViewBackground
