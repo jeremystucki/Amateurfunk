@@ -52,7 +52,9 @@ class MenuRouter {
 extension MenuRouter: MenuRouterInput {
 
     func showChapterSelection() {
-        let view = ChapterSelectionRouter.setupModule(section: section, chapterService: chapterService, questionService: questionService)
+        let view = ChapterSelectionRouter.setupModule(section: section,
+                                                      chapterService: chapterService,
+                                                      questionService: questionService)
         let vc = UINavigationController(rootViewController: view)
 
         vc.navigationBar.prefersLargeTitles = true
@@ -61,7 +63,9 @@ extension MenuRouter: MenuRouterInput {
     }
 
     func showQuiz() {
-        let view = QuizRouter.setupModule(section: section, questionService: questionService, chapterService: chapterService)
+        let view = QuizRouter.setupModule(section: section,
+                                          questionService: questionService,
+                                          chapterService: chapterService)
 
         viewController?.navigationController?.pushViewController(view, animated: true)
     }

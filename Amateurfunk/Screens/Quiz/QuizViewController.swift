@@ -87,7 +87,7 @@ class QuizViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func didPressButton() {
+    @objc func didPressButton() {
         switch currentButtonState! {
         case .showAnswer:
             presenter?.didSelectShowAnswer()
@@ -129,10 +129,10 @@ extension QuizViewController: QuizViewControllerInput {
         questionView.addSubview(currentQuestionView!)
 
         questionView.addConstraints([
-            NSLayoutConstraint(item: currentQuestionView!, attribute: .top, relatedBy: .equal, toItem: questionView, attribute: .top, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: currentQuestionView!, attribute: .bottom, relatedBy: .equal, toItem: questionView, attribute: .bottom, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: currentQuestionView!, attribute: .leading, relatedBy: .equal, toItem: questionView, attribute: .leading, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: currentQuestionView!, attribute: .trailing, relatedBy: .equal, toItem: questionView, attribute: .trailing, multiplier: 1, constant: 0)
+            currentQuestionView!.topAnchor.constraint(equalTo: questionView.topAnchor),
+            currentQuestionView!.bottomAnchor.constraint(equalTo: questionView.bottomAnchor),
+            currentQuestionView!.leadingAnchor.constraint(equalTo: questionView.leadingAnchor),
+            currentQuestionView!.trailingAnchor.constraint(equalTo: questionView.trailingAnchor)
         ])
     }
 

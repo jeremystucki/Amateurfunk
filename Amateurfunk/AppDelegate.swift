@@ -21,7 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var questionFactory: ManagedObjectFactory<Question>!
     var textAnswerFactory: ManagedObjectFactory<TextAnswer>!
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let container = NSPersistentContainer(name: "Amateurfunk")
         container.loadPersistentStores(completionHandler: { _, _ in })
 

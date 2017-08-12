@@ -10,7 +10,6 @@ import UIKit
 
 protocol QuestionViewControllerInput {
     func highlightAnswer(answer: Answer, withColor color: UIColor)
-
     var view: UIView! { get }
 }
 
@@ -53,9 +52,9 @@ class QuestionViewController: UITableViewController {
         if indexPath.section == 0 {
             let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
             cell.selectionStyle = .none
-            cell.textLabel?.numberOfLines = 0
-            cell.textLabel?.text = query
-            cell.textLabel?.textAlignment = .center
+            cell.textLabel!.numberOfLines = 0
+            cell.textLabel!.text = query
+            cell.textLabel!.textAlignment = .center
 
             return cell
         }
@@ -65,7 +64,7 @@ class QuestionViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: false)
 
         if indexPath.section == 0 {
             return

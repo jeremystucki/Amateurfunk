@@ -57,7 +57,7 @@ class MenuViewController: UITableViewController {
         presenter?.viewWillAppear()
     }
 
-    func didSelectChapterSelection(_ gesture: UIGestureRecognizer) {
+    @objc func didSelectChapterSelection(_ gesture: UIGestureRecognizer) {
         presenter?.didSelectChapterSelection()
     }
 
@@ -98,6 +98,8 @@ class MenuViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+
         if indexPath.section == 0 && indexPath.row == 0 {
             presenter?.didSelectQuiz()
         }
@@ -113,8 +115,6 @@ class MenuViewController: UITableViewController {
         if (indexPath.section == 1 && numberOfMarkedQuestions == nil) || indexPath.section == 2 {
             presenter?.didSelectTestMode()
         }
-
-        tableView.deselectRow(at: indexPath, animated: true)
     }
 
 }
