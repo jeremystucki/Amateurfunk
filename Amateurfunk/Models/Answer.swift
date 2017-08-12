@@ -12,6 +12,7 @@ import CoreData
 class Answer: NSManagedObject {
 
     @NSManaged var correct: Bool
+    @NSManaged var question: Question
 
 }
 

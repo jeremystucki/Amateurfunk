@@ -15,4 +15,7 @@ class Question: NSManagedObject {
     @NSManaged var chapter: Chapter
     @NSManaged var answers: Set<Answer>
 
+    @NSManaged var timesAnsweredCorrectly: Int16
+    @NSManaged var currentStreak: Int16
+
 }
