@@ -20,10 +20,7 @@ class CoreDataQuestionService: QuestionService {
         let query = Question.createFetchRequest()
         query.predicate = NSPredicate(format: "marked == YES AND chapter IN %@", chapters)
 
-        let questions = try context.fetch(query)
-
-        // swiftlint:disable:next force_cast
-        return questions.count
+        return try context.fetch(query).count
     }
 
     private func getMinimumAmountOfCorrectAnswers(forChapters chapters: [Chapter]) throws -> Int {
@@ -34,14 +31,14 @@ class CoreDataQuestionService: QuestionService {
         expressionDescription.expression = NSExpression(format: "@min.timesAnsweredCorrectly")
         expressionDescription.expressionResultType = .integer16AttributeType
 
-        let request = NSFetchRequest<NSDictionary>(entityName: Question.entity().name!)
-        request.resultType = .dictionaryResultType
-        request.propertiesToFetch = [expressionDescription]
+        let query = NSFetchRequest<NSDictionary>(entityName: Question.entity().name!)
+        query.resultType = .dictionaryResultType
+        query.propertiesToFetch = [expressionDescription]
 
-        request.predicate = NSPredicate(format: "chapter IN %@", chapters)
+        query.predicate = NSPredicate(format: "chapter IN %@", chapters)
 
         // swiftlint:disable:next force_cast
-        return try context.fetch(request)[0].value(forKey: key) as! Int
+        return try context.fetch(query)[0].value(forKey: key) as! Int
     }
 
     func getQuestionForQuiz(fromChapters chapters: [Chapter]) throws -> Question {
@@ -51,10 +48,7 @@ class CoreDataQuestionService: QuestionService {
         query.predicate = NSPredicate(format: "timesAnsweredCorrectly == %d AND chapter IN %@", min, chapters)
 
         let questions = try context.fetch(query)
-        let question = questions.randomElement()
-
-        print(question)
-        return question
+        return questions.randomElement()
     }
 
     func registerChosenAnswer(_ answer: Answer) throws {

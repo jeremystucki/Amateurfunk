@@ -62,6 +62,8 @@ extension QuizPresenter: QuestionViewControllerOutput {
             return
         }
 
+        interactor?.didSelectAnswer(answer)
+
         didAnswerQuestion = true
         highlightCorrectAnswer()
 
@@ -70,7 +72,6 @@ extension QuizPresenter: QuestionViewControllerOutput {
         }
 
         viewController?.showButtonState(.nextQuestion)
-        interactor?.didSelectAnswer(answer)
     }
 
 }
