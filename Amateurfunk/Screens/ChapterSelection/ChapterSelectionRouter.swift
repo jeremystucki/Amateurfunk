@@ -8,6 +8,8 @@
 
 import UIKit
 
+typealias ChapterSelectionServices = (chapterService: ChapterService, questionService: QuestionService)
+
 protocol ChapterSelectionRouterInput {
     func dismissView()
 }
@@ -16,24 +18,21 @@ class ChapterSelectionRouter {
 
     var viewController: UIViewController?
 
-    static func setupModule(section: Section,
-                            chapterService: ChapterService,
-                            questionService: QuestionService) -> UIViewController {
+    static func setupModule(section: Section, services: ChapterSelectionServices) -> UIViewController {
         let viewController = ChapterSelectionViewController()
-        let interactor = ChapterSelectionInteractor(section: section,
-                                                    chapterService: chapterService,
-                                                    questionService: questionService)
+        let interactor = ChapterSelectionInteractor(section: section, services: services)
         let presenter = ChapterSelectionPresenter()
-        let router = ChapterSelectionRouter()
-
-        router.viewController = viewController
 
         viewController.presenter = presenter
         interactor.presenter = presenter
 
         presenter.viewController = viewController
         presenter.interactor = interactor
+
+        let router = ChapterSelectionRouter()
+
         presenter.router = router
+        router.viewController = viewController
 
         return viewController
     }
@@ -43,7 +42,7 @@ class ChapterSelectionRouter {
 extension ChapterSelectionRouter: ChapterSelectionRouterInput {
 
     func dismissView() {
-        viewController?.dismiss(animated: true, completion: nil)
+        viewController?.dismiss(animated: true)
     }
 
 }

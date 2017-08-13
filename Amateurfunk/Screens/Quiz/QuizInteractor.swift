@@ -25,13 +25,11 @@ class QuizInteractor {
     var presenter: QuizInteractorOutput?
 
     fileprivate let section: Section
-    fileprivate let questionService: QuestionService
-    fileprivate let chapterService: ChapterService
+    fileprivate let services: QuizServices
 
-    init(section: Section, questionService: QuestionService, chapterService: ChapterService) {
+    init(section: Section, services: QuizServices) {
         self.section = section
-        self.questionService = questionService
-        self.chapterService = chapterService
+        self.services = services
     }
 
 }
@@ -40,8 +38,8 @@ extension QuizInteractor: QuizInteractorInput {
 
     func fetchNextQuestion() {
         do {
-            let chapters = try chapterService.getSeletedChapters(fromSection: section)
-            let question = try questionService.getQuestionForQuiz(fromChapters: chapters)
+            let chapters = try services.chapterService.getSeletedChapters(fromSection: section)
+            let question = try services.questionService.getQuestionForQuiz(fromChapters: chapters)
             presenter?.fetchedNextQuestion(question)
         } catch {
             presenter?.failedToFetchNextQuestion()
@@ -50,19 +48,19 @@ extension QuizInteractor: QuizInteractorInput {
 
     func didSelectAnswer(_ answer: Answer) {
         do {
-            try questionService.registerChosenAnswer(answer)
+            try services.questionService.registerChosenAnswer(answer)
         } catch { }
     }
 
     func removeMarkedQuestion(_ question: Question) {
         do {
-            try questionService.markQuestion(question)
+            try services.questionService.markQuestion(question)
         } catch { }
     }
 
     func addMarkedQuestion(_ question: Question) {
         do {
-            try questionService.unmarkQuestion(question)
+            try services.questionService.unmarkQuestion(question)
         } catch { }
     }
 

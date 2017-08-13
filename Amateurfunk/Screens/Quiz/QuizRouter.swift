@@ -8,6 +8,8 @@
 
 import UIKit
 
+typealias QuizServices = (chapterService: ChapterService, questionService: QuestionService)
+
 protocol QuizRouterInput {
 
 }
@@ -16,24 +18,21 @@ class QuizRouter {
 
     var viewController: UIViewController?
 
-    static func setupModule(section: Section,
-                            questionService: QuestionService,
-                            chapterService: ChapterService) -> UIViewController {
+    static func setupModule(section: Section, services: QuizServices) -> UIViewController {
         let viewController = QuizViewController()
-        let interactor = QuizInteractor(section: section,
-                                        questionService: questionService,
-                                        chapterService: chapterService)
+        let interactor = QuizInteractor(section: section, services: services)
         let presenter = QuizPresenter()
-        let router = QuizRouter()
-
-        router.viewController = viewController
 
         viewController.presenter = presenter
         interactor.presenter = presenter
 
         presenter.viewController = viewController
         presenter.interactor = interactor
+
+        let router = QuizRouter()
+
         presenter.router = router
+        router.viewController = viewController
 
         return viewController
     }

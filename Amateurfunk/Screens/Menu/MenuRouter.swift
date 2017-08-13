@@ -8,6 +8,8 @@
 
 import UIKit
 
+typealias MenuServices = (chapterService: ChapterService, questionService: QuestionService)
+
 protocol MenuRouterInput {
     func showChapterSelection()
     func showQuiz()
@@ -18,33 +20,28 @@ class MenuRouter {
     var viewController: UIViewController?
 
     fileprivate let section: Section
-    fileprivate let chapterService: ChapterService
-    fileprivate let questionService: QuestionService
+    fileprivate let services: MenuServices
 
-    init(section: Section, chapterService: ChapterService, questionService: QuestionService) {
+    init(section: Section, services: MenuServices) {
         self.section = section
-        self.chapterService = chapterService
-        self.questionService = questionService
+        self.services = services
     }
 
-    static func setupModule(section: Section,
-                            chapterService: ChapterService,
-                            questionService: QuestionService) -> UIViewController {
+    static func setupModule(section: Section, services: MenuServices) -> UIViewController {
         let viewController = MenuViewController(title: section.name)
-        let interactor = MenuInteractor(section: section,
-                                        chapterService: chapterService,
-                                        questionService: questionService)
+        let interactor = MenuInteractor(section: section, services: services)
         let presenter = MenuPresenter()
-        let router = MenuRouter(section: section, chapterService: chapterService, questionService: questionService)
-
-        router.viewController = viewController
 
         viewController.presenter = presenter
         interactor.presenter = presenter
 
         presenter.viewController = viewController
         presenter.interactor = interactor
+
+        let router = MenuRouter(section: section, services: services)
+
         presenter.router = router
+        router.viewController = viewController
 
         return viewController
     }
@@ -54,23 +51,18 @@ class MenuRouter {
 extension MenuRouter: MenuRouterInput {
 
     func showChapterSelection() {
-        let view = ChapterSelectionRouter.setupModule(section: section,
-                                                      chapterService: chapterService,
-                                                      questionService: questionService)
-        let vc = UINavigationController(rootViewController: view)
+        let view = ChapterSelectionRouter.setupModule(section: section, services: services)
+        let navigationController = UINavigationController(rootViewController: view)
 
         if #available(iOS 11.0, *) {
-            vc.navigationBar.prefersLargeTitles = true
+            navigationController.navigationBar.prefersLargeTitles = true
         }
 
-        viewController?.present(vc, animated: true, completion: nil)
+        viewController?.present(navigationController, animated: true)
     }
 
     func showQuiz() {
-        let view = QuizRouter.setupModule(section: section,
-                                          questionService: questionService,
-                                          chapterService: chapterService)
-
+        let view = QuizRouter.setupModule(section: section, services: services)
         viewController?.navigationController?.pushViewController(view, animated: true)
     }
 

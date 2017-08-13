@@ -29,13 +29,11 @@ class ChapterSelectionInteractor {
     var presenter: ChapterSelectionInteractorOutput?
 
     fileprivate let section: Section
-    fileprivate let chapterService: ChapterService
-    fileprivate let questionService: QuestionService
+    fileprivate let services: ChapterSelectionServices
 
-    init(section: Section, chapterService: ChapterService, questionService: QuestionService) {
+    init(section: Section, services: ChapterSelectionServices) {
         self.section = section
-        self.chapterService = chapterService
-        self.questionService = questionService
+        self.services = services
     }
 
 }
@@ -44,7 +42,7 @@ extension ChapterSelectionInteractor: ChapterSelectionInteractorInput {
 
     func fetchChapters() {
         do {
-            let chapters = try chapterService.getAllChapters(fromSection: section)
+            let chapters = try services.chapterService.getAllChapters(fromSection: section)
             presenter?.fetchedChapters(chapters.sorted())
         } catch {
             presenter?.failedToFetchChapters()
@@ -53,7 +51,7 @@ extension ChapterSelectionInteractor: ChapterSelectionInteractorInput {
 
     func fetchSelectedChapters() {
         do {
-            let selectedChapters = try chapterService.getSeletedChapters(fromSection: section)
+            let selectedChapters = try services.chapterService.getSeletedChapters(fromSection: section)
             presenter?.fetchedSelectedChapters(selectedChapters)
         } catch {
             presenter?.failedToFetchSelectedChapters()
@@ -62,7 +60,7 @@ extension ChapterSelectionInteractor: ChapterSelectionInteractorInput {
 
     func updateSelectedChapters(selectedChapters: [Chapter]) {
         do {
-            try chapterService.setSelectedChapters(selectedChapters, forSection: section)
+            try services.chapterService.setSelectedChapters(selectedChapters, forSection: section)
             presenter?.updatedSelectedChapters()
         } catch {
             presenter?.failedToUpdateSelectedChapters()

@@ -42,16 +42,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             try context.save()
         } catch { }
 
-        let questionService = CoreDataQuestionService(context: context)
         let chapterService = CoreDataChapterService(context: context)
+        let questionService = CoreDataQuestionService(context: context)
 
-        let technikViewController = MenuRouter.setupModule(section: technik,
-                                                           chapterService: chapterService,
-                                                           questionService: questionService)
+        let services = (chapterService as ChapterService, questionService as QuestionService)
 
-        let vorschriftenViewController = MenuRouter.setupModule(section: vorschriften,
-                                                                chapterService: chapterService,
-                                                                questionService: questionService)
+        let technikViewController = MenuRouter.setupModule(section: technik, services: services)
+        let vorschriftenViewController = MenuRouter.setupModule(section: vorschriften, services: services)
 
         technikViewController.tabBarItem = UITabBarItem(title: "Technik",
                                                         image: UIImage(named: "technik"),
