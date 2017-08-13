@@ -24,8 +24,8 @@ class QuizInteractor {
 
     var presenter: QuizInteractorOutput?
 
-    fileprivate let section: Section
-    fileprivate let services: QuizServices
+    private let section: Section
+    private let services: QuizServices
 
     init(section: Section, services: QuizServices) {
         self.section = section

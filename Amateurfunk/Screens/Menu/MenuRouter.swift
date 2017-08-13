@@ -19,8 +19,8 @@ class MenuRouter {
 
     var viewController: UIViewController?
 
-    fileprivate let section: Section
-    fileprivate let services: MenuServices
+    private let section: Section
+    private let services: MenuServices
 
     init(section: Section, services: MenuServices) {
         self.section = section

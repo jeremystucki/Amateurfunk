@@ -49,6 +49,7 @@ extension MenuPresenter: MenuInteractorOutput {
 
     func fetchedNumberOfMarkedQuestions(numberOfMarkedQuestions: Int) {
         if numberOfMarkedQuestions == 0 {
+            viewController?.hideMarkedQuestions()
             return
         }
 

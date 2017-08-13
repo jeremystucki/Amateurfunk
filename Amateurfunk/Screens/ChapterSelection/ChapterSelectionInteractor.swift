@@ -28,8 +28,8 @@ class ChapterSelectionInteractor {
 
     var presenter: ChapterSelectionInteractorOutput?
 
-    fileprivate let section: Section
-    fileprivate let services: ChapterSelectionServices
+    private let section: Section
+    private let services: ChapterSelectionServices
 
     init(section: Section, services: ChapterSelectionServices) {
         self.section = section

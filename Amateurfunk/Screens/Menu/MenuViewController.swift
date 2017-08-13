@@ -10,6 +10,7 @@ import UIKit
 
 protocol MenuViewControllerInput {
     func displayMarkedQuestions(numberOfMarkedQuestions: Int)
+    func hideMarkedQuestions()
 
     func displayError(withMessage message: String)
 }
@@ -29,7 +30,7 @@ class MenuViewController: UITableViewController {
 
     var presenter: MenuViewControllerOutput?
 
-    fileprivate var numberOfMarkedQuestions: Int?
+    private var numberOfMarkedQuestions: Int?
 
     init(title: String) {
         super.init(style: .grouped)
@@ -128,11 +129,16 @@ extension MenuViewController: MenuViewControllerInput {
         tableView.reloadData()
     }
 
+    func hideMarkedQuestions() {
+        self.numberOfMarkedQuestions = nil
+        tableView.reloadData()
+    }
+
     func displayError(withMessage message: String) {
         let alertView = UIAlertController(title: "Fehler", message: message, preferredStyle: .alert)
-        alertView.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        alertView.addAction(UIAlertAction(title: "Ok", style: .default))
 
-        present(alertView, animated: true, completion: nil)
+        present(alertView, animated: true)
     }
 
 }

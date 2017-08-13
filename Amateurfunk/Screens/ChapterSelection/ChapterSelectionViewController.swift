@@ -26,8 +26,8 @@ class ChapterSelectionViewController: UITableViewController {
 
     var presenter: ChapterSelectionViewControllerOutput?
 
-    fileprivate var chapters: [Chapter]?
-    fileprivate var selectedChapters = [Chapter]()
+    private var chapters: [Chapter]?
+    private var selectedChapters = [Chapter]()
 
     init() {
         super.init(style: .grouped)
@@ -150,9 +150,9 @@ extension ChapterSelectionViewController: ChapterSelectionViewControllerInput {
 
     func displayError(withMessage message: String) {
         let alertView = UIAlertController(title: "Fehler", message: message, preferredStyle: .alert)
-        alertView.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        alertView.addAction(UIAlertAction(title: "Ok", style: .default))
 
-        present(alertView, animated: true, completion: nil)
+        present(alertView, animated: true)
     }
 
 }

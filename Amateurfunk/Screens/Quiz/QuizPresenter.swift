@@ -17,7 +17,7 @@ class QuizPresenter {
 
     var didAnswerQuestion = false
 
-    fileprivate func highlightCorrectAnswer() {
+    private func highlightCorrectAnswer() {
         let correctAnswer = currentQuestion!.answers.first { $0.correct }!
         questionViewController?.highlightAnswer(answer: correctAnswer, withColor: .green)
     }
