@@ -11,11 +11,16 @@ import UIKit
 protocol QuizViewControllerInput {
     func displayQuestion(_ view: UIView)
 
+    func showEmptyStar()
+    func showFullStar()
+
     func showButtonState(_ state: QuizViewController.ButtonState)
 }
 
 protocol QuizViewControllerOutput {
     func viewDidLoad()
+
+    func starClicked()
 
     func didSelectNextQuestion()
     func didSelectShowAnswer()
@@ -52,6 +57,13 @@ class QuizViewController: UIViewController {
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .never
         }
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: nil,
+            style: .done,
+            target: self,
+            action: #selector(QuizViewController.didClickStar(_:))
+        )
 
         questionView.translatesAutoresizingMaskIntoConstraints = false
         buttonView.translatesAutoresizingMaskIntoConstraints = false
@@ -125,6 +137,10 @@ class QuizViewController: UIViewController {
         }
     }
 
+    @objc func didClickStar(_ gesture: UIGestureRecognizer) {
+        presenter?.starClicked()
+    }
+
 }
 
 extension QuizViewController: QuizViewControllerInput {
@@ -154,6 +170,14 @@ extension QuizViewController: QuizViewControllerInput {
             currentQuestionView!.leadingAnchor.constraint(equalTo: questionView.leadingAnchor),
             currentQuestionView!.trailingAnchor.constraint(equalTo: questionView.trailingAnchor)
         ])
+    }
+
+    func showEmptyStar() {
+        navigationItem.rightBarButtonItem!.image = UIImage(named: "star")
+    }
+
+    func showFullStar() {
+        navigationItem.rightBarButtonItem!.image = UIImage(named: "star_selected")
     }
 
 }

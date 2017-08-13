@@ -16,8 +16,14 @@ class CoreDataQuestionService: QuestionService {
         self.context = context
     }
 
-    func getNumberOfMarkedQuestions(forSection section: Section) throws -> Int {
-        return 0
+    func getNumberOfMarkedQuestions(forChapters chapters: [Chapter]) throws -> Int {
+        let query = Question.createFetchRequest()
+        query.predicate = NSPredicate(format: "marked == YES AND chapter IN %@", chapters)
+
+        let questions = try context.fetch(query)
+
+        // swiftlint:disable:next force_cast
+        return questions.count
     }
 
     private func getMinimumAmountOfCorrectAnswers(forChapters chapters: [Chapter]) throws -> Int {
@@ -60,6 +66,18 @@ class CoreDataQuestionService: QuestionService {
         } else {
             question.currentStreak = 0
         }
+
+        try context.save()
+    }
+
+    func markQuestion(_ question: Question) throws {
+        question.marked = true
+
+        try context.save()
+    }
+
+    func unmarkQuestion(_ question: Question) throws {
+        question.marked = false
 
         try context.save()
     }

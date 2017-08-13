@@ -41,6 +41,18 @@ extension QuizPresenter: QuizViewControllerOutput {
         viewController?.showButtonState(.nextQuestion)
     }
 
+    func starClicked() {
+        if currentQuestion!.marked {
+            interactor?.removeMarkedQuestion(currentQuestion!)
+            viewController?.showEmptyStar()
+        } else {
+            interactor?.addMarkedQuestion(currentQuestion!)
+            viewController?.showFullStar()
+        }
+
+        currentQuestion!.marked = !currentQuestion!.marked
+    }
+
 }
 
 extension QuizPresenter: QuestionViewControllerOutput {
@@ -73,6 +85,12 @@ extension QuizPresenter: QuizInteractorOutput {
 
         didAnswerQuestion = false
         viewController?.showButtonState(.showAnswer)
+
+        if question.marked {
+            viewController?.showFullStar()
+        } else {
+            viewController?.showEmptyStar()
+        }
     }
 
     func failedToFetchNextQuestion() {

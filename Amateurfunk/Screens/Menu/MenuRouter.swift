@@ -31,7 +31,9 @@ class MenuRouter {
                             chapterService: ChapterService,
                             questionService: QuestionService) -> UIViewController {
         let viewController = MenuViewController(title: section.name)
-        let interactor = MenuInteractor(section: section, questionService: questionService)
+        let interactor = MenuInteractor(section: section,
+                                        chapterService: chapterService,
+                                        questionService: questionService)
         let presenter = MenuPresenter()
         let router = MenuRouter(section: section, chapterService: chapterService, questionService: questionService)
 
