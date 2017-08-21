@@ -50,7 +50,7 @@ class QuestionViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+            let cell = UITableViewCell()
             cell.selectionStyle = .none
             cell.textLabel!.numberOfLines = 0
             cell.textLabel!.text = query

@@ -129,7 +129,7 @@ class QuizViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        super.viewWillAppear(animated)
 
         if !viewInitialized {
             viewInitialized = true

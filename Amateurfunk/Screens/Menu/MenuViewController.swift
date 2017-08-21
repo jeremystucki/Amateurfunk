@@ -55,8 +55,7 @@ class MenuViewController: UITableViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
+        super.viewWillAppear(animated)
         presenter?.viewWillAppear()
     }
 

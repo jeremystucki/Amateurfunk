@@ -18,7 +18,7 @@ class MarkedQuestionsPresenter {
 
 extension MarkedQuestionsPresenter: MarkedQuestionsViewControllerOutput {
 
-    func viewDidLoad() {
+    func viewWillAppear() {
         interactor?.fetchMarkedQuestions()
     }
 

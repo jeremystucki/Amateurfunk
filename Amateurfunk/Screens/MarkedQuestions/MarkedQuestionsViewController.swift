@@ -13,7 +13,7 @@ protocol MarkedQuestionsViewControllerInput {
 }
 
 protocol MarkedQuestionsViewControllerOutput {
-    func viewDidLoad()
+    func viewWillAppear()
 }
 
 class MarkedQuestionsViewController: UITableViewController {
@@ -31,15 +31,18 @@ class MarkedQuestionsViewController: UITableViewController {
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .never
         }
+
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        presenter?.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter?.viewWillAppear()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,6 +52,7 @@ class MarkedQuestionsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.textLabel?.text = questions![indexPath.row].query
+        cell.textLabel?.numberOfLines = 0
 
         return cell
     }
