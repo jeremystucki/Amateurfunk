@@ -95,7 +95,7 @@ extension QuizPresenter: QuizInteractorOutput {
     }
 
     func failedToFetchNextQuestion() {
-        // Do nothing
+        // TODO: Implement
     }
 
 }

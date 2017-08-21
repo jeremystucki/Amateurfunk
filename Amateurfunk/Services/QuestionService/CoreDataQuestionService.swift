@@ -16,11 +16,15 @@ class CoreDataQuestionService: QuestionService {
         self.context = context
     }
 
-    func getNumberOfMarkedQuestions(forChapters chapters: [Chapter]) throws -> Int {
+    func getMarkedQuestions(forChapters chapters: [Chapter]) throws -> [Question] {
         let query = Question.createFetchRequest()
         query.predicate = NSPredicate(format: "marked == YES AND chapter IN %@", chapters)
 
-        return try context.fetch(query).count
+        return try context.fetch(query)
+    }
+
+    func getNumberOfMarkedQuestions(forChapters chapters: [Chapter]) throws -> Int {
+        return try getMarkedQuestions(forChapters: chapters).count
     }
 
     private func getMinimumAmountOfCorrectAnswers(forChapters chapters: [Chapter]) throws -> Int {

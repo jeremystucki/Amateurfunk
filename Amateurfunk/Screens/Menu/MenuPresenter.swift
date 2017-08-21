@@ -34,8 +34,7 @@ extension MenuPresenter: MenuViewControllerOutput {
     }
 
     func didSelectMarkedQuestions() {
-        // TODO: Implement
-        viewController?.displayError(withMessage: "Not yet implemented")
+        router?.showMarkedQuestions()
     }
 
     func didSelectTestMode() {
@@ -57,7 +56,7 @@ extension MenuPresenter: MenuInteractorOutput {
     }
 
     func failedToFetchNumberOfMarkedQuestions() {
-        // Do nothing
+        // TODO: Implement
     }
 
 }

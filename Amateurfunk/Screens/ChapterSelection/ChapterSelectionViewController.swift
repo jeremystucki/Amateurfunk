@@ -54,7 +54,6 @@ class ChapterSelectionViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         presenter?.viewDidLoad()
     }
 

@@ -12,7 +12,9 @@ typealias MenuServices = (chapterService: ChapterService, questionService: Quest
 
 protocol MenuRouterInput {
     func showChapterSelection()
+
     func showQuiz()
+    func showMarkedQuestions()
 }
 
 class MenuRouter {
@@ -63,6 +65,11 @@ extension MenuRouter: MenuRouterInput {
 
     func showQuiz() {
         let view = QuizRouter.setupModule(section: section, services: services)
+        viewController?.navigationController?.pushViewController(view, animated: true)
+    }
+
+    func showMarkedQuestions() {
+        let view = MarkedQuestionsRouter.setupModule(section: section, services: services)
         viewController?.navigationController?.pushViewController(view, animated: true)
     }
 
