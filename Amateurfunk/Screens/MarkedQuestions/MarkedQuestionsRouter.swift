@@ -11,12 +11,13 @@ import UIKit
 typealias MarkedQuestionsServices = (chapterService: ChapterService, questionService: QuestionService)
 
 protocol MarkedQuestionsRouterInput {
-    func dismissView()
+    func showQuestion(_ question: Question)
 }
 
 class MarkedQuestionsRouter {
 
     var viewController: UIViewController?
+    var questionViewController: QuestionViewController?
 
     static func setupModule(section: Section, services: MarkedQuestionsServices) -> UIViewController {
         let viewController = MarkedQuestionsViewController()
@@ -41,8 +42,17 @@ class MarkedQuestionsRouter {
 
 extension MarkedQuestionsRouter: MarkedQuestionsRouterInput {
 
-    func dismissView() {
-        viewController?.dismiss(animated: true)
+    func showQuestion(_ question: Question) {
+        questionViewController = QuestionViewController(question: question, presenter: self)
+        viewController?.navigationController?.pushViewController(questionViewController!, animated: true)
+    }
+
+}
+
+extension MarkedQuestionsRouter: QuestionViewControllerOutput {
+
+    func viewDidLayoutSubviews() {
+        questionViewController?.highlightCorrectAnswer()
     }
 
 }

@@ -9,12 +9,34 @@
 import UIKit
 
 protocol QuestionViewControllerInput {
+    func highlightAnswer(answer: Answer)
     func highlightAnswer(answer: Answer, withColor color: UIColor)
+    func highlightCorrectAnswer()
+    func highlightCorrectAnswer(withColor color: UIColor)
+
     var view: UIView! { get }
+}
+
+extension QuestionViewControllerInput {
+
+    func highlightCorrectAnswer() {
+        highlightCorrectAnswer(withColor: .green)
+    }
+
+    func highlightAnswer(answer: Answer) {
+        highlightAnswer(answer: answer, withColor: .orange)
+    }
+
 }
 
 protocol QuestionViewControllerOutput {
     func didSelectAnswer(_ answer: Answer)
+    func viewDidLayoutSubviews()
+}
+
+extension QuestionViewControllerOutput {
+    func didSelectAnswer(_ answer: Answer) { }
+    func viewDidLayoutSubviews() { }
 }
 
 class QuestionViewController: UITableViewController {
@@ -22,7 +44,7 @@ class QuestionViewController: UITableViewController {
     var query: String
     var answers: [Answer]
 
-    var presenter: QuestionViewControllerOutput
+    var presenter: QuestionViewControllerOutput?
 
     init(question: Question, presenter: QuestionViewControllerOutput) {
         self.query = question.query
@@ -31,6 +53,8 @@ class QuestionViewController: UITableViewController {
         self.presenter = presenter
 
         super.init(style: .grouped)
+
+        navigationItem.title = "Frage"
 
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -71,7 +95,12 @@ class QuestionViewController: UITableViewController {
         }
 
         let answer = answers[indexPath.row]
-        presenter.didSelectAnswer(answer)
+        presenter?.didSelectAnswer(answer)
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        presenter?.viewDidLayoutSubviews()
     }
 
 }
@@ -85,6 +114,11 @@ extension QuestionViewController: QuestionViewControllerInput {
         UIView.animate(withDuration: 0.1) {
             self.tableView.cellForRow(at: indexPath)?.backgroundColor = color
         }
+    }
+
+    func highlightCorrectAnswer(withColor color: UIColor) {
+        let correctAnswer = answers.first { $0.correct }!
+        highlightAnswer(answer: correctAnswer, withColor: color)
     }
 
 }
