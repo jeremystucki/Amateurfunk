@@ -22,6 +22,10 @@ extension MarkedQuestionsPresenter: MarkedQuestionsViewControllerOutput {
         interactor?.fetchMarkedQuestions()
     }
 
+    func didSelectQuestion(_ question: Question) {
+        router?.showQuestion(question)
+    }
+
 }
 
 extension MarkedQuestionsPresenter: MarkedQuestionsInteractorOutput {

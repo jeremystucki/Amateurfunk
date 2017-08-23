@@ -1,85 +1,44 @@
 //
-//  QuizViewController.swift
-//  Amateurfunk
+//  MarkedQuestionViewController.swift
+//  HB3 Trainer
 //
-//  Created by Jeremy Stucki on 04.06.17.
+//  Created by Jeremy Stucki on 23.08.17.
 //  Copyright © 2017 Jeremy Stucki. All rights reserved.
 //
 
+// TODO: Refactor duplicated code (QuizViewController)
+
 import UIKit
 
-protocol QuizViewControllerInput {
+protocol MarkedQuestionViewControllerInput {
     func displayQuestion(_ viewController: UIViewController)
-
-    func showEmptyStar()
-    func showFullStar()
-
-    func showButtonState(_ state: QuizViewController.ButtonState)
 }
 
-protocol QuizViewControllerOutput {
+protocol MarkedQuestionViewControllerOutput {
     func viewDidLoad()
-
-    func starClicked()
-
-    func didSelectNextQuestion()
-    func didSelectShowAnswer()
 }
 
-class QuizViewController: UIViewController {
+class MarkedQuestionViewController: UIViewController {
 
-    var presenter: QuizViewControllerOutput?
+    var presenter: MarkedQuestionViewControllerOutput?
 
     let questionView: UIView
     let buttonView: UIView
 
-    var currentQuestionView: UIView?
-    let button: UIButton
+    private var question: Question?
 
     var viewInitialized = false
 
-    enum ButtonState { case showAnswer; case nextQuestion }
-    var currentButtonState: ButtonState?
-
-    // swiftlint:disable:next function_body_length
     init() {
         questionView = UIView()
         buttonView = UIView()
 
-        button = UIButton(type: .system)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-
         super.init(nibName: nil, bundle: nil)
 
-        title = "Abfragen"
-        hidesBottomBarWhenPushed = true
-
-        if #available(iOS 11.0, *) {
-            navigationItem.largeTitleDisplayMode = .never
-        }
-
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: nil,
-            style: .done,
-            target: self,
-            action: #selector(QuizViewController.didClickStar(_:))
-        )
+        title = "Frage"
 
         questionView.translatesAutoresizingMaskIntoConstraints = false
         buttonView.translatesAutoresizingMaskIntoConstraints = false
-        button.translatesAutoresizingMaskIntoConstraints = false
-
-        button.addTarget(self, action: #selector(didPressButton), for: .touchUpInside)
-
-        buttonView.backgroundColor = .white
-        buttonView.addSubview(button)
-
-        buttonView.addConstraints([
-            button.topAnchor.constraint(equalTo: buttonView.topAnchor),
-            button.bottomAnchor.constraint(equalTo: buttonView.bottomAnchor),
-            button.leadingAnchor.constraint(equalTo: buttonView.leadingAnchor),
-            button.trailingAnchor.constraint(equalTo: buttonView.trailingAnchor)
-        ])
 
         view.addSubview(questionView)
         view.addSubview(buttonView)
@@ -113,19 +72,14 @@ class QuizViewController: UIViewController {
             ])
             // swiftlint:enable line_length
         }
+
+//        if #available(iOS 11.0, *) {
+//            navigationItem.largeTitleDisplayMode = .never
+//        }
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    @objc func didPressButton() {
-        switch currentButtonState! {
-        case .showAnswer:
-            presenter?.didSelectShowAnswer()
-        case .nextQuestion:
-            presenter?.didSelectNextQuestion()
-        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -137,47 +91,27 @@ class QuizViewController: UIViewController {
         }
     }
 
-    @objc func didClickStar(_ gesture: UIGestureRecognizer) {
-        presenter?.starClicked()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        presenter?.viewDidLoad()
     }
 
 }
 
-extension QuizViewController: QuizViewControllerInput {
-
-    func showButtonState(_ state: QuizViewController.ButtonState) {
-        currentButtonState = state
-
-        switch currentButtonState! {
-        case .showAnswer:
-            button.setTitle("Antwort anzeigen", for: .normal)
-        case .nextQuestion:
-            button.setTitle("Nächste Frage", for: .normal)
-        }
-    }
+extension MarkedQuestionViewController: MarkedQuestionViewControllerInput {
 
     func displayQuestion(_ viewController: UIViewController) {
-        currentQuestionView?.removeFromSuperview()
+        viewController.view.translatesAutoresizingMaskIntoConstraints = false
 
-        currentQuestionView = viewController.view
-        currentQuestionView!.translatesAutoresizingMaskIntoConstraints = false
-
-        questionView.addSubview(currentQuestionView!)
+        questionView.addSubview(viewController.view)
+        addChildViewController(viewController)
 
         questionView.addConstraints([
-            currentQuestionView!.topAnchor.constraint(equalTo: questionView.topAnchor),
-            currentQuestionView!.bottomAnchor.constraint(equalTo: questionView.bottomAnchor),
-            currentQuestionView!.leadingAnchor.constraint(equalTo: questionView.leadingAnchor),
-            currentQuestionView!.trailingAnchor.constraint(equalTo: questionView.trailingAnchor)
+            viewController.view.topAnchor.constraint(equalTo: questionView.topAnchor),
+            viewController.view.bottomAnchor.constraint(equalTo: questionView.bottomAnchor),
+            viewController.view.leadingAnchor.constraint(equalTo: questionView.leadingAnchor),
+            viewController.view.trailingAnchor.constraint(equalTo: questionView.trailingAnchor)
         ])
-    }
-
-    func showEmptyStar() {
-        navigationItem.rightBarButtonItem!.image = UIImage(named: "star")
-    }
-
-    func showFullStar() {
-        navigationItem.rightBarButtonItem!.image = UIImage(named: "star_selected")
     }
 
 }

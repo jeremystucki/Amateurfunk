@@ -11,12 +11,17 @@ import UIKit
 typealias MarkedQuestionsServices = (chapterService: ChapterService, questionService: QuestionService)
 
 protocol MarkedQuestionsRouterInput {
-    func dismissView()
+    func showQuestion(_ question: Question)
 }
 
 class MarkedQuestionsRouter {
 
     var viewController: UIViewController?
+    var questionService: QuestionService
+
+    init(questionService: QuestionService) {
+        self.questionService = questionService
+    }
 
     static func setupModule(section: Section, services: MarkedQuestionsServices) -> UIViewController {
         let viewController = MarkedQuestionsViewController()
@@ -29,7 +34,7 @@ class MarkedQuestionsRouter {
         presenter.viewController = viewController
         presenter.interactor = interactor
 
-        let router = MarkedQuestionsRouter()
+        let router = MarkedQuestionsRouter(questionService: services.questionService)
 
         presenter.router = router
         router.viewController = viewController
@@ -41,8 +46,9 @@ class MarkedQuestionsRouter {
 
 extension MarkedQuestionsRouter: MarkedQuestionsRouterInput {
 
-    func dismissView() {
-        viewController?.dismiss(animated: true)
+    func showQuestion(_ question: Question) {
+        let view = MarkedQuestionRouter.setupModule(question: question, questionService: questionService)
+        viewController?.navigationController?.pushViewController(view, animated: true)
     }
 
 }

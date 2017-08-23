@@ -14,6 +14,8 @@ protocol MarkedQuestionsViewControllerInput {
 
 protocol MarkedQuestionsViewControllerOutput {
     func viewWillAppear()
+
+    func didSelectQuestion(_ question: Question)
 }
 
 class MarkedQuestionsViewController: UITableViewController {
@@ -55,6 +57,10 @@ class MarkedQuestionsViewController: UITableViewController {
         cell.textLabel?.numberOfLines = 0
 
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.didSelectQuestion(questions![indexPath.row])
     }
 
 }

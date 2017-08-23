@@ -17,11 +17,6 @@ class QuizPresenter {
 
     var didAnswerQuestion = false
 
-    private func highlightCorrectAnswer() {
-        let correctAnswer = currentQuestion!.answers.first { $0.correct }!
-        questionViewController?.highlightAnswer(answer: correctAnswer, withColor: .green)
-    }
-
 }
 
 extension QuizPresenter: QuizViewControllerOutput {
@@ -36,7 +31,7 @@ extension QuizPresenter: QuizViewControllerOutput {
 
     func didSelectShowAnswer() {
         didAnswerQuestion = true
-        highlightCorrectAnswer()
+        questionViewController?.highlightCorrectAnswer()
 
         viewController?.showButtonState(.nextQuestion)
     }
@@ -65,10 +60,10 @@ extension QuizPresenter: QuestionViewControllerOutput {
         interactor?.didSelectAnswer(answer)
 
         didAnswerQuestion = true
-        highlightCorrectAnswer()
+        questionViewController?.highlightCorrectAnswer()
 
         if !answer.correct {
-            questionViewController?.highlightAnswer(answer: answer, withColor: .orange)
+            questionViewController?.highlightAnswer(answer: answer)
         }
 
         viewController?.showButtonState(.nextQuestion)
@@ -82,7 +77,7 @@ extension QuizPresenter: QuizInteractorOutput {
         currentQuestion = question
 
         questionViewController = QuestionViewController(question: question, presenter: self)
-        viewController?.displayQuestion(questionViewController!.view)
+        viewController?.displayQuestion(questionViewController!.viewController)
 
         didAnswerQuestion = false
         viewController?.showButtonState(.showAnswer)

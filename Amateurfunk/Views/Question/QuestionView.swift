@@ -6,25 +6,37 @@
 //  Copyright © 2017 Jeremy Stucki. All rights reserved.
 //
 
+// TODO: Cleanup this cancer
+
 import UIKit
 
 protocol QuestionViewControllerInput {
-    func highlightAnswer(answer: Answer, withColor color: UIColor)
-    var view: UIView! { get }
+    func highlightAnswer(answer: Answer)
+    func highlightCorrectAnswer()
+
+    var viewController: UIViewController! { get }
 }
 
 protocol QuestionViewControllerOutput {
     func didSelectAnswer(_ answer: Answer)
+    func viewDidLayoutSubviews()
+}
+
+extension QuestionViewControllerOutput {
+    func didSelectAnswer(_ answer: Answer) { }
+    func viewDidLayoutSubviews() { }
 }
 
 class QuestionViewController: UITableViewController {
 
+    var viewController: UIViewController! { return self }
+
     var query: String
     var answers: [Answer]
 
-    var presenter: QuestionViewControllerOutput
+    var presenter: QuestionViewControllerOutput?
 
-    init(question: Question, presenter: QuestionViewControllerOutput) {
+    init(question: Question, presenter: QuestionViewControllerOutput? = nil) {
         self.query = question.query
         self.answers = Array(question.answers)
 
@@ -71,7 +83,12 @@ class QuestionViewController: UITableViewController {
         }
 
         let answer = answers[indexPath.row]
-        presenter.didSelectAnswer(answer)
+        presenter?.didSelectAnswer(answer)
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        presenter?.viewDidLayoutSubviews()
     }
 
 }
@@ -85,6 +102,19 @@ extension QuestionViewController: QuestionViewControllerInput {
         UIView.animate(withDuration: 0.1) {
             self.tableView.cellForRow(at: indexPath)?.backgroundColor = color
         }
+    }
+
+    func highlightCorrectAnswer(withColor color: UIColor) {
+        let correctAnswer = answers.first { $0.correct }!
+        highlightAnswer(answer: correctAnswer, withColor: color)
+    }
+
+    func highlightCorrectAnswer() {
+        highlightCorrectAnswer(withColor: .green)
+    }
+
+    func highlightAnswer(answer: Answer) {
+        highlightAnswer(answer: answer, withColor: .orange)
     }
 
 }
