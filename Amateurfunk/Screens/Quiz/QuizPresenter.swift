@@ -77,7 +77,7 @@ extension QuizPresenter: QuizInteractorOutput {
         currentQuestion = question
 
         questionViewController = QuestionViewController(question: question, presenter: self)
-        viewController?.displayQuestion(questionViewController!.view)
+        viewController?.displayQuestion(questionViewController!.viewController)
 
         didAnswerQuestion = false
         viewController?.showButtonState(.showAnswer)

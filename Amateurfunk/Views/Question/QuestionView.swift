@@ -6,27 +6,15 @@
 //  Copyright © 2017 Jeremy Stucki. All rights reserved.
 //
 
+// TODO: Cleanup this cancer
+
 import UIKit
 
 protocol QuestionViewControllerInput {
     func highlightAnswer(answer: Answer)
-    func highlightAnswer(answer: Answer, withColor color: UIColor)
     func highlightCorrectAnswer()
-    func highlightCorrectAnswer(withColor color: UIColor)
 
-    var view: UIView! { get }
-}
-
-extension QuestionViewControllerInput {
-
-    func highlightCorrectAnswer() {
-        highlightCorrectAnswer(withColor: .green)
-    }
-
-    func highlightAnswer(answer: Answer) {
-        highlightAnswer(answer: answer, withColor: .orange)
-    }
-
+    var viewController: UIViewController! { get }
 }
 
 protocol QuestionViewControllerOutput {
@@ -41,20 +29,20 @@ extension QuestionViewControllerOutput {
 
 class QuestionViewController: UITableViewController {
 
+    var viewController: UIViewController! { return self }
+
     var query: String
     var answers: [Answer]
 
     var presenter: QuestionViewControllerOutput?
 
-    init(question: Question, presenter: QuestionViewControllerOutput) {
+    init(question: Question, presenter: QuestionViewControllerOutput? = nil) {
         self.query = question.query
         self.answers = Array(question.answers)
 
         self.presenter = presenter
 
         super.init(style: .grouped)
-
-        navigationItem.title = "Frage"
 
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -119,6 +107,14 @@ extension QuestionViewController: QuestionViewControllerInput {
     func highlightCorrectAnswer(withColor color: UIColor) {
         let correctAnswer = answers.first { $0.correct }!
         highlightAnswer(answer: correctAnswer, withColor: color)
+    }
+
+    func highlightCorrectAnswer() {
+        highlightCorrectAnswer(withColor: .green)
+    }
+
+    func highlightAnswer(answer: Answer) {
+        highlightAnswer(answer: answer, withColor: .orange)
     }
 
 }
