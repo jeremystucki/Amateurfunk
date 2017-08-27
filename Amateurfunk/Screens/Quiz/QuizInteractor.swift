@@ -10,6 +10,8 @@ protocol QuizInteractorInput {
 protocol QuizInteractorOutput {
     func fetchedNextQuestion(_ question: Question)
     func failedToFetchNextQuestion()
+
+    // TODO: Error handling
 }
 
 class QuizInteractor {

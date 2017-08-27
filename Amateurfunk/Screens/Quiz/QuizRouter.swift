@@ -11,7 +11,7 @@ class QuizRouter {
     var viewController: UIViewController?
 
     static func setupModule(section: Section, services: QuizServices) -> UIViewController {
-        let viewController = QuizViewController()
+        let viewController = QuizViewController(title: "Abfragen")
         let interactor = QuizInteractor(section: section, services: services)
         let presenter = QuizPresenter()
 

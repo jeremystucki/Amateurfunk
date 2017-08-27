@@ -2,40 +2,74 @@ import Foundation
 
 class MarkedQuestionPresenter {
 
-    var viewController: MarkedQuestionViewControllerInput?
+    var viewController: QuizViewControllerInput?
     var interactor: MarkedQuestionInteractorInput?
     var router: MarkedQuestionRouterInput?
 
-    let question: Question
-    let questionView: QuestionViewControllerInput
+    private let question: Question
+
+    private var didAnswerQuestion = false
 
     init(question: Question) {
-        let view = QuestionViewController(question: question)
-
         self.question = question
-        self.questionView = view
+    }
 
-        view.presenter = self
+    // TODO: Duplicated
+    private func updateStarIcon() {
+        if question.marked {
+            viewController?.displayFullStar()
+        } else {
+            viewController?.displayEmptyStar()
+        }
     }
 
 }
 
-extension MarkedQuestionPresenter: MarkedQuestionViewControllerOutput {
+extension MarkedQuestionPresenter: QuizViewControllerOutput {
 
-    func viewDidLoad() {
-        viewController?.displayQuestion(questionView.viewController)
+    func viewWillAppear() {
+        updateStarIcon()
+        viewController?.showButtonLabel("Antwort anzeigen")
+    }
+
+    // TODO: Duplicated
+    func didClickStar() {
+        if question.marked {
+            interactor?.removeMarkedQuestion(question)
+        } else {
+            interactor?.addMarkedQuestion(question)
+        }
+
+        question.marked = !question.marked
+        updateStarIcon()
+    }
+
+    func didClickButton() {
+        viewController?.highlightAnswer(question.correctAnswer)
+
+        // TODO: Hide button
+    }
+
+    // TODO: Duplicated
+    func didSelectAnswer(_ answer: Answer) {
+        if didAnswerQuestion {
+            return
+        }
+
+        didAnswerQuestion = true
+        interactor?.didSelectAnswer(answer)
+
+        viewController?.highlightAnswer(question.correctAnswer)
+
+        if !answer.correct {
+            viewController?.highlightAnswer(answer)
+        }
+
+        // TODO: Hide button
     }
 
 }
 
 extension MarkedQuestionPresenter: MarkedQuestionInteractorOutput {
-
-}
-
-extension MarkedQuestionPresenter: QuestionViewControllerOutput {
-
-    func viewDidLayoutSubviews() {
-        questionView.highlightCorrectAnswer()
-    }
 
 }

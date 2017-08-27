@@ -3,7 +3,7 @@
 import UIKit
 
 protocol QuestionViewControllerInput {
-    func highlightAnswer(answer: Answer)
+    func highlightAnswer(_ answer: Answer)
     func highlightCorrectAnswer()
 
     var viewController: UIViewController! { get }
@@ -105,8 +105,8 @@ extension QuestionViewController: QuestionViewControllerInput {
         highlightCorrectAnswer(withColor: .green)
     }
 
-    func highlightAnswer(answer: Answer) {
-        highlightAnswer(answer: answer, withColor: .orange)
+    func highlightAnswer(_ answer: Answer) {
+        highlightAnswer(answer: answer, withColor: (answer.correct ? .green : .orange))
     }
 
 }

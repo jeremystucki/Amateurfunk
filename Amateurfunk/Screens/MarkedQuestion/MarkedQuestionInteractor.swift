@@ -1,7 +1,12 @@
 protocol MarkedQuestionInteractorInput {
+    func didSelectAnswer(_ answer: Answer)
+
+    func removeMarkedQuestion(_ question: Question)
+    func addMarkedQuestion(_ question: Question)
 }
 
 protocol MarkedQuestionInteractorOutput {
+    // TODO: Error handling
 }
 
 class MarkedQuestionInteractor {
@@ -17,5 +22,23 @@ class MarkedQuestionInteractor {
 }
 
 extension MarkedQuestionInteractor: MarkedQuestionInteractorInput {
+
+    func didSelectAnswer(_ answer: Answer) {
+        do {
+            try questionService.registerChosenAnswer(answer)
+        } catch { }
+    }
+
+    func removeMarkedQuestion(_ question: Question) {
+        do {
+            try questionService.markQuestion(question)
+        } catch { }
+    }
+
+    func addMarkedQuestion(_ question: Question) {
+        do {
+            try questionService.unmarkQuestion(question)
+        } catch { }
+    }
 
 }

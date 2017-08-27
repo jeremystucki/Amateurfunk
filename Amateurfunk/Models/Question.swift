@@ -12,4 +12,8 @@ class Question: NSManagedObject {
     @NSManaged var timesAnsweredCorrectly: Int16
     @NSManaged var currentStreak: Int16
 
+    var correctAnswer: Answer! {
+        return answers.first(where: { $0.correct })
+    }
+
 }

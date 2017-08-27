@@ -5,7 +5,6 @@ class QuizPresenter {
     var router: QuizRouterInput?
 
     var currentQuestion: Question?
-    var questionViewController: QuestionViewControllerInput?
 
     var didAnswerQuestion = false
 
@@ -13,31 +12,58 @@ class QuizPresenter {
 
 extension QuizPresenter: QuizViewControllerOutput {
 
-    func viewDidLoad() {
+    func viewWillAppear() {
         interactor?.fetchNextQuestion()
     }
 
-    func didSelectNextQuestion() {
-        interactor?.fetchNextQuestion()
-    }
+    func didClickStar() {
+        if currentQuestion == nil {
+            return
+        }
 
-    func didSelectShowAnswer() {
-        didAnswerQuestion = true
-        questionViewController?.highlightCorrectAnswer()
-
-        viewController?.showButtonState(.nextQuestion)
-    }
-
-    func starClicked() {
         if currentQuestion!.marked {
             interactor?.removeMarkedQuestion(currentQuestion!)
-            viewController?.showEmptyStar()
         } else {
             interactor?.addMarkedQuestion(currentQuestion!)
-            viewController?.showFullStar()
         }
 
         currentQuestion!.marked = !currentQuestion!.marked
+        updateStarIcon()
+    }
+
+    func didClickButton() {
+        if currentQuestion == nil {
+            return
+        }
+
+        if didAnswerQuestion {
+            interactor?.fetchNextQuestion()
+        } else {
+            didAnswerQuestion = true
+
+            viewController?.highlightAnswer(currentQuestion!.correctAnswer)
+            updateButtonLabel()
+        }
+    }
+
+    private func updateStarIcon() {
+        if currentQuestion == nil {
+            return
+        }
+
+        if currentQuestion!.marked {
+            viewController?.displayFullStar()
+        } else {
+            viewController?.displayEmptyStar()
+        }
+    }
+
+    private func updateButtonLabel() {
+        if didAnswerQuestion {
+            viewController?.showButtonLabel("Nächste Frage")
+        } else {
+            viewController?.showButtonLabel("Antwort anzeigen")
+        }
     }
 
 }
@@ -49,16 +75,16 @@ extension QuizPresenter: QuestionViewControllerOutput {
             return
         }
 
+        didAnswerQuestion = true
         interactor?.didSelectAnswer(answer)
 
-        didAnswerQuestion = true
-        questionViewController?.highlightCorrectAnswer()
+        viewController?.highlightAnswer(currentQuestion!.correctAnswer)
 
         if !answer.correct {
-            questionViewController?.highlightAnswer(answer: answer)
+            viewController?.highlightAnswer(answer)
         }
 
-        viewController?.showButtonState(.nextQuestion)
+        updateButtonLabel()
     }
 
 }
@@ -67,18 +93,12 @@ extension QuizPresenter: QuizInteractorOutput {
 
     func fetchedNextQuestion(_ question: Question) {
         currentQuestion = question
-
-        questionViewController = QuestionViewController(question: question, presenter: self)
-        viewController?.displayQuestion(questionViewController!.viewController)
-
         didAnswerQuestion = false
-        viewController?.showButtonState(.showAnswer)
 
-        if question.marked {
-            viewController?.showFullStar()
-        } else {
-            viewController?.showEmptyStar()
-        }
+        viewController?.displayQuestion(question)
+
+        updateStarIcon()
+        updateButtonLabel()
     }
 
     func failedToFetchNextQuestion() {
