@@ -1,11 +1,3 @@
-//
-//  MenuPresenter.swift
-//  Amateurfunk
-//
-//  Created by Jeremy Stucki on 28.05.17.
-//  Copyright © 2017 Jeremy Stucki. All rights reserved.
-//
-
 class MenuPresenter {
 
     var viewController: MenuViewControllerInput?

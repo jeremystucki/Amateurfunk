@@ -1,11 +1,3 @@
-//
-//  ChapterSelectionRouter.swift
-//  Amateurfunk
-//
-//  Created by Jeremy Stucki on 29.05.17.
-//  Copyright © 2017 Jeremy Stucki. All rights reserved.
-//
-
 import UIKit
 
 typealias ChapterSelectionServices = (chapterService: ChapterService, questionService: QuestionService)

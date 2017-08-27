@@ -1,11 +1,3 @@
-//
-//  QuestionView.swift
-//  HB3 Trainer
-//
-//  Created by Jeremy Stucki on 02.07.17.
-//  Copyright © 2017 Jeremy Stucki. All rights reserved.
-//
-
 // TODO: Cleanup this cancer
 
 import UIKit

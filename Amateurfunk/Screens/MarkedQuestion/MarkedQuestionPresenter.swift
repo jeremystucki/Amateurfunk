@@ -1,11 +1,3 @@
-//
-//  MarkedQuestionPresenter.swift
-//  HB3 Trainer
-//
-//  Created by Jeremy Stucki on 23.08.17.
-//  Copyright © 2017 Jeremy Stucki. All rights reserved.
-//
-
 import Foundation
 
 class MarkedQuestionPresenter {

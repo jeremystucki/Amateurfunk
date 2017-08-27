@@ -1,11 +1,3 @@
-//
-//  MenuInteractor.swift
-//  Amateurfunk
-//
-//  Created by Jeremy Stucki on 03.06.17.
-//  Copyright © 2017 Jeremy Stucki. All rights reserved.
-//
-
 protocol MenuInteractorInput {
     func fetchNumberOfMarkedQuestions()
 }
