@@ -41,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let technikViewController = MenuRouter.setupModule(section: technik, services: services)
         let vorschriftenViewController = MenuRouter.setupModule(section: vorschriften, services: services)
+        let settingsViewController = SetttingsRouter.setupModule(services: services)
 
         technikViewController.tabBarItem = UITabBarItem(title: "Technik",
                                                         image: UIImage(named: "technik"),
@@ -50,16 +51,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                              image: UIImage(named: "vorschriften"),
                                                              selectedImage: UIImage(named: "vorschriften_selected"))
 
+        settingsViewController.tabBarItem = UITabBarItem(title: "Einstellungen",
+                                                         image: UIImage(named: "gear"),
+                                                         selectedImage: UIImage(named: "gear_selected"))
+
         let nav1 = UINavigationController(rootViewController: technikViewController)
         let nav2 = UINavigationController(rootViewController: vorschriftenViewController)
+        let nav3 = UINavigationController(rootViewController: settingsViewController)
 
         if #available(iOS 11.0, *) {
             nav1.navigationBar.prefersLargeTitles = true
             nav2.navigationBar.prefersLargeTitles = true
+            nav3.navigationBar.prefersLargeTitles = true
         }
 
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [nav1, nav2]
+        tabBarController.viewControllers = [nav1, nav2, nav3]
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window!.backgroundColor = .groupTableViewBackground

@@ -20,6 +20,10 @@
 		3F2468E01F4D780D0041E1FE /* MarkedQuestionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2468DF1F4D780D0041E1FE /* MarkedQuestionInteractor.swift */; };
 		3F2468E21F4D790D0041E1FE /* MarkedQuestionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2468E11F4D790D0041E1FE /* MarkedQuestionPresenter.swift */; };
 		3F46B7B41EFFF08800D8EB6B /* bakom_vorschriften.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F46B7B31EFFF08800D8EB6B /* bakom_vorschriften.json */; };
+		3F5C4FEE1F58915D00C96D68 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C4FED1F58915D00C96D68 /* SettingsRouter.swift */; };
+		3F5C4FF01F5892BD00C96D68 /* SetttingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C4FEF1F5892BD00C96D68 /* SetttingsViewController.swift */; };
+		3F5C4FF21F58956600C96D68 /* SetttingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C4FF11F58956600C96D68 /* SetttingsInteractor.swift */; };
+		3F5C4FF41F5895AC00C96D68 /* SetttingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C4FF31F5895AC00C96D68 /* SetttingsPresenter.swift */; };
 		3F88792F1F0034C100AF1658 /* FetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88792E1F0034C100AF1658 /* FetchRequest.swift */; };
 		3F8E5D651F53174700E0DA7E /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8E5D641F53174700E0DA7E /* QuizViewController.swift */; };
 		3F8E5D671F533B5200E0DA7E /* MarkedQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8E5D661F533B5100E0DA7E /* MarkedQuestionsViewController.swift */; };
@@ -98,6 +102,10 @@
 		3F2468DF1F4D780D0041E1FE /* MarkedQuestionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkedQuestionInteractor.swift; sourceTree = "<group>"; };
 		3F2468E11F4D790D0041E1FE /* MarkedQuestionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkedQuestionPresenter.swift; sourceTree = "<group>"; };
 		3F46B7B31EFFF08800D8EB6B /* bakom_vorschriften.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bakom_vorschriften.json; sourceTree = "<group>"; };
+		3F5C4FED1F58915D00C96D68 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
+		3F5C4FEF1F5892BD00C96D68 /* SetttingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetttingsViewController.swift; sourceTree = "<group>"; };
+		3F5C4FF11F58956600C96D68 /* SetttingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetttingsInteractor.swift; sourceTree = "<group>"; };
+		3F5C4FF31F5895AC00C96D68 /* SetttingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetttingsPresenter.swift; sourceTree = "<group>"; };
 		3F88792E1F0034C100AF1658 /* FetchRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchRequest.swift; sourceTree = "<group>"; };
 		3F8E5D641F53174700E0DA7E /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		3F8E5D661F533B5100E0DA7E /* MarkedQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkedQuestionsViewController.swift; sourceTree = "<group>"; };
@@ -227,6 +235,7 @@
 				3FD6D8881EE48A3500407E18 /* Quiz */,
 				3F91D8FF1F4B0D720024D927 /* MarkedQuestions */,
 				3F2468D81F4D732A0041E1FE /* MarkedQuestion */,
+				3F5C4FEC1F588EAD00C96D68 /* Settings */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -248,6 +257,17 @@
 				3F8E5D641F53174700E0DA7E /* QuizViewController.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		3F5C4FEC1F588EAD00C96D68 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				3F5C4FED1F58915D00C96D68 /* SettingsRouter.swift */,
+				3F5C4FEF1F5892BD00C96D68 /* SetttingsViewController.swift */,
+				3F5C4FF11F58956600C96D68 /* SetttingsInteractor.swift */,
+				3F5C4FF31F5895AC00C96D68 /* SetttingsPresenter.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		3F91D8FF1F4B0D720024D927 /* MarkedQuestions */ = {
@@ -503,6 +523,7 @@
 				3F2468E21F4D790D0041E1FE /* MarkedQuestionPresenter.swift in Sources */,
 				3F88792F1F0034C100AF1658 /* FetchRequest.swift in Sources */,
 				3FBF7B671F09406A0053D57B /* QuestionViewController.swift in Sources */,
+				3F5C4FF01F5892BD00C96D68 /* SetttingsViewController.swift in Sources */,
 				3F0D643D1ED9F3DD000A9177 /* Amateurfunk.xcdatamodeld in Sources */,
 				3F2468E01F4D780D0041E1FE /* MarkedQuestionInteractor.swift in Sources */,
 				3FD60BD61EE32C2E005481D0 /* MenuInteractor.swift in Sources */,
@@ -514,10 +535,13 @@
 				3F2172261EDCA60200A5B93C /* ChapterSelectionPresenter.swift in Sources */,
 				3FC23E531EDB38C0009586C4 /* MenuViewController.swift in Sources */,
 				3F0D64351ED9F3DD000A9177 /* AppDelegate.swift in Sources */,
+				3F5C4FF21F58956600C96D68 /* SetttingsInteractor.swift in Sources */,
 				3FEE76291EF94F05009504A7 /* CoreDataQuestionService.swift in Sources */,
+				3F5C4FEE1F58915D00C96D68 /* SettingsRouter.swift in Sources */,
 				3FEE761F1EF926E7009504A7 /* Section.swift in Sources */,
 				3FC23E521EDB38C0009586C4 /* MenuRouter.swift in Sources */,
 				3FC23E511EDB38C0009586C4 /* MenuPresenter.swift in Sources */,
+				3F5C4FF41F5895AC00C96D68 /* SetttingsPresenter.swift in Sources */,
 				3FD60BDD1EE342D3005481D0 /* QuestionService.swift in Sources */,
 				3FEE76251EF94186009504A7 /* ManagedObjectFactory.swift in Sources */,
 				3FD60BD41EE32B76005481D0 /* ChapterSelectionInteractor.swift in Sources */,
