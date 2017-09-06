@@ -1,6 +1,9 @@
 const questions = Array.from(document.getElementsByClassName('multichoice'));
 
-alert(JSON.stringify(questions.map(getQuestionForElement).filter((element) => element != null)));
+level = prompt('Level');
+section = prompt('Section');
+
+alert(JSON.stringify({section, level, 'questions': questions.map(getQuestionForElement).filter((element) => element != null)}));
 
 function getQuestionForElement(element) {
     const correctAnswer = element.getElementsByClassName('rightanswer')[0].textContent.replace('Die richtige Antwort lautet:', '').trim();
