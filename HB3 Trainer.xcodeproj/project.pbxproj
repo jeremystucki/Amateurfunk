@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F03969C1EE5693000067A59 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F03969B1EE5693000067A59 /* Answer.swift */; };
+		3F05E5F91F5D4255007B43ED /* CoreDataDataloaderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F05E5F81F5D4255007B43ED /* CoreDataDataloaderService.swift */; };
 		3F0D64351ED9F3DD000A9177 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D64341ED9F3DD000A9177 /* AppDelegate.swift */; };
 		3F0D643D1ED9F3DD000A9177 /* Amateurfunk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D643B1ED9F3DD000A9177 /* Amateurfunk.xcdatamodeld */; };
 		3F0D643F1ED9F3DD000A9177 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F0D643E1ED9F3DD000A9177 /* Assets.xcassets */; };
@@ -44,8 +45,9 @@
 		3FD6D88A1EE48A7300407E18 /* QuizRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6D8891EE48A7300407E18 /* QuizRouter.swift */; };
 		3FD6D88E1EE48A8500407E18 /* QuizInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6D88D1EE48A8500407E18 /* QuizInteractor.swift */; };
 		3FD6D8901EE48A8B00407E18 /* QuizPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6D88F1EE48A8B00407E18 /* QuizPresenter.swift */; };
+		3FD95B531F592A7800C4EAE9 /* DataloaderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD95B521F592A7800C4EAE9 /* DataloaderService.swift */; };
 		3FEE761F1EF926E7009504A7 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE761E1EF926E7009504A7 /* Section.swift */; };
-		3FEE76211EF92B2A009504A7 /* bakom_technik.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FEE76201EF92B2A009504A7 /* bakom_technik.json */; };
+		3FEE76211EF92B2A009504A7 /* bakom_technik_hb3.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FEE76201EF92B2A009504A7 /* bakom_technik_hb3.json */; };
 		3FEE76251EF94186009504A7 /* ManagedObjectFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE76241EF94186009504A7 /* ManagedObjectFactory.swift */; };
 		3FEE76271EF94E2E009504A7 /* CoreDataChapterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE76261EF94E2E009504A7 /* CoreDataChapterService.swift */; };
 		3FEE76291EF94F05009504A7 /* CoreDataQuestionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE76281EF94F05009504A7 /* CoreDataQuestionService.swift */; };
@@ -84,6 +86,7 @@
 
 /* Begin PBXFileReference section */
 		3F03969B1EE5693000067A59 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		3F05E5F81F5D4255007B43ED /* CoreDataDataloaderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDataloaderService.swift; sourceTree = "<group>"; };
 		3F0D64311ED9F3DD000A9177 /* HB3 Trainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HB3 Trainer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F0D64341ED9F3DD000A9177 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F0D643C1ED9F3DD000A9177 /* Amateurfunk.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Amateurfunk.xcdatamodel; sourceTree = "<group>"; };
@@ -126,8 +129,9 @@
 		3FD6D8891EE48A7300407E18 /* QuizRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizRouter.swift; sourceTree = "<group>"; };
 		3FD6D88D1EE48A8500407E18 /* QuizInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizInteractor.swift; sourceTree = "<group>"; };
 		3FD6D88F1EE48A8B00407E18 /* QuizPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizPresenter.swift; sourceTree = "<group>"; };
+		3FD95B521F592A7800C4EAE9 /* DataloaderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataloaderService.swift; sourceTree = "<group>"; };
 		3FEE761E1EF926E7009504A7 /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
-		3FEE76201EF92B2A009504A7 /* bakom_technik.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bakom_technik.json; sourceTree = "<group>"; };
+		3FEE76201EF92B2A009504A7 /* bakom_technik_hb3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bakom_technik_hb3.json; sourceTree = "<group>"; };
 		3FEE76241EF94186009504A7 /* ManagedObjectFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectFactory.swift; sourceTree = "<group>"; };
 		3FEE76261EF94E2E009504A7 /* CoreDataChapterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataChapterService.swift; sourceTree = "<group>"; };
 		3FEE76281EF94F05009504A7 /* CoreDataQuestionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataQuestionService.swift; sourceTree = "<group>"; };
@@ -203,7 +207,7 @@
 				3F0D64401ED9F3DD000A9177 /* LaunchScreen.storyboard */,
 				3F0D64431ED9F3DD000A9177 /* Info.plist */,
 				3F0D643B1ED9F3DD000A9177 /* Amateurfunk.xcdatamodeld */,
-				3FEE76201EF92B2A009504A7 /* bakom_technik.json */,
+				3FEE76201EF92B2A009504A7 /* bakom_technik_hb3.json */,
 				3F46B7B31EFFF08800D8EB6B /* bakom_vorschriften.json */,
 			);
 			path = Amateurfunk;
@@ -318,6 +322,7 @@
 		3FD60BD71EE341D1005481D0 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				3FD95B511F592A6D00C4EAE9 /* DataloaderService */,
 				3FD6D8831EE468CD00407E18 /* ChapterService */,
 				3FD60BDB1EE342AD005481D0 /* QuestionService */,
 			);
@@ -350,6 +355,15 @@
 				3FD6D88F1EE48A8B00407E18 /* QuizPresenter.swift */,
 			);
 			path = Quiz;
+			sourceTree = "<group>";
+		};
+		3FD95B511F592A6D00C4EAE9 /* DataloaderService */ = {
+			isa = PBXGroup;
+			children = (
+				3FD95B521F592A7800C4EAE9 /* DataloaderService.swift */,
+				3F05E5F81F5D4255007B43ED /* CoreDataDataloaderService.swift */,
+			);
+			path = DataloaderService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -470,7 +484,7 @@
 				3F0D64421ED9F3DD000A9177 /* LaunchScreen.storyboard in Resources */,
 				3F46B7B41EFFF08800D8EB6B /* bakom_vorschriften.json in Resources */,
 				3F0D643F1ED9F3DD000A9177 /* Assets.xcassets in Resources */,
-				3FEE76211EF92B2A009504A7 /* bakom_technik.json in Resources */,
+				3FEE76211EF92B2A009504A7 /* bakom_technik_hb3.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +528,7 @@
 				3F91D9071F4B0F950024D927 /* MarkedQuestionsPresenter.swift in Sources */,
 				3FEE76271EF94E2E009504A7 /* CoreDataChapterService.swift in Sources */,
 				3F8E5D671F533B5200E0DA7E /* MarkedQuestionsViewController.swift in Sources */,
+				3FD95B531F592A7800C4EAE9 /* DataloaderService.swift in Sources */,
 				3F2468DA1F4D75190041E1FE /* MarkedQuestionRouter.swift in Sources */,
 				3F21722A1EDCA68900A5B93C /* ChapterSelectionRouter.swift in Sources */,
 				3FD6D88E1EE48A8500407E18 /* QuizInteractor.swift in Sources */,
@@ -541,6 +556,7 @@
 				3FEE761F1EF926E7009504A7 /* Section.swift in Sources */,
 				3FC23E521EDB38C0009586C4 /* MenuRouter.swift in Sources */,
 				3FC23E511EDB38C0009586C4 /* MenuPresenter.swift in Sources */,
+				3F05E5F91F5D4255007B43ED /* CoreDataDataloaderService.swift in Sources */,
 				3F5C4FF41F5895AC00C96D68 /* SetttingsPresenter.swift in Sources */,
 				3FD60BDD1EE342D3005481D0 /* QuestionService.swift in Sources */,
 				3FEE76251EF94186009504A7 /* ManagedObjectFactory.swift in Sources */,

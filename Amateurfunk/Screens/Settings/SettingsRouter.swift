@@ -1,7 +1,5 @@
 import UIKit
 
-typealias SetttingsServices = (chapterService: ChapterService, questionService: QuestionService)
-
 protocol SetttingsRouterInput {
 
 }
@@ -10,15 +8,15 @@ class SetttingsRouter {
 
     var viewController: UIViewController?
 
-    private let services: SetttingsServices
+    private let dataloaderService: DataloaderService
 
-    init(services: SetttingsServices) {
-        self.services = services
+    init(dataloaderService: DataloaderService) {
+        self.dataloaderService = dataloaderService
     }
 
-    static func setupModule(services: SetttingsServices) -> UIViewController {
+    static func setupModule(dataloaderService: DataloaderService) -> UIViewController {
         let viewController = SetttingsViewController()
-        let interactor = SetttingsInteractor(services: services)
+        let interactor = SetttingsInteractor(dataloaderService: dataloaderService)
         let presenter = SetttingsPresenter()
 
         viewController.presenter = presenter
@@ -27,7 +25,7 @@ class SetttingsRouter {
         presenter.viewController = viewController
         presenter.interactor = interactor
 
-        let router = SetttingsRouter(services: services)
+        let router = SetttingsRouter(dataloaderService: dataloaderService)
 
         presenter.router = router
         router.viewController = viewController

@@ -20,7 +20,7 @@
     </entity>
     <entity name="Section" representedClassName="Section" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
-        <relationship name="chapters" toMany="YES" minCount="1" deletionRule="Cascade" destinationEntity="Chapter" inverseName="section" inverseEntity="Chapter" syncable="YES"/>
+        <relationship name="chapters" toMany="YES" deletionRule="Cascade" destinationEntity="Chapter" inverseName="section" inverseEntity="Chapter" syncable="YES"/>
     </entity>
     <entity name="TextAnswer" representedClassName="TextAnswer" parentEntity="Answer" syncable="YES">
         <attribute name="answer" attributeType="String" syncable="YES"/>

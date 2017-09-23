@@ -13,7 +13,7 @@ extension SetttingsPresenter: SetttingsViewControllerOutput {
     }
 
     func didPressConfirm() {
-        // TODO
+        interactor?.resetData()
     }
 
     func didPressCancel() {
@@ -23,5 +23,13 @@ extension SetttingsPresenter: SetttingsViewControllerOutput {
 }
 
 extension SetttingsPresenter: SetttingsInteractorOutput {
+
+    func dataResetSuccessfully() {
+
+    }
+
+    func dataResetUnsuccessfully() {
+
+    }
 
 }
