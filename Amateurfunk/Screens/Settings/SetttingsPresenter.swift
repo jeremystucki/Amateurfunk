@@ -8,18 +8,6 @@ class SetttingsPresenter {
 
 extension SetttingsPresenter: SetttingsViewControllerOutput {
 
-    func didSelectReset() {
-        viewController?.askForResetConfirmation()
-    }
-
-    func didPressConfirm() {
-        // TODO
-    }
-
-    func didPressCancel() {
-        // Do nothing
-    }
-
 }
 
 extension SetttingsPresenter: SetttingsInteractorOutput {
