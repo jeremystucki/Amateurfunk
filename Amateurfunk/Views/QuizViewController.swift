@@ -142,11 +142,13 @@ class QuizViewController: UIViewController {
 extension QuizViewController: QuizViewControllerInput {
 
     func displayEmptyStar() {
-        navigationItem.rightBarButtonItem?.image = UIImage(named: "star")
+        navigationItem.rightBarButtonItem?.image = UIImage(named: "star") // TODO: Rename image
+        navigationItem.rightBarButtonItem?.accessibilityLabel = "star unselected"
     }
 
     func displayFullStar() {
         navigationItem.rightBarButtonItem?.image = UIImage(named: "star_selected")
+        navigationItem.rightBarButtonItem?.accessibilityLabel = "star selected"
     }
 
     func showButtonLabel(_ title: String) {

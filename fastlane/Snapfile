@@ -1,0 +1,15 @@
+devices([
+  "iPhone 5s",
+  "iPhone 6",
+  "iPhone 6 Plus"
+])
+
+languages([
+  "de-CH",
+])
+
+launch_arguments([
+  "--erase_simulator",
+  "--localize_simulator"
+])
+

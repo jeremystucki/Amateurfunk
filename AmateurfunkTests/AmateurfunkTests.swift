@@ -1,5 +1,5 @@
 import XCTest
-@testable import Amateurfunk
+@testable import HB3_Trainer
 
 class AmateurfunkTests: XCTestCase {
 
