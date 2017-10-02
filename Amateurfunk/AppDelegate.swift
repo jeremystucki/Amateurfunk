@@ -44,16 +44,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let settingsViewController = SetttingsRouter.setupModule(services: services)
 
         technikViewController.tabBarItem = UITabBarItem(title: "Technik",
-                                                        image: UIImage(named: "technik"),
+                                                        image: UIImage(named: "technik_unselected"),
                                                         selectedImage: UIImage(named: "technik_selected"))
 
         vorschriftenViewController.tabBarItem = UITabBarItem(title: "Vorschriften",
-                                                             image: UIImage(named: "vorschriften"),
+                                                             image: UIImage(named: "vorschriften_unselected"),
                                                              selectedImage: UIImage(named: "vorschriften_selected"))
 
         settingsViewController.tabBarItem = UITabBarItem(title: "Einstellungen",
-                                                         image: UIImage(named: "gear"),
-                                                         selectedImage: UIImage(named: "gear_selected"))
+                                                         image: UIImage(named: "settings_unselected"),
+                                                         selectedImage: UIImage(named: "settings_selected"))
 
         let nav1 = UINavigationController(rootViewController: technikViewController)
         let nav2 = UINavigationController(rootViewController: vorschriftenViewController)

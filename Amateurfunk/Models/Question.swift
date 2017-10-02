@@ -3,6 +3,7 @@ import CoreData
 @objc(Question)
 class Question: NSManagedObject {
 
+    // swiftlint:disable:next identifier_name
     @NSManaged var id: String
     @NSManaged var query: String
     @NSManaged var chapter: Chapter
