@@ -3,6 +3,7 @@ import CoreData
 @objc(Question)
 class Question: NSManagedObject {
 
+    @NSManaged var id: String
     @NSManaged var query: String
     @NSManaged var chapter: Chapter
     @NSManaged var answers: Set<Answer>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13233.4" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13240" systemVersion="17B25c" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Answer" representedClassName="Answer" isAbstract="YES" syncable="YES">
         <attribute name="correct" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="question" maxCount="1" deletionRule="Nullify" destinationEntity="Question" inverseName="answers" inverseEntity="Question" syncable="YES"/>
@@ -12,6 +12,7 @@
     </entity>
     <entity name="Question" representedClassName="Question" syncable="YES">
         <attribute name="currentStreak" attributeType="Integer 16" minValueString="0" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="id" attributeType="String" syncable="YES"/>
         <attribute name="marked" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="query" attributeType="String" syncable="YES"/>
         <attribute name="timesAnsweredCorrectly" attributeType="Integer 16" minValueString="0" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -28,7 +29,7 @@
     <elements>
         <element name="Answer" positionX="-263" positionY="456" width="128" height="75"/>
         <element name="Chapter" positionX="-315" positionY="18" width="128" height="105"/>
-        <element name="Question" positionX="-344" positionY="225" width="128" height="135"/>
+        <element name="Question" positionX="-344" positionY="225" width="128" height="150"/>
         <element name="Section" positionX="-362" positionY="-138" width="128" height="75"/>
         <element name="TextAnswer" positionX="-216" positionY="615" width="128" height="60"/>
     </elements>

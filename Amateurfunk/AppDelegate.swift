@@ -103,6 +103,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var chapters = [String: Chapter]()
 
         for element in json! {
+            guard let id = element["id"] as? String else {
+                continue
+            }
+
             guard let query = element["question"] as? String else {
                 continue
             }
@@ -127,6 +131,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
 
             let question = questionFactory.create()
+            question.id = id
             question.query = query
             question.answers = Set<Answer>()
 

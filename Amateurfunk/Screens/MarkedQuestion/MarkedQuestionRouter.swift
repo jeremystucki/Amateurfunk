@@ -9,7 +9,7 @@ class MarkedQuestionRouter {
     var viewController: UIViewController?
 
     static func setupModule(question: Question, questionService: QuestionService) -> UIViewController {
-        let viewController = QuizViewController(title: "Frage", question: question)
+        let viewController = QuizViewController(question: question)
         let interactor = MarkedQuestionInteractor(questionService: questionService)
         let presenter = MarkedQuestionPresenter(question: question)
 

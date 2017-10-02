@@ -31,10 +31,13 @@ class QuizViewController: UIViewController {
     private let buttonView = UIButton(type: .system)
 
     // swiftlint:disable:next function_body_length
-    init(title: String, question: Question? = nil) {
+    init(question: Question? = nil) {
         super.init(nibName: nil, bundle: nil)
 
-        self.title = title
+        if question != nil {
+            title = "Frage \(question!.id)"
+        }
+
         hidesBottomBarWhenPushed = true
 
         if #available(iOS 11.0, *) {
@@ -126,6 +129,8 @@ class QuizViewController: UIViewController {
 
         questionViewController = QuestionViewController(question: question, presenter: self)
         questionViewContainer.addSubview(questionViewController!.view)
+
+        title = "Frage \(question.id)"
 
         questionViewController!.view.translatesAutoresizingMaskIntoConstraints = false
 
