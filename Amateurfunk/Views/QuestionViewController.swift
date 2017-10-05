@@ -1,5 +1,3 @@
-// TODO: Cleanup this cancer
-
 import UIKit
 
 protocol QuestionViewControllerInput {
@@ -11,7 +9,6 @@ protocol QuestionViewControllerInput {
 
 protocol QuestionViewControllerOutput {
     func didSelectAnswer(_ answer: Answer)
-    func viewDidLayoutSubviews()
 }
 
 extension QuestionViewControllerOutput {
@@ -21,14 +18,14 @@ extension QuestionViewControllerOutput {
 
 class QuestionViewController: UITableViewController {
 
-    var viewController: UIViewController! { return self }
+    var viewController: UIViewController! { return self } // TODO: WTF was I drunk?
 
-    var query: String
-    var answers: [Answer]
+    private var query: String
+    private var answers: [Answer]
 
-    var presenter: QuestionViewControllerOutput?
+    private var presenter: QuestionViewControllerOutput
 
-    init(question: Question, presenter: QuestionViewControllerOutput? = nil) {
+    init(question: Question, presenter: QuestionViewControllerOutput) {
         self.query = question.query
         self.answers = Array(question.answers)
 
@@ -75,19 +72,14 @@ class QuestionViewController: UITableViewController {
         }
 
         let answer = answers[indexPath.row]
-        presenter?.didSelectAnswer(answer)
+        presenter.didSelectAnswer(answer)
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        presenter?.viewDidLayoutSubviews()
+    private func getCorrectAnswer() -> Answer {
+        return answers.first { $0.correct }!
     }
 
-}
-
-extension QuestionViewController: QuestionViewControllerInput {
-
-    func highlightAnswer(answer: Answer, withColor color: UIColor) {
+    private func highlightAnswer(_ answer: Answer, withColor color: UIColor) {
         let index = answers.index(of: answer)!.littleEndian
         let indexPath = IndexPath(row: index, section: 1)
 
@@ -96,17 +88,16 @@ extension QuestionViewController: QuestionViewControllerInput {
         }
     }
 
-    func highlightCorrectAnswer(withColor color: UIColor) {
-        let correctAnswer = answers.first { $0.correct }!
-        highlightAnswer(answer: correctAnswer, withColor: color)
+}
+
+extension QuestionViewController: QuestionViewControllerInput {
+
+    func highlightAnswer(_ answer: Answer) {
+        highlightAnswer(answer, withColor: (answer.correct ? .green : .orange))
     }
 
     func highlightCorrectAnswer() {
-        highlightCorrectAnswer(withColor: .green)
-    }
-
-    func highlightAnswer(_ answer: Answer) {
-        highlightAnswer(answer: answer, withColor: (answer.correct ? .green : .orange))
+        highlightAnswer(getCorrectAnswer())
     }
 
 }
