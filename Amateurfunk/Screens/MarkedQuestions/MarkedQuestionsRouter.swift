@@ -9,10 +9,12 @@ protocol MarkedQuestionsRouterInput {
 class MarkedQuestionsRouter {
 
     var viewController: UIViewController?
-    var questionService: QuestionService
+    var services: MarkedQuestionsServices
+    var section: Section
 
-    init(questionService: QuestionService) {
-        self.questionService = questionService
+    init(section: Section, services: MarkedQuestionsServices) {
+        self.services = services
+        self.section = section
     }
 
     static func setupModule(section: Section, services: MarkedQuestionsServices) -> UIViewController {
@@ -26,7 +28,7 @@ class MarkedQuestionsRouter {
         presenter.viewController = viewController
         presenter.interactor = interactor
 
-        let router = MarkedQuestionsRouter(questionService: services.questionService)
+        let router = MarkedQuestionsRouter(section: section, services: services)
 
         presenter.router = router
         router.viewController = viewController
@@ -39,8 +41,14 @@ class MarkedQuestionsRouter {
 extension MarkedQuestionsRouter: MarkedQuestionsRouterInput {
 
     func showQuestion(_ question: Question) {
-        let view = MarkedQuestionRouter.setupModule(question: question, questionService: questionService)
-        viewController?.navigationController?.pushViewController(view, animated: true)
+        do {
+            let provider = try MarkedQuestionProvider(section: section, services: services, startAt: question)
+            let view = QuestionRouter.setupModule(questionProvider: provider, questionService: services.questionService)
+
+            viewController?.navigationController?.pushViewController(view, animated: true)
+        } catch {
+            // TODO
+        }
     }
 
 }

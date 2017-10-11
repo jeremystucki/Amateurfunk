@@ -12,7 +12,7 @@ class CoreDataQuestionService: QuestionService {
         let query = Question.createFetchRequest()
         query.predicate = NSPredicate(format: "marked == YES AND chapter IN %@", chapters)
 
-        return try context.fetch(query)
+        return try context.fetch(query).sorted(by: { $0.id.compare($1.id, options: .numeric) == .orderedAscending })
     }
 
     func getNumberOfMarkedQuestions(forChapters chapters: [Chapter]) throws -> Int {
