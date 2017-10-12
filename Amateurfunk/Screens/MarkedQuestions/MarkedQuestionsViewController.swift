@@ -16,8 +16,8 @@ class MarkedQuestionsViewController: UITableViewController {
 
     private var questions: [Question]?
 
-    init() {
-        super.init(style: .plain)
+    convenience init() {
+        self.init(style: .plain)
 
         title = "Markierte Fragen"
         hidesBottomBarWhenPushed = true
@@ -28,10 +28,6 @@ class MarkedQuestionsViewController: UITableViewController {
 
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewWillAppear(_ animated: Bool) {

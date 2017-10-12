@@ -72,4 +72,34 @@ class CoreDataQuestionService: QuestionService {
         try context.save()
     }
 
+    // TODO: Deal with core data
+    func getFlashcardsMetadata(forChapters chapters: [Chapter]) throws -> FlashcardsMetadata {
+        let expressionDescription = NSExpressionDescription()
+        expressionDescription.name = "count"
+        expressionDescription.expression = NSExpression(format: "id.@count")
+        expressionDescription.expressionResultType = .integer16AttributeType
+
+        let currentStreakDescription = NSExpressionDescription()
+        currentStreakDescription.name = "currentStreak"
+        currentStreakDescription.expression = NSExpression(forKeyPath: "currentStreak")
+        currentStreakDescription.expressionResultType = .integer16AttributeType
+
+        let query = NSFetchRequest<NSDictionary>(entityName: Question.entity().name!)
+        query.resultType = .dictionaryResultType
+        query.propertiesToFetch = [currentStreakDescription, expressionDescription]
+        query.propertiesToGroupBy = ["currentStreak"]
+
+        query.predicate = NSPredicate(format: "chapter IN %@", chapters)
+
+        let resultSet = try context.fetch(query)
+
+        var metadata = FlashcardsMetadata()
+        for element in resultSet {
+            // swiftlint:disable:next force_cast
+            metadata.append((compartment: "Fach \((element.value(forKey: "currentStreak") as! Int) + 1)", count: element.value(forKey: "count") as! Int)) // TODO: "Fach" does not belong here
+        }
+
+        return metadata
+    }
+
 }

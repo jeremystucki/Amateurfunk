@@ -21,8 +21,7 @@ extension MenuPresenter: MenuViewControllerOutput {
     }
 
     func didSelectFlashCards() {
-        // TODO: Implement
-        viewController?.displayError(withMessage: "Not yet implemented")
+        router?.showFlashcards()
     }
 
     func didSelectMarkedQuestions() {

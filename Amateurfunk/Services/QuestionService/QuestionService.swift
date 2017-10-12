@@ -9,4 +9,6 @@ protocol QuestionService {
     func markQuestion(_ question: Question) throws
     func unmarkQuestion(_ question: Question) throws
 
+    func getFlashcardsMetadata(forChapters chapters: [Chapter]) throws -> FlashcardsMetadata
+
 }
