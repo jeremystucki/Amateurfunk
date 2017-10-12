@@ -134,7 +134,21 @@ extension QuestionViewController: QuestionViewControllerInput {
 
         title = "Frage \(question.id)"
 
-        questionTableView.reloadData()
+        if questionTableView.numberOfSections == 0 {
+            questionTableView.reloadData()
+        } else {
+            CATransaction.begin()
+            questionTableView.beginUpdates()
+
+            CATransaction.setCompletionBlock({
+                self.questionTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .none, animated: true)
+            })
+
+            questionTableView.reloadSections(IndexSet(integersIn: 0..<questionTableView.numberOfSections), with: .left)
+
+            questionTableView.endUpdates()
+            CATransaction.commit()
+        }
     }
 
     func highlightAnswer(_ answer: Answer) {
