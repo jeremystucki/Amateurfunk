@@ -14,6 +14,10 @@ extension FlashcardsPresenter: FlashcardsViewControllerOutput {
         interactor?.fetchFlashcardsMetadata()
     }
 
+    func didSelectStreak(_ streak: Int) {
+        router?.showQuestionsForStreak(streak)
+    }
+
 }
 
 extension FlashcardsPresenter: FlashcardsInteractorOutput {

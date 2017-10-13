@@ -2,29 +2,38 @@ typealias MarkedQuestionServices = (chapterService: ChapterService, questionServ
 
 class MarkedQuestionProvider: QuestionProvider {
 
-    private let questions: [Question]
-    private var currentQuestionIndex: Int
+    private let section: Section
+    private let services: MarkedQuestionServices
 
-    // TODO: Do not load all questions at once
-    init(section: Section, services: MarkedQuestionServices, startAt question: Question) throws {
-        let chapters = try services.chapterService.getSeletedChapters(fromSection: section)
-        self.questions = try services.questionService.getMarkedQuestions(forChapters: chapters)
+    private var atFirstQuestion: Bool = true
+    private var currentQuestion: Question
 
-        currentQuestionIndex = questions.index(of: question)! - 1 // TODO
+    init(section: Section, services: MarkedQuestionServices, startAt question: Question) {
+        self.section = section
+        self.services = services
+
+        self.currentQuestion = question
     }
 
     func hasNext() throws -> Bool {
-        return true
+        let chapters = try services.chapterService.getSeletedChapters(fromSection: section)
+        let questions = try services.questionService.getMarkedQuestions(forChapters: chapters)
+
+        return questions.count != 0
     }
 
     func getNext() throws -> Question {
-        currentQuestionIndex += 1
-
-        if currentQuestionIndex == questions.count {
-            currentQuestionIndex = 0
+        if atFirstQuestion {
+            atFirstQuestion = false
+            return currentQuestion
         }
 
-        return questions[currentQuestionIndex]
+        let chapters = try services.chapterService.getSeletedChapters(fromSection: section)
+        let questions = try services.questionService.getMarkedQuestions(forChapters: chapters).sorted()
+
+        currentQuestion = questions.first(where: { $0 > self.currentQuestion }) ?? questions.first!
+
+        return currentQuestion
     }
 
 }

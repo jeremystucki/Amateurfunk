@@ -102,6 +102,7 @@ class QuestionViewController: UIViewController {
         }
     }
 
+    // TODO: Do not use viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter?.viewWillAppear()

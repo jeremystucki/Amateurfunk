@@ -12,7 +12,7 @@ class CoreDataQuestionService: QuestionService {
         let query = Question.createFetchRequest()
         query.predicate = NSPredicate(format: "marked == YES AND chapter IN %@", chapters)
 
-        return try context.fetch(query).sorted(by: { $0.id.compare($1.id, options: .numeric) == .orderedAscending })
+        return try context.fetch(query)
     }
 
     func getNumberOfMarkedQuestions(forChapters chapters: [Chapter]) throws -> Int {
@@ -44,6 +44,21 @@ class CoreDataQuestionService: QuestionService {
         query.predicate = NSPredicate(format: "timesAnsweredCorrectly == %d AND chapter IN %@", min, chapters)
 
         let questions = try context.fetch(query)
+        return questions.randomElement()
+    }
+
+    enum IamTooLazyToRefactorThisError: Error { case whatever } // TODO
+
+    func getQuestionForQuiz(fromChapters chapters: [Chapter], withStreak streak: Int) throws -> Question {
+        let query = Question.createFetchRequest()
+        query.predicate = NSPredicate(format: "currentStreak == %d AND chapter IN %@", streak, chapters)
+
+        let questions = try context.fetch(query)
+
+        if questions.count == 0 {
+            throw IamTooLazyToRefactorThisError.whatever
+        }
+
         return questions.randomElement()
     }
 
@@ -95,8 +110,10 @@ class CoreDataQuestionService: QuestionService {
 
         var metadata = FlashcardsMetadata()
         for element in resultSet {
-            // swiftlint:disable:next force_cast
-            metadata.append((compartment: "Fach \((element.value(forKey: "currentStreak") as! Int) + 1)", count: element.value(forKey: "count") as! Int)) // TODO: "Fach" does not belong here
+            // swiftlint:disable force_cast
+            metadata.append((streak: element.value(forKey: "currentStreak") as! Int,
+                             count: element.value(forKey: "count") as! Int))
+            // swiftlint:enable force_cast
         }
 
         return metadata

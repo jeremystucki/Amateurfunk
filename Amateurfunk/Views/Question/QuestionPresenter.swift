@@ -6,12 +6,13 @@ class QuestionPresenter {
 
     var viewController: QuestionViewControllerInput?
     var interactor: QuestionInteractorInput?
+    var router: QuestionRouterInput?
 
     var currentStats = Stats(questionsAnswered: 0, questionsAnsweredCorrectly: 0)
 
     private var currentQuestion: Question?
     private var answeredQuestion: Bool = false
-    private var hasNextQuestion: Bool = true
+    private var hasNextQuestion: Bool = false
 
     private func updateStarIcon() {
         if currentQuestion!.marked {
@@ -21,18 +22,20 @@ class QuestionPresenter {
         }
     }
 
-    private func updateButtonLabel() {
+    private func getButtonLabel() -> String {
         if !answeredQuestion {
-            viewController?.showButtonLabel("Antwort anzeigen")
-            return
+            return "Antwort anzeigen"
         }
 
         if hasNextQuestion {
-            viewController?.showButtonLabel("Nächste Frage")
-            return
+            return "Nächste Frage"
         }
 
-        viewController?.showButtonLabel("Beenden")
+        return "Beenden"
+    }
+
+    private func updateButtonLabel() {
+        viewController?.showButtonLabel(getButtonLabel())
     }
 
 }
@@ -48,6 +51,8 @@ extension QuestionPresenter: QuestionViewControllerOutput {
             return
         }
 
+        answeredQuestion = true
+
         viewController?.highlightAnswer(answer)
 
         currentStats.questionsAnswered += 1
@@ -58,10 +63,8 @@ extension QuestionPresenter: QuestionViewControllerOutput {
             viewController?.highlightAnswer(currentQuestion!.correctAnswer)
         }
 
-        answeredQuestion = true
-        updateButtonLabel()
-
         interactor?.registerChosenAnswer(answer)
+        interactor?.fetchHasNextQuestion()
     }
 
     func didClickStar() {
@@ -76,6 +79,8 @@ extension QuestionPresenter: QuestionViewControllerOutput {
         }
 
         updateStarIcon()
+
+        interactor?.fetchHasNextQuestion()
     }
 
     func didClickButton() {
@@ -85,7 +90,7 @@ extension QuestionPresenter: QuestionViewControllerOutput {
             currentStats.questionsAnswered += 1
             viewController?.highlightAnswer(currentQuestion!.correctAnswer)
             answeredQuestion = true
-            updateButtonLabel()
+            interactor?.fetchHasNextQuestion()
             return
         }
 
@@ -93,15 +98,16 @@ extension QuestionPresenter: QuestionViewControllerOutput {
             interactor?.fetchNextQuestion()
             return
         }
+
+        router?.dismissView()
     }
 
 }
 
 extension QuestionPresenter: QuestionInteractorOutput {
 
-    func fetchedQuestion(_ question: Question, hasNextQuestion: Bool) {
+    func fetchedQuestion(_ question: Question) {
         self.currentQuestion = question
-        self.hasNextQuestion = hasNextQuestion
 
         answeredQuestion = false
 
@@ -111,6 +117,15 @@ extension QuestionPresenter: QuestionInteractorOutput {
     }
 
     func failedToFetchNextQuestion() {
+        // TODO
+    }
+
+    func fetchedHasNextQuestion(_ hasNextQuestion: Bool) {
+        self.hasNextQuestion = hasNextQuestion
+        updateButtonLabel()
+    }
+
+    func failedToFetchHasNextQuestion() {
         // TODO
     }
 

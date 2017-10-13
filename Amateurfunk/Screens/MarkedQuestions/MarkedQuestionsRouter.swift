@@ -3,6 +3,7 @@ import UIKit
 typealias MarkedQuestionsServices = (chapterService: ChapterService, questionService: QuestionService)
 
 protocol MarkedQuestionsRouterInput {
+    func dismissView()
     func showQuestion(_ question: Question)
 }
 
@@ -41,14 +42,14 @@ class MarkedQuestionsRouter {
 extension MarkedQuestionsRouter: MarkedQuestionsRouterInput {
 
     func showQuestion(_ question: Question) {
-        do {
-            let provider = try MarkedQuestionProvider(section: section, services: services, startAt: question)
-            let view = QuestionRouter.setupModule(questionProvider: provider, questionService: services.questionService)
+        let provider = MarkedQuestionProvider(section: section, services: services, startAt: question)
+        let view = QuestionRouter.setupModule(questionProvider: provider, questionService: services.questionService)
 
-            viewController?.navigationController?.pushViewController(view, animated: true)
-        } catch {
-            // TODO
-        }
+        viewController?.navigationController?.pushViewController(view, animated: true)
+    }
+
+    func dismissView() {
+        viewController?.navigationController?.popViewController(animated: true)
     }
 
 }

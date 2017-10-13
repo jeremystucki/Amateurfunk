@@ -6,6 +6,7 @@ protocol FlashcardsViewControllerInput {
 
 protocol FlashcardsViewControllerOutput {
     func viewWillAppear()
+    func didSelectStreak(_ streak: Int)
 }
 
 class FlashcardsViewController: UITableViewController {
@@ -36,10 +37,14 @@ class FlashcardsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
         cell.accessoryType = .disclosureIndicator
-        cell.textLabel?.text = metadata![indexPath.row].compartment
+        cell.textLabel?.text = "Fach \(metadata![indexPath.row].streak + 1)" // TODO: Duplicated code
         cell.detailTextLabel?.text = String(metadata![indexPath.row].count)
 
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.didSelectStreak(metadata![indexPath.row].streak)
     }
 
 }
@@ -47,7 +52,7 @@ class FlashcardsViewController: UITableViewController {
 extension FlashcardsViewController: FlashcardsViewControllerInput {
 
     func displayFlashcardsMetadata(_ metadata: FlashcardsMetadata) {
-        self.metadata = metadata
+        self.metadata = metadata.sorted(by: { $0.streak > $1.streak })
         tableView.reloadData()
     }
 

@@ -3,12 +3,20 @@ import UIKit
 typealias FlashcardsServices = (chapterService: ChapterService, questionService: QuestionService)
 
 protocol FlashcardsRouterInput {
-    func dismissView()
+    func showQuestionsForStreak(_ streak: Int)
 }
 
 class FlashcardsRouter {
 
     var viewController: UIViewController?
+
+    private let section: Section
+    private let services: FlashcardsServices
+
+    init(section: Section, services: FlashcardsServices) {
+        self.section = section
+        self.services = services
+    }
 
     static func setupModule(section: Section, services: FlashcardsServices) -> UIViewController {
         let viewController = FlashcardsViewController()
@@ -21,7 +29,7 @@ class FlashcardsRouter {
         presenter.viewController = viewController
         presenter.interactor = interactor
 
-        let router = FlashcardsRouter()
+        let router = FlashcardsRouter(section: section, services: services)
 
         presenter.router = router
         router.viewController = viewController
@@ -33,8 +41,11 @@ class FlashcardsRouter {
 
 extension FlashcardsRouter: FlashcardsRouterInput {
 
-    func dismissView() {
-        viewController?.dismiss(animated: true)
+    func showQuestionsForStreak(_ streak: Int) {
+        let provider = FlashcardsQuestionProvider(section: section, services: services, streak: streak)
+        let view = QuestionRouter.setupModule(questionProvider: provider, questionService: services.questionService)
+
+        viewController?.navigationController?.pushViewController(view, animated: true)
     }
 
 }

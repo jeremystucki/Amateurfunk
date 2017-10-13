@@ -2,6 +2,7 @@ import Foundation
 
 protocol QuestionInteractorInput {
     func fetchNextQuestion()
+    func fetchHasNextQuestion()
 
     func registerChosenAnswer(_ answer: Answer)
 
@@ -10,8 +11,11 @@ protocol QuestionInteractorInput {
 }
 
 protocol QuestionInteractorOutput {
-    func fetchedQuestion(_ question: Question, hasNextQuestion: Bool)
+    func fetchedQuestion(_ question: Question)
     func failedToFetchNextQuestion()
+
+    func fetchedHasNextQuestion(_ hasNextQuestion: Bool)
+    func failedToFetchHasNextQuestion()
 }
 
 class QuestionInteractor {
@@ -33,10 +37,18 @@ extension QuestionInteractor: QuestionInteractorInput {
     func fetchNextQuestion() {
         do {
             let question = try questionProvider.getNext()
-            let hasNextQuestion = try questionProvider.hasNext()
-            presenter?.fetchedQuestion(question, hasNextQuestion: hasNextQuestion)
+            presenter?.fetchedQuestion(question)
         } catch {
             presenter?.failedToFetchNextQuestion()
+        }
+    }
+
+    func fetchHasNextQuestion() {
+        do {
+            let hasNextQuestion = try questionProvider.hasNext()
+            presenter?.fetchedHasNextQuestion(hasNextQuestion)
+        } catch {
+            presenter?.failedToFetchHasNextQuestion()
         }
     }
 

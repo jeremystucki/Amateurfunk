@@ -1,1 +1,1 @@
-typealias FlashcardsMetadata = [(compartment: String, count: Int)]
+typealias FlashcardsMetadata = [(streak: Int, count: Int)]

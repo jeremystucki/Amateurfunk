@@ -19,3 +19,11 @@ class Question: NSManagedObject {
     }
 
 }
+
+extension Question: Comparable {
+
+    public static func < (lhs: Question, rhs: Question) -> Bool {
+        return lhs.id.compare(rhs.id, options: .numeric) == .orderedAscending
+    }
+
+}

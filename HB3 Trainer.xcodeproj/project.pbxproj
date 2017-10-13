@@ -56,6 +56,7 @@
 		3FEE76291EF94F05009504A7 /* CoreDataQuestionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE76281EF94F05009504A7 /* CoreDataQuestionService.swift */; };
 		3FEE762B1EF94FF2009504A7 /* AnswerTableViewCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE762A1EF94FF2009504A7 /* AnswerTableViewCellFactory.swift */; };
 		3FEE762D1EF95EA2009504A7 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE762C1EF95EA2009504A7 /* Random.swift */; };
+		3FF9DF8C1F8FFB7E009C97A5 /* FlashcardsQuestionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9DF8B1F8FFB7E009C97A5 /* FlashcardsQuestionProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +144,7 @@
 		3FEE76281EF94F05009504A7 /* CoreDataQuestionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataQuestionService.swift; sourceTree = "<group>"; };
 		3FEE762A1EF94FF2009504A7 /* AnswerTableViewCellFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerTableViewCellFactory.swift; sourceTree = "<group>"; };
 		3FEE762C1EF95EA2009504A7 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
+		3FF9DF8B1F8FFB7E009C97A5 /* FlashcardsQuestionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsQuestionProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +259,7 @@
 				3F1EF7A01F8D704600124D08 /* QuestionProvider.swift */,
 				3F1EF7A91F8E401700124D08 /* QuizQuestionProvider.swift */,
 				3F1EF7AD1F8E8E0100124D08 /* MarkedQuestionProvider.swift */,
+				3FF9DF8B1F8FFB7E009C97A5 /* FlashcardsQuestionProvider.swift */,
 			);
 			path = QuestionProvider;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 				3F2172261EDCA60200A5B93C /* ChapterSelectionPresenter.swift in Sources */,
 				3FC23E531EDB38C0009586C4 /* MenuViewController.swift in Sources */,
 				3F0D64351ED9F3DD000A9177 /* AppDelegate.swift in Sources */,
+				3FF9DF8C1F8FFB7E009C97A5 /* FlashcardsQuestionProvider.swift in Sources */,
 				3F1EF7AC1F8E416B00124D08 /* QuestionRouter.swift in Sources */,
 				3F5C4FF21F58956600C96D68 /* SetttingsInteractor.swift in Sources */,
 				3FEE76291EF94F05009504A7 /* CoreDataQuestionService.swift in Sources */,

@@ -23,7 +23,11 @@ extension MarkedQuestionsPresenter: MarkedQuestionsViewControllerOutput {
 extension MarkedQuestionsPresenter: MarkedQuestionsInteractorOutput {
 
     func fetchedMarkedQuestions(_ questions: [Question]) {
-        viewController?.displayQuestions(questions)
+        if questions.count == 0 {
+            router?.dismissView()
+        } else {
+            viewController?.displayQuestions(questions.sorted())
+        }
     }
 
     func failedToFetchMarkedQuestions() {
