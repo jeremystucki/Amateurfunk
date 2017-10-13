@@ -29,6 +29,8 @@ class QuestionViewController: UIViewController {
     private let questionTableView = UITableView(frame: CGRect.zero, style: .grouped)
     private let buttonView = UIButton(type: .system)
 
+    private var viewInitialized = false
+
     init() {
         super.init(nibName: nil, bundle: nil)
 
@@ -105,7 +107,11 @@ class QuestionViewController: UIViewController {
     // TODO: Do not use viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter?.viewWillAppear()
+
+        if !viewInitialized {
+            viewInitialized = true
+            presenter?.viewWillAppear()
+        }
     }
 
     private func highlightAnswer(_ answer: Answer, withColor color: UIColor) {
