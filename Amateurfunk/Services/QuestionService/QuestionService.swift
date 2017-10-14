@@ -4,7 +4,7 @@ protocol QuestionService {
     func getNumberOfMarkedQuestions(forChapters chapters: [Chapter]) throws -> Int
 
     func getQuestionForQuiz(fromChapters chapters: [Chapter]) throws -> Question
-    func getQuestionForQuiz(fromChapters chapters: [Chapter], withStreak streak: Int) throws -> Question
+    func getQuestionForQuiz(fromChapters chapters: [Chapter], withStreak streak: Int) throws -> Question?
 
     func registerChosenAnswer(_ answer: Answer) throws
 

@@ -47,16 +47,14 @@ class CoreDataQuestionService: QuestionService {
         return questions.randomElement()
     }
 
-    enum IamTooLazyToRefactorThisError: Error { case whatever } // TODO
-
-    func getQuestionForQuiz(fromChapters chapters: [Chapter], withStreak streak: Int) throws -> Question {
+    func getQuestionForQuiz(fromChapters chapters: [Chapter], withStreak streak: Int) throws -> Question? {
         let query = Question.createFetchRequest()
         query.predicate = NSPredicate(format: "currentStreak == %d AND chapter IN %@", streak, chapters)
 
         let questions = try context.fetch(query)
 
         if questions.count == 0 {
-            throw IamTooLazyToRefactorThisError.whatever
+            return nil
         }
 
         return questions.randomElement()

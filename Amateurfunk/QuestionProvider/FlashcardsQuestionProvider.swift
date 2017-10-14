@@ -10,22 +10,18 @@ class FlashcardsQuestionProvider: QuestionProvider {
         self.streak = streak
     }
 
-    // TODO: Make less ugly
     func hasNext() throws -> Bool {
-        do {
-            let chapters = try services.chapterService.getSeletedChapters(fromSection: section)
-            _ = try services.questionService.getQuestionForQuiz(fromChapters: chapters, withStreak: streak)
-            return true
-        } catch {
-            return false
-        }
+        let chapters = try services.chapterService.getSeletedChapters(fromSection: section)
+        let question = try services.questionService.getQuestionForQuiz(fromChapters: chapters, withStreak: streak)
+
+        return question != nil
     }
 
     func getNext() throws -> Question {
         let chapters = try services.chapterService.getSeletedChapters(fromSection: section)
         let question = try services.questionService.getQuestionForQuiz(fromChapters: chapters, withStreak: streak)
 
-        return question
+        return question!
     }
 
 }

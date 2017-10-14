@@ -27,7 +27,6 @@ extension MarkedQuestionsInteractor: MarkedQuestionsInteractorInput {
         do {
             let selectedChapters = try services.chapterService.getSeletedChapters(fromSection: section)
             let markedQuestions = try services.questionService.getMarkedQuestions(forChapters: selectedChapters)
-
             presenter?.fetchedMarkedQuestions(markedQuestions)
         } catch {
             presenter?.failedToFetchMarkedQuestions()
