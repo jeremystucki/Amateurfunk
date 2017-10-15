@@ -24,8 +24,8 @@ class MenuViewController: UITableViewController {
 
     private var numberOfMarkedQuestions: Int?
 
-    init(title: String) {
-        super.init(style: .grouped)
+    convenience init(title: String) {
+        self.init(style: .grouped)
 
         self.title = title
         tabBarItem = UITabBarItem(title: title, image: nil, tag: 0)
@@ -34,16 +34,13 @@ class MenuViewController: UITableViewController {
             navigationItem.largeTitleDisplayMode = .always
         }
 
+        // TODO: Check if chapter selection even makes sense
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "Kapitel wählen",
             style: .plain,
             target: self,
             action: #selector(MenuViewController.didSelectChapterSelection(_:))
         )
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewWillAppear(_ animated: Bool) {

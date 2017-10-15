@@ -31,8 +31,8 @@ class QuestionViewController: UIViewController {
 
     private var viewInitialized = false
 
-    init() {
-        super.init(nibName: nil, bundle: nil)
+    convenience init() {
+        self.init(nibName: nil, bundle: nil)
 
         questionTableView.translatesAutoresizingMaskIntoConstraints = false
         buttonView.translatesAutoresizingMaskIntoConstraints = false
@@ -53,10 +53,6 @@ class QuestionViewController: UIViewController {
 
         questionTableView.estimatedRowHeight = 44
         questionTableView.rowHeight = UITableViewAutomaticDimension
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     private func setupNavigationBar() {

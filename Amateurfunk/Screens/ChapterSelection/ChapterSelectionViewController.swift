@@ -21,8 +21,8 @@ class ChapterSelectionViewController: UITableViewController {
     private var chapters: [Chapter]?
     private var selectedChapters = [Chapter]()
 
-    init() {
-        super.init(style: .grouped)
+    convenience init() {
+        self.init(style: .grouped)
 
         title = "Kapitel wählen"
 
@@ -38,10 +38,6 @@ class ChapterSelectionViewController: UITableViewController {
             target: self,
             action: #selector(ChapterSelectionViewController.didClickDone(_:))
         )
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
