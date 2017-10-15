@@ -6,6 +6,8 @@ protocol QuestionService {
     func getQuestionForQuiz(fromChapters chapters: [Chapter]) throws -> Question
     func getQuestionForQuiz(fromChapters chapters: [Chapter], withStreak streak: Int) throws -> Question?
 
+    func getQuestionsForExam(fromChapters chapters: [Chapter], numberOfQuestions: Int) throws -> [Question]
+
     func registerChosenAnswer(_ answer: Answer) throws
 
     func markQuestion(_ question: Question) throws

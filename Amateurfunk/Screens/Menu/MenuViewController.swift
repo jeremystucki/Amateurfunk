@@ -15,7 +15,7 @@ protocol MenuViewControllerOutput {
     func didSelectQuiz()
     func didSelectFlashCards()
     func didSelectMarkedQuestions()
-    func didSelectTestMode()
+    func didSelectExamMode()
 }
 
 class MenuViewController: UITableViewController {
@@ -107,7 +107,7 @@ class MenuViewController: UITableViewController {
         }
 
         if (indexPath.section == 1 && numberOfMarkedQuestions == nil) || indexPath.section == 2 {
-            presenter?.didSelectTestMode()
+            presenter?.didSelectExamMode()
         }
     }
 

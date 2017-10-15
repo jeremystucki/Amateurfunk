@@ -28,9 +28,8 @@ extension MenuPresenter: MenuViewControllerOutput {
         router?.showMarkedQuestions()
     }
 
-    func didSelectTestMode() {
-        // TODO: Implement
-        viewController?.displayError(withMessage: "Not yet implemented")
+    func didSelectExamMode() {
+        router?.showExam()
     }
 
 }

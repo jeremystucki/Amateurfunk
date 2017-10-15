@@ -8,6 +8,7 @@ protocol MenuRouterInput {
     func showQuiz()
     func showMarkedQuestions()
     func showFlashcards()
+    func showExam()
 }
 
 class MenuRouter {
@@ -70,6 +71,11 @@ extension MenuRouter: MenuRouterInput {
 
     func showFlashcards() {
         let view = FlashcardsRouter.setupModule(section: section, services: services)
+        viewController?.navigationController?.pushViewController(view, animated: true)
+    }
+
+    func showExam() {
+        let view = ExamRouter.setupModule(section: section, services: services)
         viewController?.navigationController?.pushViewController(view, animated: true)
     }
 

@@ -1,4 +1,5 @@
 import CoreData
+import GameKit
 
 class CoreDataQuestionService: QuestionService {
 
@@ -58,6 +59,17 @@ class CoreDataQuestionService: QuestionService {
         }
 
         return questions.randomElement()
+    }
+
+    func getQuestionsForExam(fromChapters chapters: [Chapter], numberOfQuestions: Int) throws -> [Question] {
+        let query = Question.createFetchRequest()
+        query.predicate = NSPredicate(format: "chapter IN %@", chapters)
+
+        let questions = try context.fetch(query)
+
+        // swiftlint:disable force_cast
+        let shuffledQuestions = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: questions) as! [Question]
+        return Array(shuffledQuestions.prefix(numberOfQuestions))
     }
 
     func registerChosenAnswer(_ answer: Answer) throws {

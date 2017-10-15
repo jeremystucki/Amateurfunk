@@ -1,5 +1,3 @@
-import Foundation
-
 class FlashcardsPresenter {
 
     var viewController: FlashcardsViewControllerInput?
