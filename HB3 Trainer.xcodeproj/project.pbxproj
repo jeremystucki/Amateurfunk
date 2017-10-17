@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3F03969C1EE5693000067A59 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F03969B1EE5693000067A59 /* Answer.swift */; };
+		3F09A4131F96631C000E4D12 /* CoreDataDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F09A4121F96631C000E4D12 /* CoreDataDataLoader.swift */; };
+		3F09A4151F966443000E4D12 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F09A4141F966443000E4D12 /* DataLoader.swift */; };
 		3F0D64351ED9F3DD000A9177 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D64341ED9F3DD000A9177 /* AppDelegate.swift */; };
 		3F0D643D1ED9F3DD000A9177 /* Amateurfunk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D643B1ED9F3DD000A9177 /* Amateurfunk.xcdatamodeld */; };
 		3F0D643F1ED9F3DD000A9177 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F0D643E1ED9F3DD000A9177 /* Assets.xcassets */; };
@@ -95,6 +97,8 @@
 
 /* Begin PBXFileReference section */
 		3F03969B1EE5693000067A59 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		3F09A4121F96631C000E4D12 /* CoreDataDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDataLoader.swift; sourceTree = "<group>"; };
+		3F09A4141F966443000E4D12 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		3F0D64311ED9F3DD000A9177 /* HB3 Trainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HB3 Trainer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F0D64341ED9F3DD000A9177 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F0D643C1ED9F3DD000A9177 /* Amateurfunk.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Amateurfunk.xcdatamodel; sourceTree = "<group>"; };
@@ -189,6 +193,8 @@
 				3FEE762C1EF95EA2009504A7 /* Random.swift */,
 				3F88792E1F0034C100AF1658 /* FetchRequest.swift */,
 				3F5867141F8FA2F600E25ED8 /* FlashcardsMetadata.swift */,
+				3F09A4141F966443000E4D12 /* DataLoader.swift */,
+				3F09A4121F96631C000E4D12 /* CoreDataDataLoader.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -586,6 +592,7 @@
 				3F58670D1F8F9FDB00E25ED8 /* FlashcardsRouter.swift in Sources */,
 				3F0D643D1ED9F3DD000A9177 /* Amateurfunk.xcdatamodeld in Sources */,
 				3FD60BD61EE32C2E005481D0 /* MenuInteractor.swift in Sources */,
+				3F09A4151F966443000E4D12 /* DataLoader.swift in Sources */,
 				3F91D9011F4B0DAC0024D927 /* MarkedQuestionsRouter.swift in Sources */,
 				3F1EF7A51F8D826C00124D08 /* QuestionViewController.swift in Sources */,
 				3F5867151F8FA2F600E25ED8 /* FlashcardsMetadata.swift in Sources */,
@@ -610,6 +617,7 @@
 				3FD60BD41EE32B76005481D0 /* ChapterSelectionInteractor.swift in Sources */,
 				3F91D9051F4B0ED00024D927 /* MarkedQuestionsInteractor.swift in Sources */,
 				3FD60BDA1EE34241005481D0 /* Chapter.swift in Sources */,
+				3F09A4131F96631C000E4D12 /* CoreDataDataLoader.swift in Sources */,
 				3FEE762B1EF94FF2009504A7 /* AnswerTableViewCellFactory.swift in Sources */,
 				3F1EF7A11F8D704600124D08 /* QuestionProvider.swift in Sources */,
 				3F1EF7AE1F8E8E0100124D08 /* MarkedQuestionProvider.swift in Sources */,

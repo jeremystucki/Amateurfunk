@@ -13,7 +13,7 @@
     <entity name="Question" representedClassName="Question" syncable="YES">
         <attribute name="currentStreak" attributeType="Integer 16" minValueString="0" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="id" attributeType="String" syncable="YES"/>
-        <attribute name="marked" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="marked" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="query" attributeType="String" syncable="YES"/>
         <attribute name="timesAnsweredCorrectly" attributeType="Integer 16" minValueString="0" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="answers" toMany="YES" minCount="1" deletionRule="Cascade" destinationEntity="Answer" inverseName="question" inverseEntity="Answer" syncable="YES"/>

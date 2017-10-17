@@ -1,9 +1,11 @@
+// TODO: Use new data model
+
 const questions = Array.from(document.getElementsByClassName('multichoice'));
 
 level = prompt('Level');
 section = prompt('Section');
 
-alert(JSON.stringify({section, level, 'questions': questions.map(getQuestionForElement).filter((element) => element != null)}));
+alert(JSON.stringify({section, 'questions': questions.map(getQuestionForElement).filter((element) => element != null)}));
 
 function getQuestionForElement(element) {
     const correctAnswer = element.getElementsByClassName('rightanswer')[0].textContent.replace('Die richtige Antwort lautet:', '').trim();
@@ -23,7 +25,7 @@ function getQuestionForElement(element) {
 
     if (document.getElementsByTagName('img') == null) return;
 
-    return { question, id, answers };
+    return { question, id, answers, level };
 }
 
 function getAnswerFromElement(element) {

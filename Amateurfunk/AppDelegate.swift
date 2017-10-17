@@ -1,17 +1,12 @@
 import UIKit
 import CoreData
 
+var context: NSManagedObjectContext! // Fuck it I can't be bothered to deal with core data (TODO)
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-    var context: NSManagedObjectContext!
-
-    var sectionFactory: ManagedObjectFactory<Section>!
-    var chapterFactory: ManagedObjectFactory<Chapter>!
-    var questionFactory: ManagedObjectFactory<Question>!
-    var textAnswerFactory: ManagedObjectFactory<TextAnswer>!
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -20,27 +15,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         context = container.viewContext
 
-        removeAllSections(context: context)
+        if UserDefaults.standard.object(forKey: "dataLoaded") == nil {
+            let resourceURL = Bundle.main.resourceURL!
+            let technikResource = resourceURL.appendingPathComponent("bakom_technik.json")
+            let vorschriftenResource = resourceURL.appendingPathComponent("bakom_vorschriften.json")
 
-        sectionFactory = ManagedObjectFactory<Section>(context: context)
-        chapterFactory = ManagedObjectFactory<Chapter>(context: context)
-        questionFactory = ManagedObjectFactory<Question>(context: context)
-        textAnswerFactory = ManagedObjectFactory<TextAnswer>(context: context)
+            let dataloader = CoreDataDataLoader(context: context)
 
-        let technik = getSectionFromFile(filename: "bakom_technik.json", sectionTitle: "Technik")
-        let vorschriften = getSectionFromFile(filename: "bakom_vorschriften.json", sectionTitle: "Vorschriften")
+            do {
+                try dataloader.removeAllSections()
 
-        do {
-            try context.save()
-        } catch { }
+                try dataloader.loadSectionFromFile(technikResource)
+                try dataloader.loadSectionFromFile(vorschriftenResource)
+
+                UserDefaults.standard.set(true, forKey: "dataLoaded")
+            } catch {
+                // TODO
+            }
+        }
 
         let chapterService = CoreDataChapterService(context: context)
         let questionService = CoreDataQuestionService(context: context)
 
         let services = (chapterService as ChapterService, questionService as QuestionService)
 
-        let technikViewController = MenuRouter.setupModule(section: technik, services: services)
-        let vorschriftenViewController = MenuRouter.setupModule(section: vorschriften, services: services)
+        var technikSection: Section! // TODO
+        var vorschriftenSection: Section! // TODO
+
+        do {
+            technikSection = try getSection(name: "Technik")
+            vorschriftenSection = try getSection(name: "Vorschriften")
+        } catch {
+            // TODO
+        }
+
+        let technikViewController = MenuRouter.setupModule(section: technikSection, services: services)
+        let vorschriftenViewController = MenuRouter.setupModule(section: vorschriftenSection, services: services)
         let settingsViewController = SetttingsRouter.setupModule(services: services)
 
         technikViewController.tabBarItem = UITabBarItem(title: "Technik",
@@ -66,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [nav1, nav2, nav3]
+        tabBarController.viewControllers = [nav1, nav2, nav3] // TODO: WTF
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window!.backgroundColor = .groupTableViewBackground
@@ -76,78 +86,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func removeAllSections(context: NSManagedObjectContext) {
-        let query = Section.fetchRequest()
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: query)
+    private func getSection(name: String) throws -> Section {
+        let query = Section.createFetchRequest()
+        query.predicate = NSPredicate(format: "name == %@", name)
 
-        do {
-            try context.execute(deleteRequest)
-        } catch { }
-    }
-
-    func getSectionFromFile(filename: String, sectionTitle: String) -> Section {
-        let section = sectionFactory.create()
-        section.name = sectionTitle
-        section.chapters = getChaptersFromFile(filename: filename)
-
-        return section
-    }
-
-    func getChaptersFromFile(filename: String) -> Set<Chapter> {
-        let data = NSData(contentsOf: (Bundle.main.resourceURL!.appendingPathComponent(filename)))!
-
-        guard let json = try? JSONSerialization.jsonObject(with: data as Data) as? [[String: Any]] else {
-            return Set<Chapter>()
-        }
-
-        var chapters = [String: Chapter]()
-
-        for element in json! {
-            guard let id = element["id"] as? String else {
-                continue
-            }
-
-            guard let query = element["question"] as? String else {
-                continue
-            }
-
-            guard let correctAnswer = element["correct_answer"] as? Int else {
-                continue
-            }
-
-            guard let answers = element["answers"] as? [String] else {
-                continue
-            }
-
-            guard let chapterName = element["chapter"] as? String else {
-                continue
-            }
-
-            if chapters[chapterName] == nil {
-                let chapter = chapterFactory.create()
-                chapter.title = chapterName
-
-                chapters[chapterName] = chapter
-            }
-
-            let question = questionFactory.create()
-            question.id = id
-            question.query = query
-            question.answers = Set<Answer>()
-
-            for (index, answer) in answers.enumerated() {
-                let answerObject = textAnswerFactory.create()
-
-                answerObject.answer = answer
-                answerObject.correct = (correctAnswer == index)
-
-                question.answers.insert(answerObject)
-            }
-
-            chapters[chapterName]!.questions.insert(question)
-        }
-
-        return Set(chapters.map({ $0.value }))
+        return try context.fetch(query)[0]
     }
 
 }
