@@ -14,8 +14,8 @@ class Chapter: NSManagedObject, Decodable {
         case questions = "questions"
     }
 
-    required init(from decoder: Decoder) throws {
-        super.init(entity: Chapter.entity(), insertInto: context)
+    required convenience init(from decoder: Decoder) throws {
+        self.init(entity: Chapter.entity(), insertInto: context)
 
         let values = try decoder.container(keyedBy: CodingKeys.self)
         title = try values.decode(String.self, forKey: .title)

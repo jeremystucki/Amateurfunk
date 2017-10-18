@@ -18,8 +18,8 @@ class TextAnswer: Answer, Decodable {
         case correct
     }
 
-    required init(from decoder: Decoder) throws {
-        super.init(entity: TextAnswer.entity(), insertInto: context)
+    required convenience init(from decoder: Decoder) throws {
+        self.init(entity: TextAnswer.entity(), insertInto: context)
 
         let values = try decoder.container(keyedBy: CodingKeys.self)
         answer = try values.decode(String.self, forKey: .answer)

@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         context = container.viewContext
 
-        if UserDefaults.standard.object(forKey: "dataLoaded") == nil {
+        if UserDefaults.standard.object(forKey: "dataVersion") == nil {
             let resourceURL = Bundle.main.resourceURL!
             let technikResource = resourceURL.appendingPathComponent("bakom_technik.json")
             let vorschriftenResource = resourceURL.appendingPathComponent("bakom_vorschriften.json")
@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 try dataloader.loadSectionFromFile(technikResource)
                 try dataloader.loadSectionFromFile(vorschriftenResource)
 
-                UserDefaults.standard.set(true, forKey: "dataLoaded")
+                UserDefaults.standard.set(1, forKey: "dataVersion")
             } catch {
                 // TODO
             }

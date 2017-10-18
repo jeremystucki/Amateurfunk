@@ -25,8 +25,8 @@ class Question: NSManagedObject, Decodable {
         case answers = "answers"
     }
 
-    required init(from decoder: Decoder) throws {
-        super.init(entity: Question.entity(), insertInto: context)
+    required convenience init(from decoder: Decoder) throws {
+        self.init(entity: Question.entity(), insertInto: context)
 
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decode(String.self, forKey: .id)
